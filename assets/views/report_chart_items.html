@@ -1,0 +1,341 @@
+<!-- Page Header -->
+<div class="content bg-image overflow-hidden" style="background-image: url('assets/img/photos/photo3@2x.jpg');">
+   <div class="push-50-t push-15">
+      <h1 class="h2 text-white animated zoomIn">chart Itmes Report</h1>
+      <h2 class="h5 text-white-op animated zoomIn">Welcome {{managemnet_name}}</h2>
+   </div>
+</div>
+<!-- END Page Header -->
+<!-- Page Content -->
+<div class="content" data-ng-init="loadData()">
+   <div class="row">
+      <div class="col-md-12">
+         <!-- Main Dashboard Chart -->
+         <div class="block">
+            <br />
+            <div class="block-header">
+                
+               <div class="col-md-6">
+                  <div class="col-md-offset-5 form-group">
+                     <span class="block-title">List Product</span>
+                  </div>
+                  <div class="col-md-5 form-group">
+                    <select class="form-control" id="cboProductType">
+                         <option value="1">Regular Product</option>     
+                         <option value="0" >Hand Carried Product</option>
+                                           
+                    </select>
+                  </div>
+                   <table id="tb_list_product" class="table table-bordered table-striped table-hover js-dataTable-full display responsive nowrap" cellspacing="0" width="100%">
+                     <!--table table-bordered table-striped js-dataTable-full -->
+                     <thead>
+                        <tr style="background-color: #BCBCBC;color: white;">
+                           <th class="hidden-xs">Item ID</th>
+                           <th class="hidden-xs">Product Name</th>
+                           <th class="hidden-xs">Add for Filter</th>
+                        </tr>
+                     </thead>
+                  </table>
+               </div>
+               <div class="col-md-6">
+                  <div class="col-md-offset-5 form-group">
+                     <span class="block-title">List Item Filter</span>
+                  </div>
+                  <div class="col-md-12 form-group">
+                     <div class="col-md-8 text-center">
+                        <span>Name Product</span>
+                     </div>
+                  </div>
+                  <div id="div_list_item_search">
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="col-md-12">
+         <!-- Main Dashboard Chart -->
+         <div class="block">
+            <br />
+            <div class="block-header">
+               <div class="col-md-12" style="margin-bottom: 50px;">
+                  <span class="block-title">Report Daily Total Sale Item</span>
+               </div>
+               <div class="col-md-12">
+                  <div class="col-md-12" style="padding-bottom: 30px;">
+                    
+                     <div class="col-md-10">                       
+                      
+                           <div class="col-md-5 ">
+                              <span style="padding-top: 5px;" class="col-md-4">From Date</span>
+                              <p class="input-group">
+                                 <input type="text" class="form-control" uib-datepicker-popup ng-model="txtfromdate" is-open="popup1.opened" ng-required="true" close-text="Close" />
+                                 <span class="input-group-btn">
+                                 <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+                                 </span>
+                              </p>
+                           </div>
+                           <div class="col-md-5">
+                              <span style="padding-top: 5px;" class="col-md-4">To Date</span>
+                              <p class="input-group">
+                                 <input type="text" class="form-control" uib-datepicker-popup ng-model="txttodate" is-open="popup2.opened" ng-required="true" close-text="Close" />
+                                 <span class="input-group-btn">
+                                 <button type="button" class="btn btn-default" ng-click="open2()"><i class="glyphicon glyphicon-calendar"></i></button>
+                                 </span>
+                              </p>
+                           </div>
+                           <div class="col-md-2">
+                              <select class="form-control" id="cboShopSaleDaily">
+                                 <option value="0" >All</option>
+                                 <option value="1">Bbia</option>
+                                 <option value="2">Mixsoon</option>
+                                 <option value="3">Hince</option>                                 
+                              </select>
+                           </div>
+                       
+                     </div>
+                     <div class="col-md-2">
+                        <button class="btn btn-success" ng-click="daily_fillter()">Filter Report</button>
+                     </div>
+                     
+                  </div>                  
+                  <div class="col-md-12" id="divGTotalSaleItem">
+                     <table id="tb_list_daily_item" class="table table-bordered table-striped table-hover js-dataTable-full display responsive nowrap" cellspacing="0" width="100%">
+                     </table>
+                     <div class="block-content">
+						<div id="daily_sale" style="height: 400px; min-width: 310px"></div>
+					</div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      
+      <div class="col-md-12">
+         <!-- Main Dashboard Chart -->
+         <div class="block">
+            <br />
+            <div class="block-header">
+               <div class="col-md-12 " style="margin-bottom: 50px;">
+                  <span class="block-title">Report Monthly Total Sale Item</span>
+               </div>
+               <div class="col-md-12">
+                  <div class="col-md-12" style="padding-bottom: 30px;">
+                     
+                     <div class="col-md-10">                       
+                      
+                           <div class="col-md-5 ">
+                              <span style="padding-top: 5px;" class="col-md-4">From Date</span>
+                              <p class="input-group">
+                                 <input type="text" class="form-control" uib-datepicker-popup ng-model="txtfromdate_monthly" is-open="popup_f_monthly.opened" ng-required="true" close-text="Close" />
+                                 <span class="input-group-btn">
+                                 <button type="button" class="btn btn-default" ng-click="open_f_monthly()"><i class="glyphicon glyphicon-calendar"></i></button>
+                                 </span>
+                              </p>
+                           </div>
+                           <div class="col-md-5">
+                              <span style="padding-top: 5px;" class="col-md-4">To Date</span>
+                              <p class="input-group">
+                                 <input type="text" class="form-control" uib-datepicker-popup ng-model="txttodate_monthly" is-open="popup_t_monthly.opened" ng-required="true" close-text="Close" />
+                                 <span class="input-group-btn">
+                                 <button type="button" class="btn btn-default" ng-click="open_t_monthly()"><i class="glyphicon glyphicon-calendar"></i></button>
+                                 </span>
+                              </p>
+                           </div>
+                           <div class="col-md-2">
+                              <select class="form-control" id="cboShopSaleMonthly">
+                                 <option value="0" >All</option>
+                                 <option value="1">Bbia</option>
+                                 <option value="2">Mixsoon</option>
+                                 <option value="3">Hince</option>
+                              </select>
+                           </div>
+                       
+                     </div>
+                     <div class="col-md-2">
+                        <button class="btn btn-success" ng-click="monthly_fillter()">Filter Report</button>
+                     </div>
+                     
+                  </div>                  
+                  <div class="col-md-12" id="div_item_monthly_sale" >
+                   
+                    
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      
+      <div class="col-md-12">
+         <!-- Main Dashboard Chart -->
+         <div class="block">
+            <br />
+            <div class="block-header">
+               <div class="col-md-12 " style="margin-bottom: 50px;">
+                  <span class="block-title">Top Items Best Sale</span>
+               </div>
+               <div class="col-md-12">
+                <div class="col-md-12">
+                    <div class="col-md-10 form-group">
+                        <div class="col-md-4">
+                            <span style="padding-top: 5px;" class="col-md-4">Brand Name</span>                           
+                            <p class="input-group">
+                                <select class="form-control"  id="cboBrand">
+                                     <option value="0" >All</option>
+                                     <option value="1">Bbia</option>
+                                     <option value="2">Mixsoon</option>
+                                     <option value="3">Hince</option>
+                                </select>
+                            </p>                            
+                        </div>
+                        <div class="col-md-4">
+                           <span style="padding-top: 5px;" class="col-md-4">Location</span>                            
+                           <p class="input-group">
+                            <select id="cboCity" class="form-control">
+                                                <option>ALL</option>
+                                                <option>TP HCM</option>
+                                                <option>Hà Nội</option>
+                                                <option>Hải Phòng</option>
+                                                <option>Đà Nẵng</option>
+                                                <option>Cần Thơ</option>
+                                                <option>An Giang</option>
+                                                <option>Bà Rịa - Vũng Tàu</option>
+                                                <option>Bắc Giang</option>
+                                                <option>Bắc Kạn</option>
+                                                <option>Bạc Liêu</option>
+                                                <option>Bắc Ninh</option>
+                                                <option>Bến Tre</option>
+                                                <option>Bình Định</option>
+                                                <option>Bình Dương</option>
+                                                <option>Bình Phước</option>
+                                                <option>Bình Thuận</option>
+                                                <option>Cà Mau</option>
+                                                <option>Cao Bằng</option>
+                                                <option>Đắk Lắk</option>
+                                                <option>Đắk Nông</option>
+                                                <option>Điện Biên</option>
+                                                <option>Đồng Nai</option>
+                                                <option>Đồng Tháp</option>
+                                                <option>Gia Lai</option>
+                                                <option>Hà Giang</option>
+                                                <option>Hà Nam</option>
+                                                <option>Hà Tĩnh</option>
+                                                <option>Hải Dương</option>
+                                                <option>Hậu Giang</option>
+                                                <option>Hòa Bình</option>
+                                                <option>Hưng Yên</option>
+                                                <option>Kiên Giang</option>
+                                                <option>Khánh Hòa</option>
+                                                <option>Kon Tum</option>
+                                                <option>Lai Châu</option>
+                                                <option>Lâm Đồng</option>
+                                                <option>Lạng Sơn</option>
+                                                <option>Lào Cai</option>
+                                                <option>Long An</option>
+                                                <option>Nam Định</option>
+                                                <option>Nghệ An</option>
+                                                <option>Ninh Bình</option>
+                                                <option>Ninh Thuận</option>
+                                                <option>Phú Thọ</option>
+                                                <option>Quảng Bình</option>
+                                                <option>Quảng Nam</option>
+                                                <option>Quảng Ngãi</option>
+                                                <option>Quảng Ninh</option>
+                                                <option>Quảng Trị</option>
+                                                <option>Sóc Trăng</option>
+                                                <option>Sơn La</option>
+                                                <option>Tây Ninh</option>
+                                                <option>Thái Bình</option>
+                                                <option>Thái Nguyên</option>
+                                                <option>Thanh Hóa</option>
+                                                <option>Thừa Thiên Huế</option>
+                                                <option>Tiền Giang</option>
+                                                <option>Trà Vinh</option>
+                                                <option>Tuyên Quang</option>
+                                                <option>Vĩnh Long</option>
+                                                <option>Vĩnh Phúc</option>
+                                                <option>Yên Bái</option>
+                                                <option>Phú Yên</option>
+                                                <option>Another</option>
+                                             </select>
+                          </p>                            
+                        </div> 
+                      <div class="col-md-4">
+                        <span style="padding-top: 5px;" class="col-md-4">Choose Item</span>                           
+                            <p class="input-group">
+                                <select class="form-control"  id="cboCheckEachItem">
+                                    <option value="0">All</option>
+                                    <option value="1">Choose Item</option>                         
+                                </select>
+                            </p>
+                      </div>                       
+                    </div>
+                  </div>  
+               </div>
+               <div class="col-md-12">
+                  <div class="col-md-12" style="padding-bottom: 30px;">
+                     
+                     <div class="col-md-10">                       
+                            
+                           <div class="col-md-5 ">
+                              <span style="padding-top: 5px;" class="col-md-4">From Date</span>
+                              <p class="input-group">
+                                 <input type="text" class="form-control" uib-datepicker-popup ng-model="txtfromdate_top" is-open="popup_f_top.opened" ng-required="true" close-text="Close" />
+                                 <span class="input-group-btn">
+                                 <button type="button" class="btn btn-default" ng-click="open_f_top()"><i class="glyphicon glyphicon-calendar"></i></button>
+                                 </span>
+                              </p>
+                           </div>
+                           <div class="col-md-5">
+                              <span style="padding-top: 5px;" class="col-md-4">To Date</span>
+                              <p class="input-group">
+                                 <input type="text" class="form-control" uib-datepicker-popup ng-model="txttodate_top" is-open="popup_t_top.opened" ng-required="true" close-text="Close" />
+                                 <span class="input-group-btn">
+                                 <button type="button" class="btn btn-default" ng-click="open_t_top()"><i class="glyphicon glyphicon-calendar"></i></button>
+                                 </span>
+                              </p>
+                              <div class="col-md-12 col-md-offset-4 h3">Total Item : <span class="text-primary h3" id="txtTotalAllItemBestSale">0</span></div>
+                           </div>
+                           <!--div class="col-md-2">
+                              <select class="form-control" id="cboShopSaleTop">
+                                 <option value="0" >All</option>
+                                 <option value="1">Sky007</option>
+                                 <option value="2">Wholesaler</option>
+                                 <option value="3">Shopee Bbia</option>
+                                 <option value="4">Shopee Eglips</option>
+                                 <option value="5">Lotte</option>                                
+                                 <option value="6">Eglips</option>
+                                 <option value="7">Eglips Wholesaler</option>
+                                 <option value="8">Lazada Bbia</option>
+                                 <option value="9">Lazada Eglips</option>
+                                 <option value="10">Robins</option>
+                                 <option value="11">Beautybox</option>
+                                 <option value="12">Tiki</option>
+                                 <option value="13">Shopee C2C</option>
+                                 <option value="14">Lazada C2C</option>
+                                 <option value="15">Tiki Eglips</option>
+                              </select>
+                           </div-->
+                       
+                     </div>
+                     <div class="col-md-2">
+                        <button class="btn btn-success" ng-click="top_fillter()">Filter Report</button>
+                     </div>
+                     
+                  </div>                  
+                  <div class="col-md-12" id="div_item_top_sale" >
+                     
+                  </div>
+                 
+                  <div class="col-md-12 text-center" id="navigation_best_sale">
+                  
+                    
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      
+   </div>
+</div>
+
+<!-- End Page Content -->

@@ -1,0 +1,744 @@
+<!-- Page Header -->
+<div class="content bg-image overflow-hidden" style="background-image: url('assets/img/photos/photo3@2x.jpg');">
+    <div class="push-50-t push-15">
+        <h1 class="h2 text-white animated zoomIn">Chart Order Report</h1>
+        <h2 class="h5 text-white-op animated zoomIn">Welcome {{managemnet_name}}</h2>
+    </div>
+</div>
+
+ 
+
+<!-- END Stats -->
+<div class="content"  data-ng-init="loadData()">
+<div class="row">
+   <div class="col-md-12">
+      <!-- Main Dashboard Chart -->
+      <div class="block">
+         <br />
+         <div class="block-header"  >                  
+                  <div class="col-md-12">                                      
+                     <div class="col-md-10">                       
+                      
+                           <div class="col-md-5 ">
+                              <span style="padding-top: 5px;" class="col-md-4">From Date</span>
+                              <p class="input-group">
+                                 <input type="text" class="form-control" uib-datepicker-popup ng-model="txtfromdate" is-open="popup1.opened" ng-required="true" close-text="Close" />
+                                 <span class="input-group-btn">
+                                 <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+                                 </span>
+                              </p>
+                           </div>
+                           <div class="col-md-5">
+                              <span style="padding-top: 5px;" class="col-md-4">To Date</span>
+                              <p class="input-group">
+                                 <input type="text" class="form-control" uib-datepicker-popup ng-model="txttodate" is-open="popup2.opened" ng-required="true" close-text="Close" />
+                                 <span class="input-group-btn">
+                                 <button type="button" class="btn btn-default" ng-click="open2()"><i class="glyphicon glyphicon-calendar"></i></button>
+                                 </span>
+                              </p>
+                           </div>
+                          <!-- <div class="col-md-2">
+                              <select class="form-control" id="cboShopSale">
+                                 <option value="0" >Sky007</option>
+                                 <option value="7">Wholesaler</option>
+                                 <option value="10">Shopee</option>
+                                 <option value="14">Lotte</option>
+                                 <option value="16">Sendo</option>                               
+                              </select>
+                           </div> -->
+                       
+                     </div>
+                     <div class="col-md-2">
+                        <button class="btn btn-success" ng-click="data_fillter()">Filter Report</button>
+                     </div>     
+               </div>
+         </div>
+      </div>
+      <!-- END Main Dashboard Chart -->
+   </div>  
+   <div class="col-md-12 row">
+                        <div class="col-md-3">
+                            <a class="block block-rounded block-link-hover3" href="javascript:void(0)">
+                                <div class="block-content block-content-full clearfix">
+                                    <div class="text-center font-w600 push-5">Total</div>
+                                    <div class="text-center text-muted ">({{time_search}})</div>
+                                    <div class="text-center push-10-t">
+                                        <div class="font-w600 push-5">Total Item : <span class="text-muted">{{number_item_total}}</span></div>
+                                        <div class="font-w600 push-5">Total Marketing : <span class="text-muted">{{number_item_mt_total}}</span></div>
+                                        <div class="font-w600 push-5">Number order : <span class="text-muted">{{number_order_total}}</span></div>
+                                        <div class="font-w600 push-5">Number Cancel : <span class="text-muted">{{number_cancell_total}}</span></div>
+                                        <div class="font-w600 push-5">Cancel Rates : <span class="text-muted">{{number_cancell_total_rates}}</span></div>
+                                    </div>                                  
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-md-3">
+                            <a class="block block-rounded block-link-hover3" href="javascript:void(0)">
+                                <div class="block-content block-content-full clearfix">
+                                    <div class="text-center font-w600 push-5">Sky007</div>
+                                    <div class="text-center text-muted ">({{time_search}})</div>
+                                    <div class="text-center push-10-t">
+                                        <div class="font-w600 push-5">Total Item : <span class="text-muted">{{number_item_sky007}}</span></div>
+                                        <div class="font-w600 push-5">Total Marketing : <span class="text-muted">{{number_item_mt_sky007}}</span></div>
+                                        <div class="font-w600 push-5">Number order : <span class="text-muted">{{number_order_sky007}}</span></div>                                        
+                                        <div class="font-w600 push-5">Number Cancel : <span class="text-muted">{{number_cancell_sky007}}</span></div>
+                                        <div class="font-w600 push-5">Cancel Rates : <span class="text-muted">{{number_cancell_sky007_rates}}</span></div>
+                                    </div>                                  
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-md-3">
+                            <a class="block block-rounded block-link-hover3" href="javascript:void(0)">
+                                <div class="block-content block-content-full clearfix">
+                                    <div class="text-center font-w600 push-5">Mixsoon</div>
+                                    <div class="text-center text-muted ">({{time_search}})</div>
+                                    <div class="text-center push-10-t">
+                                        <div class="font-w600 push-5">Total Item : <span class="text-muted">{{number_item_mixsoon}}</span></div>   
+                                        <div class="font-w600 push-5">Total Marketing : <span class="text-muted">{{number_item_mt_mixsoon}}</span></div>                                 
+                                        <div class="font-w600 push-5">Number order : <span class="text-muted">{{number_order_mixsoon}}</span></div>
+                                        <div class="font-w600 push-5">Number Cancel : <span class="text-muted">{{number_cancell_mixsoon}}</span></div>
+                                        <div class="font-w600 push-5">Cancel Rates : <span class="text-muted">{{number_cancell_mixsoon_rates}}</span></div>
+                                    </div>                                  
+                                </div>
+                            </a>
+                       </div>   
+                       <div class="col-md-3">
+                            <a class="block block-rounded block-link-hover3" href="javascript:void(0)">
+                                <div class="block-content block-content-full clearfix">
+                                    <div class="text-center font-w600 push-5">Shopee Bbia</div>
+                                    <div class="text-center text-muted ">({{time_search}})</div>
+                                    <div class="text-center push-10-t">
+                                        <div class="font-w600 push-5">Total Item : <span class="text-muted">{{number_item_shopee}}</span></div>
+                                        <div class="font-w600 push-5">Total Marketing : <span class="text-muted">{{number_item_mt_shopee}}</span></div>
+                                        <div class="font-w600 push-5">Number order : <span class="text-muted">{{number_order_shopee}}</span></div>
+                                        <div class="font-w600 push-5">Number Cancel : <span class="text-muted">{{number_cancell_shopee}}</span></div>
+                                        <div class="font-w600 push-5">Cancel Rates : <span class="text-muted">{{number_cancell_shopee_rates}}</span></div>
+                                    </div>                                  
+                                </div>
+                            </a>
+                        </div>                       
+                    </div> 
+                    <div class="col-md-12 row">
+                    <div class="col-md-3">
+                            <a class="block block-rounded block-link-hover3" href="javascript:void(0)">
+                                <div class="block-content block-content-full clearfix">
+                                    <div class="text-center font-w600 push-5">Shopee Hince</div>
+                                    <div class="text-center text-muted ">({{time_search}})</div>
+                                    <div class="text-center push-10-t">
+                                        <div class="font-w600 push-5">Total Item : <span class="text-muted">{{number_item_shopee_hince}}</span></div>
+                                        <div class="font-w600 push-5">Total Marketing : <span class="text-muted">{{number_item_mt_shopee_hince}}</span></div>
+                                        <div class="font-w600 push-5">Number order : <span class="text-muted">{{number_order_shopee_hince}}</span></div>
+                                        <div class="font-w600 push-5">Number Cancel : <span class="text-muted">{{number_cancell_shopee_hince}}</span></div>
+                                        <div class="font-w600 push-5">Cancel Rates : <span class="text-muted">{{number_cancell_shopee_rates_hince}}</span></div>
+                                    </div>                                  
+                                </div>
+                            </a>
+                        </div>  
+                    <!--div class="col-md-3">
+                            <a class="block block-rounded block-link-hover3" href="javascript:void(0)">
+                                <div class="block-content block-content-full clearfix">
+                                    <div class="text-center font-w600 push-5">Lotte</div>
+                                    <div class="text-center text-muted ">({{time_search}})</div>
+                                    <div class="text-center push-10-t">
+                                        <div class="font-w600 push-5">Total Item : <span class="text-muted">{{number_item_lotte}}</span></div>
+                                        <div class="font-w600 push-5">Number order : <span class="text-muted">{{number_order_lotte}}</span></div>
+                                        <div class="font-w600 push-5">Number Cancel : <span class="text-muted">{{number_cancell_lotte}}</span></div>
+                                        <div class="font-w600 push-5">Cancel Rates : <span class="text-muted">{{number_cancell_lotte_rates}}</span></div>
+                                    </div>                                  
+                                </div>
+                            </a>
+                        </div --!>                        
+                        <div class="col-md-3">
+                            <a class="block block-rounded block-link-hover3" href="javascript:void(0)">
+                                <div class="block-content block-content-full clearfix">
+                                    <div class="text-center font-w600 push-5">Hince website</div>
+                                    <div class="text-center text-muted ">({{time_search}})</div>
+                                    <div class="text-center push-10-t">
+                                        <div class="font-w600 push-5">Total Item : <span class="text-muted">{{number_item_hince}}</span></div>
+                                        <div class="font-w600 push-5">Total Marketing : <span class="text-muted">{{number_item_mt_hince}}</span></div>
+                                        <div class="font-w600 push-5">Number order : <span class="text-muted">{{number_order_hince}}</span></div>
+                                        <div class="font-w600 push-5">Number Cancel : <span class="text-muted">{{number_cancell_hince}}</span></div>
+                                        <div class="font-w600 push-5">Cancel Rates : <span class="text-muted">{{number_cancell_hince_rates}}</span></div>
+                                    </div>                                  
+                                </div>
+                            </a>
+                        </div>   
+                        <div class="col-md-3">
+                            <a class="block block-rounded block-link-hover3" href="javascript:void(0)">
+                                <div class="block-content block-content-full clearfix">
+                                    <div class="text-center font-w600 push-5">Jnain Wholesaler</div>
+                                    <div class="text-center text-muted ">({{time_search}})</div>
+                                    <div class="text-center push-10-t">
+                                        <div class="font-w600 push-5">Total Item : <span class="text-muted">{{number_item_wholesaler_eglips}}</span></div>                                      
+                                        <div class="font-w600 push-5">Number order : <span class="text-muted">{{number_order_wholesaler_eglips}}</span></div>
+                                        <div class="font-w600 push-5">Number Cancel : <span class="text-muted">{{number_cancell_wholesaler_eglips}}</span></div>
+                                        <div class="font-w600 push-5">Cancel Rates : <span class="text-muted">{{number_cancell_wholesaler_eglips_rates}}</span></div>
+                                    </div>                                  
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-md-3">
+                            <a class="block block-rounded block-link-hover3" href="javascript:void(0)">
+                                <div class="block-content block-content-full clearfix">
+                                    <div class="text-center font-w600 push-5">Sociolla</div>
+                                    <div class="text-center text-muted ">({{time_search}})</div>
+                                    <div class="text-center push-10-t">
+                                        <div class="font-w600 push-5">Total Item : <span class="text-muted">{{number_item_sociolla}}</span></div>
+                                        <div class="font-w600 push-5">Total Marketing : <span class="text-muted">{{number_item_mt_sociolla}}</span></div>
+                                        <div class="font-w600 push-5">Number order : <span class="text-muted">{{number_order_sociolla}}</span></div>
+                                        <div class="font-w600 push-5">Number Cancel : <span class="text-muted">{{number_cancell_sociolla}}</span></div>
+                                        <div class="font-w600 push-5">Cancel Rates : <span class="text-muted">{{number_cancell_sociolla_rates}}</span></div>
+                                    </div>                                  
+                                </div>
+                            </a>
+                    </div>
+                        <!--div class="col-md-3 ">
+                            <a class="block block-rounded block-link-hover3" href="javascript:void(0)">
+                                <div class="block-content block-content-full clearfix">
+                                    <div class="text-center font-w600 push-5">Shopee C2C</div>
+                                    <div class="text-center text-muted ">({{time_search}})</div>
+                                    <div class="text-center push-10-t">
+                                        <div class="font-w600 push-5">Total Item : <span class="text-muted">{{number_item_shopee_c2c}}</span></div>                                       
+                                        <div class="font-w600 push-5">Number order : <span class="text-muted">{{number_order_shopee_c2c}}</span></div>
+                                        <div class="font-w600 push-5">Number Cancel : <span class="text-muted">{{number_cancell_shopee_c2c}}</span></div>
+                                        <div class="font-w600 push-5">Cancel Rates : <span class="text-muted">{{number_cancell_shopee_c2c_rates}}</span></div>
+                                    </div>                                  
+                                </div>
+                            </a>
+                     </div --!>                                             
+                    </div>
+                    <div class="col-md-12 row">
+                    <div class="col-md-3">
+                            <a class="block block-rounded block-link-hover3" href="javascript:void(0)">
+                                <div class="block-content block-content-full clearfix">
+                                    <div class="text-center font-w600 push-5">Lazada Bbia</div>
+                                    <div class="text-center text-muted ">({{time_search}})</div>
+                                    <div class="text-center push-10-t">
+                                        <div class="font-w600 push-5">Total Item : <span class="text-muted">{{number_item_lazada}}</span></div>
+                                        <div class="font-w600 push-5">Total Marketing : <span class="text-muted">{{number_item_mt_lazada}}</span></div>
+                                        <div class="font-w600 push-5">Number order : <span class="text-muted">{{number_order_lazada}}</span></div>
+                                        <div class="font-w600 push-5">Number Cancel : <span class="text-muted">{{number_cancell_lazada}}</span></div>
+                                        <div class="font-w600 push-5">Cancel Rates : <span class="text-muted">{{number_cancell_lazada_rates}}</span></div>
+                                    </div>                                  
+                                </div>
+                            </a>
+                     </div>
+                     <div class="col-md-3">
+                            <a class="block block-rounded block-link-hover3" href="javascript:void(0)">
+                                <div class="block-content block-content-full clearfix">
+                                    <div class="text-center font-w600 push-5">Lazada Hince</div>
+                                    <div class="text-center text-muted ">({{time_search}})</div>
+                                    <div class="text-center push-10-t">
+                                        <div class="font-w600 push-5">Total Item : <span class="text-muted">{{number_item_lazada_hince}}</span></div>
+                                        <div class="font-w600 push-5">Total Marketing : <span class="text-muted">{{number_item_mt_lazada_hince}}</span></div>
+                                        <div class="font-w600 push-5">Number order : <span class="text-muted">{{number_order_lazada_hince}}</span></div>
+                                        <div class="font-w600 push-5">Number Cancel : <span class="text-muted">{{number_cancell_lazada_hince}}</span></div>
+                                        <div class="font-w600 push-5">Cancel Rates : <span class="text-muted">{{number_cancell_lazada_hince_rates}}</span></div>
+                                    </div>                                  
+                                </div>
+                            </a>
+                        </div>
+                        <!--div class="col-md-3">
+                            <a class="block block-rounded block-link-hover3" href="javascript:void(0)">
+                                <div class="block-content block-content-full clearfix">
+                                    <div class="text-center font-w600 push-5">Beautybox</div>
+                                    <div class="text-center text-muted ">({{time_search}})</div>
+                                    <div class="text-center push-10-t">
+                                        <div class="font-w600 push-5">Total Item : <span class="text-muted">{{number_item_beautybox}}</span></div>
+                                        <div class="font-w600 push-5">Total Marketing : <span class="text-muted">{{number_item_mt_beautybox}}</span></div>
+                                        <div class="font-w600 push-5">Number order : <span class="text-muted">{{number_order_beautybox}}</span></div>
+                                        <div class="font-w600 push-5">Number Cancel : <span class="text-muted">{{number_cancell_beautybox}}</span></div>
+                                        <div class="font-w600 push-5">Cancel Rates : <span class="text-muted">{{number_cancell_beautybox_rates}}</span></div>
+                                    </div>                                  
+                                </div>
+                            </a>
+                        </div-->
+                        <div class="col-md-3">
+                            <a class="block block-rounded block-link-hover3" href="javascript:void(0)">
+                                <div class="block-content block-content-full clearfix">
+                                    <div class="text-center font-w600 push-5">Watson</div>
+                                    <div class="text-center text-muted ">({{time_search}})</div>
+                                    <div class="text-center push-10-t">
+                                        <div class="font-w600 push-5">Total Item : <span class="text-muted">{{number_item_watsons}}</span></div>
+                                        <div class="font-w600 push-5">Total Marketing : <span class="text-muted">{{number_item_mt_watsons}}</span></div>
+                                        <div class="font-w600 push-5">Number order : <span class="text-muted">{{number_order_watsons}}</span></div>
+                                        <div class="font-w600 push-5">Number Cancel : <span class="text-muted">{{number_cancell_watsons}}</span></div>
+                                        <div class="font-w600 push-5">Cancel Rates : <span class="text-muted">{{number_cancell_watsons_rates}}</span></div>
+                                    </div>                                  
+                                </div>
+                            </a>
+                        </div>  
+                        <div class="col-md-3">
+                            <a class="block block-rounded block-link-hover3" href="javascript:void(0)">
+                                <div class="block-content block-content-full clearfix">
+                                    <div class="text-center font-w600 push-5">Wholesaler</div>
+                                    <div class="text-center text-muted ">({{time_search}})</div>
+                                    <div class="text-center push-10-t">
+                                        <div class="font-w600 push-5">Total Item : <span class="text-muted">{{number_item_wholesaler}}</span></div>                                    
+                                        <div class="font-w600 push-5">Number order : <span class="text-muted">{{number_order_wholesaler}}</span></div>
+                                        <div class="font-w600 push-5">Number Cancel : <span class="text-muted">{{number_cancell_wholesaler}}</span></div>
+                                        <div class="font-w600 push-5">Cancel Rates : <span class="text-muted">{{number_cancell_wholesaler_rates}}</span></div>
+                                    </div>                                  
+                                </div>
+                            </a>
+                       </div>      
+                    </div>
+                    <div class="col-md-12 row">
+                    
+                    <div class="col-md-3 ">
+                            <a class="block block-rounded block-link-hover3" href="javascript:void(0)">
+                                <div class="block-content block-content-full clearfix">
+                                    <div class="text-center font-w600 push-5">Tiki</div>
+                                    <div class="text-center text-muted ">({{time_search}})</div>
+                                    <div class="text-center push-10-t">
+                                        <div class="font-w600 push-5">Total Item : <span class="text-muted">{{number_item_tiki}}</span></div>
+                                        <div class="font-w600 push-5">Total Marketing : <span class="text-muted">{{number_item_mt_tiki}}</span></div>
+                                        <div class="font-w600 push-5">Number order : <span class="text-muted">{{number_order_tiki}}</span></div>
+                                        <div class="font-w600 push-5">Number Cancel : <span class="text-muted">{{number_cancell_tiki}}</span></div>
+                                        <div class="font-w600 push-5">Cancel Rates : <span class="text-muted">{{number_cancell_tiki_rates}}</span></div>
+                                    </div>                                  
+                                </div>
+                            </a>
+                     </div>
+                     
+                     <!--div class="col-md-3 ">
+                            <a class="block block-rounded block-link-hover3" href="javascript:void(0)">
+                                <div class="block-content block-content-full clearfix">
+                                    <div class="text-center font-w600 push-5">Lazada C2C</div>
+                                    <div class="text-center text-muted ">({{time_search}})</div>
+                                    <div class="text-center push-10-t">
+                                        <div class="font-w600 push-5">Total Item : <span class="text-muted">{{number_item_lazada_c2c}}</span></div>                                 
+                                        <div class="font-w600 push-5">Number order : <span class="text-muted">{{number_order_lazada_c2c}}</span></div>
+                                        <div class="font-w600 push-5">Number Cancel : <span class="text-muted">{{number_cancell_lazada_c2c}}</span></div>
+                                        <div class="font-w600 push-5">Cancel Rates : <span class="text-muted">{{number_cancell_lazada_c2c_rates}}</span></div>
+                                    </div>                                  
+                                </div>
+                            </a>
+                     </div --!>
+                     <div class="col-md-3">
+                                <a class="block block-rounded block-link-hover3" href="javascript:void(0)">
+                                    <div class="block-content block-content-full clearfix">
+                                        <div class="text-center font-w600 push-5">Tiktok Hince</div>
+                                        <div class="text-center text-muted ">({{time_search}})</div>
+                                        <div class="text-center push-10-t">
+                                            <div class="font-w600 push-5">Total Item : <span class="text-muted">{{number_item_tiktok_hince}}</span></div>
+                                            <div class="font-w600 push-5">Total Marketing : <span class="text-muted">{{number_item_mt_tiktok_hince}}</span></div>
+                                            <div class="font-w600 push-5">Number order : <span class="text-muted">{{number_order_tiktok_hince}}</span></div>
+                                            <div class="font-w600 push-5">Number Cancel : <span class="text-muted">{{number_cancell_tiktok_hince}}</span></div>
+                                            <div class="font-w600 push-5">Cancel Rates : <span class="text-muted">{{number_cancell_tiktok_hince_rates}}</span></div>
+                                        </div>                                  
+                                    </div>
+                                </a>
+                        </div>
+                         <div class="col-md-3">
+                                <a class="block block-rounded block-link-hover3" href="javascript:void(0)">
+                                    <div class="block-content block-content-full clearfix">
+                                        <div class="text-center font-w600 push-5">Bbiavn</div>
+                                        <div class="text-center text-muted ">({{time_search}})</div>
+                                        <div class="text-center push-10-t">
+                                            <div class="font-w600 push-5">Total Item : <span class="text-muted">{{number_item_bbiavn}}</span></div>
+                                            <div class="font-w600 push-5">Total Marketing : <span class="text-muted">{{number_item_mt_bbiavn}}</span></div>
+                                            <div class="font-w600 push-5">Number order : <span class="text-muted">{{number_order_bbiavn}}</span></div>
+                                            <div class="font-w600 push-5">Number Cancel : <span class="text-muted">{{number_cancell_bbiavn}}</span></div>
+                                            <div class="font-w600 push-5">Cancel Rates : <span class="text-muted">{{number_cancell_bbiavn_rates}}</span></div>
+                                        </div>                                  
+                                    </div>
+                                </a>
+                        </div>
+                        <div class="col-md-3">
+                            <a class="block block-rounded block-link-hover3" href="javascript:void(0)">
+                                <div class="block-content block-content-full clearfix">
+                                    <div class="text-center font-w600 push-5">Guardian</div>
+                                    <div class="text-center text-muted ">({{time_search}})</div>
+                                    <div class="text-center push-10-t">
+                                            <div class="font-w600 push-5">Total Item : <span class="text-muted">{{number_item_guardian}}</span></div>
+                                            <div class="font-w600 push-5">Total Marketing : <span class="text-muted">{{number_item_mt_guardian}}</span></div>
+                                            <div class="font-w600 push-5">Number order : <span class="text-muted">{{number_order_guardian}}</span></div>
+                                            <div class="font-w600 push-5">Number Cancel : <span class="text-muted">{{number_cancell_guardian}}</span></div>
+                                            <div class="font-w600 push-5">Cancel Rates : <span class="text-muted">{{number_cancell_guardian_rates}}</span></div>
+                                    </div>                                  
+                                </div>
+                            </a>
+                       </div> 
+                       <div class="col-md-3">
+                            <a class="block block-rounded block-link-hover3" href="javascript:void(0)">
+                                <div class="block-content block-content-full clearfix">
+                                    <div class="text-center font-w600 push-5">Shopee Mixsoon</div>
+                                    <div class="text-center text-muted ">({{time_search}})</div>
+                                    <div class="text-center push-10-t">
+                                            <div class="font-w600 push-5">Total Item : <span class="text-muted">{{number_item_shopeemixsoon}}</span></div>
+                                            <div class="font-w600 push-5">Total Marketing : <span class="text-muted">{{number_item_mt_shopeemixsoon}}</span></div>
+                                            <div class="font-w600 push-5">Number order : <span class="text-muted">{{number_order_shopeemixsoon}}</span></div>
+                                            <div class="font-w600 push-5">Number Cancel : <span class="text-muted">{{number_cancell_shopeemixsoon}}</span></div>
+                                            <div class="font-w600 push-5">Cancel Rates : <span class="text-muted">{{number_cancell_shopeemixsoon_rates}}</span></div>
+                                    </div>                                  
+                                </div>
+                            </a>
+                       </div> 
+                       <div class="col-md-3">
+                            <a class="block block-rounded block-link-hover3" href="javascript:void(0)">
+                                <div class="block-content block-content-full clearfix">
+                                    <div class="text-center font-w600 push-5">Lazada Mixsoon</div>
+                                    <div class="text-center text-muted ">({{time_search}})</div>
+                                    <div class="text-center push-10-t">
+                                            <div class="font-w600 push-5">Total Item : <span class="text-muted">{{number_item_lazadamixsoon}}</span></div>
+                                            <div class="font-w600 push-5">Total Marketing : <span class="text-muted">{{number_item_mt_lazadamixsoon}}</span></div>
+                                            <div class="font-w600 push-5">Number order : <span class="text-muted">{{number_order_lazadamixsoon}}</span></div>
+                                            <div class="font-w600 push-5">Number Cancel : <span class="text-muted">{{number_cancell_lazadamixsoon}}</span></div>
+                                            <div class="font-w600 push-5">Cancel Rates : <span class="text-muted">{{number_cancell_lazadamixsoon_rates}}</span></div>
+                                    </div>                                  
+                                </div>
+                            </a>
+                       </div> 
+                       <div class="col-md-3">
+                            <a class="block block-rounded block-link-hover3" href="javascript:void(0)">
+                                <div class="block-content block-content-full clearfix">
+                                    <div class="text-center font-w600 push-5">Tiktok Sky007</div>
+                                    <div class="text-center text-muted ">({{time_search}})</div>
+                                    <div class="text-center push-10-t">
+                                            <div class="font-w600 push-5">Total Item : <span class="text-muted">{{number_item_tiktoksky007}}</span></div>
+                                            <div class="font-w600 push-5">Total Marketing : <span class="text-muted">{{number_item_mt_tiktoksky007}}</span></div>
+                                            <div class="font-w600 push-5">Number order : <span class="text-muted">{{number_order_tiktoksky007}}</span></div>
+                                            <div class="font-w600 push-5">Number Cancel : <span class="text-muted">{{number_cancell_tiktoksky007}}</span></div>
+                                            <div class="font-w600 push-5">Cancel Rates : <span class="text-muted">{{number_cancell_tiktoksky007_rates}}</span></div>
+                                    </div>                                  
+                                </div>
+                            </a>
+                       </div> <div class="col-md-3">
+                            <a class="block block-rounded block-link-hover3" href="javascript:void(0)">
+                                <div class="block-content block-content-full clearfix">
+                                    <div class="text-center font-w600 push-5">Tiktok Mixsoon</div>
+                                    <div class="text-center text-muted ">({{time_search}})</div>
+                                    <div class="text-center push-10-t">
+                                            <div class="font-w600 push-5">Total Item : <span class="text-muted">{{number_item_tiktokmixsoon}}</span></div>
+                                            <div class="font-w600 push-5">Total Marketing : <span class="text-muted">{{number_item_mt_tiktokmixsoon}}</span></div>
+                                            <div class="font-w600 push-5">Number order : <span class="text-muted">{{number_order_tiktokmixsoon}}</span></div>
+                                            <div class="font-w600 push-5">Number Cancel : <span class="text-muted">{{number_cancell_tiktokmixsoon}}</span></div>
+                                            <div class="font-w600 push-5">Cancel Rates : <span class="text-muted">{{number_cancell_tiktokmixsoon_rates}}</span></div>
+                                    </div>                                  
+                                </div>
+                            </a>
+                       </div>  
+                    </div>
+                   
+                        
+                   
+   <div class="col-md-12">
+      <div class="block">
+         <div class="block-header">
+            <div>
+               <h3 class="block-title">Total Order</h3>
+            </div>
+         </div>
+         <div class="block-content">            
+                <div id="order_total" style="height: 400px; min-width: 310px"></div>            
+         </div>
+      </div>
+   </div>
+   <div class="col-md-12">
+      <div class="block">
+         <div class="block-header">
+            <div>
+               <h3 class="block-title">Total Monthly Sales</h3>
+            </div>
+         </div>
+         <div class="block-content">            
+                <div id="order_total_monthly" style="height: 400px; min-width: 310px"></div>            
+         </div>
+         <div class="block-header">
+            <div>
+               <h3 class="block-title">Monthly Total Order Numbers</h3>
+            </div>
+         </div>
+         <div class="block-content">            
+                <div id="order_total_monthly_number" style="height: 400px; min-width: 310px"></div>            
+         </div>
+         <div class="block-header">
+            <div>
+               <h3 class="block-title">Average Total Order</h3>
+            </div>
+         </div>
+         <div class="block-content">            
+                <div id="order_total_average" style="height: 400px; min-width: 310px"></div>            
+         </div>
+      </div>
+   </div>
+   <div class="col-md-12">
+      <div class="block">
+         <div class="block-header">
+            <div>
+               <h3 class="block-title">Sky007</h3>
+            </div>
+         </div>
+         <div class="block-content">            
+                <div id="order_sky007" style="height: 400px; min-width: 310px"></div>             
+         </div>
+         <div class="block-content">            
+                <div id="order_marketing_sky007" style="height: 400px; min-width: 310px"></div>             
+         </div>
+      </div>
+   </div>
+   <div class="col-md-12">
+      <div class="block">
+         <div class="block-header">
+            <div>
+               <h3 class="block-title">Mixsoon</h3>
+            </div>
+         </div>
+         <div class="block-content">            
+                <div id="order_mixsoon" style="height: 400px; min-width: 310px"></div>             
+         </div>
+         <div class="block-content">            
+                <div id="order_marketing_mixsoon" style="height: 400px; min-width: 310px"></div>             
+         </div>
+      </div>
+   </div>
+    <div class="col-md-12">
+      <div class="block">
+         <div class="block-header">
+            <div>
+               <h3 class="block-title">Wholesaler</h3>
+            </div>
+         </div>
+         <div class="block-content">            
+                <div id="order_wholesaler" style="height: 400px; min-width: 310px"></div>             
+         </div>
+      </div>
+   </div>
+    <div class="col-md-12">
+      <div class="block">
+         <div class="block-header">
+            <div>
+               <h3 class="block-title">Shopee Bbia</h3>
+            </div>
+         </div>
+         <div class="block-content">             
+                <div id="order_shopee" style="height: 400px; min-width: 310px"></div>            
+         </div>
+         <div class="block-content">             
+                <div id="order_marketing_shopee" style="height: 400px; min-width: 310px"></div>            
+         </div>
+      </div>
+   </div>
+   <div class="col-md-12">
+      <div class="block">
+         <div class="block-header">
+            <div>
+               <h3 class="block-title">Shopee Hince</h3>
+            </div>
+         </div>
+         <div class="block-content">             
+                <div id="order_shopee_hince" style="height: 400px; min-width: 310px"></div>            
+         </div>
+         <div class="block-content">             
+                <div id="order_marketing_shopee_hince" style="height: 400px; min-width: 310px"></div>            
+         </div>
+      </div>
+   </div>
+    <div class="col-md-12">
+      <!--div class="block">
+         <div class="block-header">
+            <div>
+               <h3 class="block-title">Lotte</h3>
+            </div>
+         </div>
+         <div class="block-content">            
+                <div id="order_lotte" style="height: 400px; min-width: 310px"></div>             
+         </div>
+          <div class="block-content">            
+                <div id="order_marketing_lotte" style="height: 400px; min-width: 310px"></div>             
+         </div>
+      </div -->
+   </div>   
+   <div class="col-md-12">
+      <div class="block">
+         <div class="block-header">
+            <div>
+               <h3 class="block-title">Hince Website</h3>
+            </div>
+         </div>
+         <div class="block-content">             
+                <div id="order_hince" style="height: 400px; min-width: 310px"></div>
+         </div>
+         <div class="block-content">             
+                <div id="order_marketing_hince" style="height: 400px; min-width: 310px"></div>
+         </div>
+      </div>
+   </div> 
+    <div class="col-md-12">
+      <div class="block">
+         <div class="block-header">
+            <div>
+               <h3 class="block-title">Wholesaler Jnain</h3>
+            </div>
+         </div>
+         <div class="block-content">             
+                <div id="order_eglips_wholesaler" style="height: 400px; min-width: 310px"></div>
+         </div>         
+      </div>
+   </div> 
+   <div class="col-md-12">
+      <div class="block">
+         <div class="block-header">
+            <div>
+               <h3 class="block-title">Lazada Bbia</h3>
+            </div>
+         </div>
+         <div class="block-content">             
+                <div id="order_lazada" style="height: 400px; min-width: 310px"></div>
+         </div>
+         <div class="block-content">             
+                <div id="order_marketing_lazada" style="height: 400px; min-width: 310px"></div>
+         </div>
+      </div>
+   </div> 
+   <div class="col-md-12">
+      <div class="block">
+         <div class="block-header">
+            <div>
+               <h3 class="block-title">Lazada Hince</h3>
+            </div>
+         </div>
+         <div class="block-content">             
+                <div id="order_lazada_hince" style="height: 400px; min-width: 310px"></div>
+         </div>
+         <div class="block-content">             
+                <div id="order_marketing_lazada_hince" style="height: 400px; min-width: 310px"></div>
+         </div>
+      </div>
+   </div>   
+   <div class="col-md-12">
+      <div class="block">
+         <div class="block-header">
+            <div>
+               <h3 class="block-title">Sociolla</h3>
+            </div>
+         </div>
+         <div class="block-content">             
+                <div id="order_sociolla" style="height: 400px; min-width: 310px"></div>
+         </div>
+         <div class="block-content">             
+                <div id="order_marketing_sociolla" style="height: 400px; min-width: 310px"></div>
+         </div>
+      </div>
+   </div> 
+   <div class="col-md-12">
+      <div class="block">
+         <div class="block-header">
+            <div>
+               <h3 class="block-title">Watsons</h3>
+            </div>
+         </div>
+         <div class="block-content">             
+                <div id="order_watsons" style="height: 400px; min-width: 310px"></div>
+         </div>
+         <div class="block-content">             
+                <div id="order_marketing_watsons" style="height: 400px; min-width: 310px"></div>
+         </div>
+      </div>
+   </div> 
+    <!--div class="col-md-12">
+      <div class="block">
+         <div class="block-header">
+            <div>
+               <h3 class="block-title">Beautybox</h3>
+            </div>
+         </div>
+         <div class="block-content">             
+                <div id="order_beautybox" style="height: 400px; min-width: 310px"></div>
+         </div>
+         <div class="block-content">             
+                <div id="order_marketing_beautybox" style="height: 400px; min-width: 310px"></div>
+         </div>
+      </div>
+   </div--> 
+    <div class="col-md-12">
+      <div class="block">
+         <div class="block-header">
+            <div>
+               <h3 class="block-title">Tiki</h3>
+            </div>
+         </div>
+         <div class="block-content">             
+                <div id="order_tiki" style="height: 400px; min-width: 310px"></div>
+         </div>
+         <div class="block-content">             
+                <div id="order_marketing_tiki" style="height: 400px; min-width: 310px"></div>
+         </div>
+      </div>
+   </div> 
+   <!--div class="col-md-12">
+      <div class="block">
+         <div class="block-header">
+            <div>
+               <h3 class="block-title">Shopee C2C</h3>
+            </div>
+         </div>
+         <div class="block-content">             
+                <div id="order_shopee_c2c" style="height: 400px; min-width: 310px"></div>
+         </div>
+         <div class="block-content">             
+                <div id="order_marketing_shopee_c2c" style="height: 400px; min-width: 310px"></div>
+         </div>
+      </div>
+   </div> 
+   <div class="col-md-12">
+      <div class="block">
+         <div class="block-header">
+            <div>
+               <h3 class="block-title">Lazada C2C</h3>
+            </div>
+         </div>
+         <div class="block-content">             
+                <div id="order_lazada_c2c" style="height: 400px; min-width: 310px"></div>
+         </div>
+         <div class="block-content">             
+                <div id="order_marketing_lazada_c2c" style="height: 400px; min-width: 310px"></div>
+         </div>
+      </div>
+   </div--> 
+    <div class="col-md-12">
+      <div class="block">
+         <div class="block-header">
+            <div>
+               <h3 class="block-title">Tiktok Hince</h3>
+            </div>
+         </div>
+         <div class="block-content">             
+                <div id="order_tiktok_hince" style="height: 400px; min-width: 310px"></div>
+         </div>
+         <div class="block-content">             
+                <div id="order_marketing_tiktok_hince" style="height: 400px; min-width: 310px"></div>
+         </div>
+      </div>
+   </div>
+   <div class="col-md-12">
+      <div class="block">
+         <div class="block-header">
+            <div>
+               <h3 class="block-title">Bbiavn</h3>
+            </div>
+         </div>
+         <div class="block-content">             
+                <div id="order_bbiavn" style="height: 400px; min-width: 310px"></div>
+         </div>
+         <div class="block-content">             
+                <div id="order_marketing_bbiavn" style="height: 400px; min-width: 310px"></div>
+         </div>
+      </div>
+   </div>
+     <div class="col-md-12">
+      <div class="block">
+         <div class="block-header">
+            <div>
+               <h3 class="block-title">Tiktok Mixsoon</h3>
+            </div>
+         </div>
+         <div class="block-content">             
+                <div id="order_tiktok_mixsoon" style="height: 400px; min-width: 310px"></div>
+         </div>         
+      </div>
+   </div>
+</div>
+</div>
+<!-- END Page Content -->

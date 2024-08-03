@@ -1,0 +1,270 @@
+<!-- Page Header -->
+<div class="content bg-image overflow-hidden" style="background-image: url('assets/img/photos/photo3@2x.jpg');">
+   <div class="push-50-t push-15">
+      <h1 class="h2 text-white animated zoomIn">Dashboard</h1>
+      <h2 class="h5 text-white-op animated zoomIn">Welcome {{managemnet_name}}</h2>
+   </div>
+</div>
+<!-- END Page Header -->
+<!-- Stats -->
+<div class="content bg-white border-b" >
+   <div class="row items-push text-uppercase">
+      <div class="col-md-4 text-center ">
+         <div class="font-w700 text-gray-darker animated fadeIn">Total Order</div>
+         <div class="text-muted animated fadeIn" ng-model="model_from_to_date"><small><i class="si si-calendar"></i> {{model_from_to_date}}</small></div>
+         <span class="h2 font-w300 text-primary">{{txt_total_order}}</span>
+      </div>
+      <div class="col-md-4 text-center">
+         <div class="font-w700 text-gray-darker animated fadeIn">Product Sales</div>
+         <div class="text-muted animated fadeIn" ng-model="model_from_to_date"><small><i class="si si-calendar"></i> {{model_from_to_date}}</small></div>
+         <span class="h2 font-w300 text-primary">{{txt_total_item_sale}}</span>
+      </div>
+      <div class="col-md-4 text-center">
+         <div class="font-w700 text-gray-darker animated fadeIn">Total Earnings</div>
+         <div class="text-muted animated fadeIn" ng-model="model_from_to_date"><small><i class="si si-calendar"></i> {{model_from_to_date}}</small></div>
+         <span class="h2 font-w300 text-primary">$ {{txt_total_money}}</span>
+      </div>
+   </div>
+</div>
+<!-- END Stats -->
+<!-- Page Content -->
+<div class="content"  data-ng-init="loadData();getDataInforSale();">
+<div class="row">
+   <div class="col-md-12">
+      <!-- Main Dashboard Chart -->
+      <div class="block">
+         <br />
+         <div class="block-header"  >
+            <div class="col-md-4 ">
+               <span style="padding-top: 5px;" class="col-md-4">From Date</span>
+               <p class="input-group">
+                  <input type="text" class="form-control" uib-datepicker-popup ng-model="txtfromdate" is-open="popup1.opened" ng-required="true" close-text="Close"/>
+                  <span class="input-group-btn">
+                  <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+                  </span>
+               </p>
+            </div>
+            <div class="col-md-4">
+               <span style="padding-top: 5px;" class="col-md-4">To Date</span>
+               <p class="input-group">
+                  <input type="text" class="form-control" uib-datepicker-popup ng-model="txttodate" is-open="popup2.opened" ng-required="true" close-text="Close" />
+                  <span class="input-group-btn">
+                  <button type="button" class="btn btn-default" ng-click="open2()"><i class="glyphicon glyphicon-calendar"></i></button>
+                  </span>
+               </p>
+            </div>
+            <div class="col-md-2">                                       
+               <button class="btn btn-primary" ng-click="loadData()">Search</button>
+            </div>
+         </div>
+      </div>
+      <!-- END Main Dashboard Chart -->
+   </div>
+   <div class="col-md-12">
+      <div class="block">
+         <div class="block-header">
+            <div>
+               <h3 class="block-title">Daily Total Sale</h3>
+            </div>
+         </div>
+         <div class="block-content">
+            <div id="total_daily_sale" style="height: 400px; min-width: 310px"></div>
+         </div>
+      </div>
+   </div>
+   <!--div class="col-md-12">
+      <div class="block">
+         <div class="block-header">
+            <div>
+               <h3 class="block-title">Daily Sale For Sky007 website</h3>
+            </div>
+         </div>
+         <div class="block-content">
+            <div id="daily_sale_customer" style="height: 400px; min-width: 310px"></div>
+         </div>
+      </div>
+   </div>
+   <div class="col-md-12">
+      <div class="block">
+         <div class="block-header">
+            <div>
+               <h3 class="block-title">Daily Sale For Wholesaler</h3>
+            </div>
+         </div>
+         <div class="block-content">
+            <div id="daily_sale_wholesaler" style="height: 400px; min-width: 310px"></div>
+         </div>
+      </div>
+   </div>
+   <div class="col-md-12">
+      <div class="block">
+         <div class="block-header">
+            <div>
+               <h3 class="block-title">Daily Sale For Shoppe Bbia</h3>
+            </div>
+         </div>
+         <div class="block-content">
+            <div id="daily_sale_shoppe" style="height: 400px; min-width: 310px"></div>
+         </div>
+      </div>
+   </div>
+   <div class="col-md-12">
+      <div class="block">
+         <div class="block-header">
+            <div>
+               <h3 class="block-title">Daily Sale For Shoppe Hince</h3>
+            </div>
+         </div>
+         <div class="block-content">
+            <div id="daily_sale_shoppe_hince" style="height: 400px; min-width: 310px"></div>
+         </div>
+      </div>
+   </div>
+   <div class="col-md-12">
+      <div class="block">
+         <div class="block-header">
+            <div>
+               <h3 class="block-title">Daily Sale For Mixsoon</h3>
+            </div>
+         </div>
+         <div class="block-content">
+            <div id="daily_sale_mixsoon" style="height: 400px; min-width: 310px"></div>
+         </div>
+      </div>
+   </div>   
+    <div class="col-md-12">
+      <div class="block">
+         <div class="block-header">
+            <div>
+               <h3 class="block-title">Daily Sale For Hince Website</h3>
+            </div>
+         </div>
+         <div class="block-content">
+            <div id="daily_sale_hince" style="height: 400px; min-width: 310px"></div>
+         </div>
+      </div>
+   </div>
+   <div class="col-md-12">
+      <div class="block">
+         <div class="block-header">
+            <div>
+               <h3 class="block-title">Daily Sale For Wholesaler Jnain</h3>
+            </div>
+         </div>
+         <div class="block-content">
+            <div id="daily_sale_eglips_wholesaler" style="height: 400px; min-width: 310px"></div>
+         </div>
+      </div>
+   </div>
+   <div class="col-md-12">
+      <div class="block">
+         <div class="block-header">
+            <div>
+               <h3 class="block-title">Daily Sale For Lazada Bbia</h3>
+            </div>
+         </div>
+         <div class="block-content">
+            <div id="daily_sale_lazada" style="height: 400px; min-width: 310px"></div>
+         </div>
+      </div>
+   </div>
+   <div class="col-md-12">
+      <div class="block">
+         <div class="block-header">
+            <div>
+               <h3 class="block-title">Daily Sale For Lazada Hince</h3>
+            </div>
+         </div>
+         <div class="block-content">
+            <div id="daily_sale_lazada_hince" style="height: 400px; min-width: 310px"></div>
+         </div>
+      </div>
+   </div>
+   <div class="col-md-12">
+      <div class="block">
+         <div class="block-header">
+            <div>
+               <h3 class="block-title">Daily Sale For tiki</h3>
+            </div>
+         </div>
+         <div class="block-content">
+            <div id="daily_sale_tiki" style="height: 400px; min-width: 310px"></div>
+         </div>
+      </div>
+   </div>
+   <div class="col-md-12">
+      <div class="block">
+         <div class="block-header">
+            <div>
+               <h3 class="block-title">Daily Sale For Bbiavn</h3>
+            </div>
+         </div>
+         <div class="block-content">
+            <div id="daily_sale_bbiavn" style="height: 400px; min-width: 310px"></div>
+         </div>
+      </div>
+   </div>
+  
+   <div class="col-md-12">
+      <div class="block">
+         <div class="block-header">
+            <div>
+               <h3 class="block-title">Daily Sale For Tiktok Hince</h3>
+            </div>
+         </div>
+         <div class="block-content">
+            <div id="daily_sale_tiktok_hince" style="height: 400px; min-width: 310px"></div>
+         </div>
+      </div>
+   </div>
+   <div class="col-md-12">
+      <div class="block">
+         <div class="block-header">
+            <div>
+               <h3 class="block-title">Daily Sale For Shopee Mixsoon</h3>
+            </div>
+         </div>
+         <div class="block-content">
+            <div id="daily_sale_shopee_mixsoon" style="height: 400px; min-width: 310px"></div>
+         </div>
+      </div>
+   </div>
+   <div class="col-md-12">
+      <div class="block">
+         <div class="block-header">
+            <div>
+               <h3 class="block-title">Daily Sale For Lazada Mixsoon</h3>
+            </div>
+         </div>
+         <div class="block-content">
+            <div id="daily_sale_lazada_mixsoon" style="height: 400px; min-width: 310px"></div>
+         </div>
+      </div>
+   </div>
+   <div class="col-md-12">
+      <div class="block">
+         <div class="block-header">
+            <div>
+               <h3 class="block-title">Daily Sale For Tiktok sky007</h3>
+            </div>
+         </div>
+         <div class="block-content">
+            <div id="daily_sale_tiktok_sky007" style="height: 400px; min-width: 310px"></div>
+         </div>
+      </div>
+   </div>
+   <div class="col-md-12">
+      <div class="block">
+         <div class="block-header">
+            <div>
+               <h3 class="block-title">Daily Sale For Tiktok Mixsoon</h3>
+            </div>
+         </div>
+         <div class="block-content">
+            <div id="daily_sale_tiktok_mixsoon" style="height: 400px; min-width: 310px"></div>
+         </div>
+      </div>
+   </div-->   
+</div>
+</div>
+<!-- END Page Content -->

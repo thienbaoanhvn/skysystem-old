@@ -1,0 +1,250 @@
+<!-- Page Header -->
+<div class="content bg-image overflow-hidden" style="background-image: url('assets/img/photos/photo3@2x.jpg');">
+    <div class="push-50-t push-15">
+        <h1 class="h2 text-white animated zoomIn">Chart Categories Report</h1>
+        <h2 class="h5 text-white-op animated zoomIn">Welcome {{managemnet_name}}</h2>
+    </div>
+</div>
+<!-- END Page Header -->
+<!-- Page Content -->
+<div class="content"  data-ng-init="loadData()">
+<div class="row">
+   <div class="col-md-12">
+      <!-- Main Dashboard Chart -->
+      <div class="block">
+         <br />
+         <div class="block-header"  >
+            <div class="col-md-4 ">
+               <span style="padding-top: 5px;" class="col-md-4">From Date</span>
+               <p class="input-group">
+                  <input type="text" class="form-control" uib-datepicker-popup ng-model="txtfromdate" is-open="popup1.opened" ng-required="true" close-text="Close"/>
+                  <span class="input-group-btn">
+                  <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+                  </span>
+               </p>
+            </div>
+            <div class="col-md-4">
+               <span style="padding-top: 5px;" class="col-md-4">To Date</span>
+               <p class="input-group">
+                  <input type="text" class="form-control" uib-datepicker-popup ng-model="txttodate" is-open="popup2.opened" ng-required="true" close-text="Close" />
+                  <span class="input-group-btn">
+                  <button type="button" class="btn btn-default" ng-click="open2()"><i class="glyphicon glyphicon-calendar"></i></button>
+                  </span>
+               </p>
+            </div>
+            <div class="col-md-2">                                       
+               <button class="btn btn-primary" ng-click="loadData()">Search</button>
+            </div>
+         </div>
+      </div>
+      <!-- END Main Dashboard Chart -->
+   </div>
+   <div class="col-md-12">
+      <div class="block">
+         <div class="block-header">
+            <div>
+               <h3 class="block-title">Categories Total Sale</h3>
+            </div>
+         </div>
+         <div class="block-content">
+            <div id="total_categories_sale" style="height: 400px; min-width: 310px"></div>
+         </div>
+      </div>
+   </div>
+   <div class="col-md-12">
+      <div class="block">
+         <div class="block-header">
+            <div>
+               <h3 class="block-title">Categories Sale For Customer</h3>
+            </div>
+         </div>
+         <div class="block-content">
+            <div id="categories_sale_customer" style="height: 400px; min-width: 310px"></div>
+         </div>
+      </div>
+   </div>
+   <div class="col-md-12">
+      <div class="block">
+         <div class="block-header">
+            <div>
+               <h3 class="block-title">Categories Sale For Wholesaler</h3>
+            </div>
+         </div>
+         <div class="block-content">
+            <div id="categories_sale_wholesaler" style="height: 400px; min-width: 310px"></div>
+         </div>
+      </div>
+   </div>
+   <div class="col-md-12">
+      <div class="block">
+         <div class="block-header">
+            <div>
+               <h3 class="block-title">Categories Sale For Shoppe Bbia</h3>
+            </div>
+         </div>
+         <div class="block-content">
+            <div id="categories_sale_shoppe" style="height: 400px; min-width: 310px"></div>
+         </div>
+      </div>
+   </div>
+   <div class="col-md-12">
+      <div class="block">
+         <div class="block-header">
+            <div>
+               <h3 class="block-title">Categories Sale For Shoppe Eglips</h3>
+            </div>
+         </div>
+         <div class="block-content">
+            <div id="categories_sale_shoppe_eglips" style="height: 400px; min-width: 310px"></div>
+         </div>
+      </div>
+   </div>
+   <div class="col-md-12">
+      <div class="block">
+         <div class="block-header">
+            <div>
+               <h3 class="block-title">Categories Sale For Lotte</h3>
+            </div>
+         </div>
+         <div class="block-content">
+            <div id="categories_sale_lotte" style="height: 400px; min-width: 310px"></div>
+         </div>
+      </div>
+   </div>
+  
+   <div class="col-md-12">
+      <div class="block">
+         <div class="block-header">
+            <div>
+               <h3 class="block-title">Categories Sale For Eglips</h3>
+            </div>
+         </div>
+         <div class="block-content">
+            <div id="categories_sale_eglips" style="height: 400px; min-width: 310px"></div>
+         </div>
+      </div>
+   </div>
+   <div class="col-md-12">
+      <div class="block">
+         <div class="block-header">
+            <div>
+               <h3 class="block-title">Categories Sale For Eglips Wholesaler</h3>
+            </div>
+         </div>
+         <div class="block-content">
+            <div id="categories_sale_eglips_wholesaler" style="height: 400px; min-width: 310px"></div>
+         </div>
+      </div>
+   </div>
+   <div class="col-md-12">
+      <div class="block">
+         <div class="block-header">
+            <div>
+               <h3 class="block-title">Categories Sale For Lazada Bbia</h3>
+            </div>
+         </div>
+         <div class="block-content">
+            <div id="categories_sale_lazada" style="height: 400px; min-width: 310px"></div>
+         </div>
+      </div>
+   </div>
+   <div class="col-md-12">
+      <div class="block">
+         <div class="block-header">
+            <div>
+               <h3 class="block-title">Categories Sale For Lazada Eglips</h3>
+            </div>
+         </div>
+         <div class="block-content">
+            <div id="categories_sale_lazada_eglips" style="height: 400px; min-width: 310px"></div>
+         </div>
+      </div>
+   </div>
+    
+   <div class="col-md-12">
+      <div class="block">
+         <div class="block-header">
+            <div>
+               <h3 class="block-title">Categories Sale For Sendo</h3>
+            </div>
+         </div>
+         <div class="block-content">
+            <div id="categories_sale_sendo" style="height: 400px; min-width: 310px"></div>
+         </div>
+      </div>
+   </div>
+   <div class="col-md-12">
+      <div class="block">
+         <div class="block-header">
+            <div>
+               <h3 class="block-title">Categories Sale For Watsons</h3>
+            </div>
+         </div>
+         <div class="block-content">
+            <div id="categories_sale_watsons" style="height: 400px; min-width: 310px"></div>
+         </div>
+      </div>
+   </div>
+   <div class="col-md-12">
+      <div class="block">
+         <div class="block-header">
+            <div>
+               <h3 class="block-title">Categories Sale For Beautybox</h3>
+            </div>
+         </div>
+         <div class="block-content">
+            <div id="categories_sale_beautybox" style="height: 400px; min-width: 310px"></div>
+         </div>
+      </div>
+   </div>
+   <div class="col-md-12">
+      <div class="block">
+         <div class="block-header">
+            <div>
+               <h3 class="block-title">Categories Sale For Tiki</h3>
+            </div>
+         </div>
+         <div class="block-content">
+            <div id="categories_sale_tiki" style="height: 400px; min-width: 310px"></div>
+         </div>
+      </div>
+   </div>
+   <div class="col-md-12">
+      <div class="block">
+         <div class="block-header">
+            <div>
+               <h3 class="block-title">Categories Sale For Shopee C2C</h3>
+            </div>
+         </div>
+         <div class="block-content">
+            <div id="categories_sale_shopee_c2c" style="height: 400px; min-width: 310px"></div>
+         </div>
+      </div>
+   </div>
+   <div class="col-md-12">
+      <div class="block">
+         <div class="block-header">
+            <div>
+               <h3 class="block-title">Categories Sale For Lazada C2C</h3>
+            </div>
+         </div>
+         <div class="block-content">
+            <div id="categories_sale_lazada_c2c" style="height: 400px; min-width: 310px"></div>
+         </div>
+      </div>
+   </div>
+   <div class="col-md-12">
+      <div class="block">
+         <div class="block-header">
+            <div>
+               <h3 class="block-title">Categories Sale For Tiki Eglips</h3>
+            </div>
+         </div>
+         <div class="block-content">
+            <div id="categories_sale_tiki_eglips" style="height: 400px; min-width: 310px"></div>
+         </div>
+      </div>
+   </div>
+</div>
+</div>
+<!-- END Page Content -->

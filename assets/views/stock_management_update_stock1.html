@@ -1,0 +1,223 @@
+<!-- Page Header -->
+<div class="content bg-image overflow-hidden" style="background-image: url('assets/img/photos/photo3@2x.jpg');">
+    <div class="push-50-t push-15">
+        <h1 class="h2 text-white animated zoomIn">Update Stock</h1>
+        <h2 class="h5 text-white-op animated zoomIn">Welcome {{managemnet_name}}</h2>
+    </div>
+</div>
+<!-- END Page Header -->
+<div class="content"  data-ng-init="loadData()">
+   <div class="row">      
+     <!-- Main Dashboard Chart -->
+      <div class="col-md-12">
+          <div class="block">
+             <div class="block-header">
+                <div>
+                   <h3 class="block-title">List Item</h3>
+                </div>
+             </div>
+             <div class="block-content">
+                <table id="tb_list_item" class="table table-bordered table-striped table-hover js-dataTable-full display responsive " cellspacing="0" width="100%">
+                 <!--table table-bordered table-striped js-dataTable-full -->
+                 <thead>
+                    <tr style="background-color: #BCBCBC;color: white;">
+                       <th class="hidden-xs">Item ID</th>
+                       <th class="hidden-xs">Item Name</th>
+                       <th class="hidden-xs">Original Price</th>
+                       <th class="hidden-xs">Sale Price</th>
+                       <th class="hidden-xs">Online Stock</th> 
+                       <th class="hidden-xs">Regular Stock</th> 
+                       <th class="hidden-xs">Status</th>
+                       <th class="hidden-xs">Update</th>
+                       <th class="hidden-xs">History</th>  
+                    </tr>
+                 </thead>
+              </table>    
+                 <div id="img_load" class=" text-center" hidden="true">
+                <img src="assets/js/plugins/datatableeditor/images/ajax-loader.gif" />
+               </div> 
+                <div id="divDetail" class="block">
+                        <div class="block-header">
+                            <div class="text-center">
+                                <span class="text-info  h3">Update Stock Information</span>
+                            </div>                            
+                            <div class="col-md-12">
+                                <hr />
+                            </div>
+                            <div class="col-md-12 form-group">
+                                
+                                <div class="col-md-8">
+                                    <div class="col-md-3 "style="margin-top: 5px;">
+                                        <label for="txtItemName">Item Name</label>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <input type="text" class="form-control" id="txtItemName" readonly="true">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 form-group">
+                                <div class="col-md-6">
+                                    <div class="col-md-4" style="margin-top: 5px;">
+                                        <label for="txtItemID">Item ID</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <input type="text" class="form-control" id="txtItemID" readonly="true">
+                                    </div>
+                                 </div>                                
+                                 <div class="col-md-6">
+                                    <div class="col-md-4" style="margin-top: 5px;">
+                                        <label for="cboStatus">Status</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <select id="cboStatus" class="form-control">
+                                            <option value="instock">In Stock</option>
+                                            <option value="outofstock">Out Of Stock</option>
+                                        </select>
+                                    </div>
+                                 </div>
+                            </div>
+                            <div class="col-md-12 form-group">
+                                 <div class="col-md-6">
+                                    <div class="col-md-4" style="margin-top: 5px;">
+                                        <label for="txtStock">Online Stock</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <input type="text" class="form-control" id="txtStock" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
+                                    </div>
+                                 </div>
+                                  <div class="col-md-6">
+                                    <div class="col-md-4" style="margin-top: 5px;">
+                                        <label for="txtRegularStock">Regular Stock</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <input type="text" class="form-control" id="txtRegularStock" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
+                                    </div>
+                                 </div>
+                            </div>
+                            <div class="col-md-12 form-group">
+                                 <div class="col-md-12">
+                                    <div class="col-md-offset-6">
+                                        <label for="txtNote">Note</label>
+                                    </div>
+                                 </div>
+                                 <div class="col-md-12">
+                                    <div class="col-md-12">
+                                        <textarea id="txtNote" cols="2" class="form-control" placeholder="Note down reason .."></textarea>
+                                    </div>                                                                                           
+                                </div>
+                            </div> 
+                            <div>
+                                  <button class="col-md-offset-6 btn btn-info" id="btnChange">Change</button>
+                                  <img class="col-md-offset-6" id="imgloadchange" src="assets/js/plugins/datatableeditor/images/ajax-loader.gif" />
+                            </div>
+                            <div class="col-md-12">
+                                <hr />
+                            </div>
+                            <div class="text-center">
+                                <span class="text-danger  h3">New Incoming Stock</span>
+                            </div> 
+                            <br />
+                             <div class="col-md-12 form-group">                                
+                                <div class="col-md-6">
+                                    <div class="col-md-6 "style="margin-top: 5px;">
+                                        <label for="txtPortableIncoming">Hand Carried Incoming Quantity</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control" id="txtPortableIncoming" onkeypress="return event.charCode >= 48 && event.charCode <= 57" value="0">
+                                    </div>                                    
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="col-md-6 "style="margin-top: 5px;">
+                                        <label for="txtRegularIncoming">Total Regular Incoming Quantity</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control" id="txtRegularIncoming" onkeypress="return event.charCode >= 48 && event.charCode <= 57" value="0">
+                                    </div>                                    
+                                </div>
+                             </div>
+                             <div class="col-md-12 form-group">   
+                                <div class="col-md-6">
+                                    <div class="col-md-6 "style="margin-top: 5px;">
+                                        <label for="txtEDate">Expiration Date</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input data-js-datepicker="" class="form-control" id="txtEDate" type="text" id="example-datepicker1" name="example-datepicker1" data-date-format="yyyy//mm/dd" placeholder="yyyy/mm/dd">                                        
+                                    </div>                                    
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="col-md-6 "style="margin-top: 5px;">
+                                        <label for="txtLotN">Lot Number</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control" id="txtLotN">
+                                    </div>                                    
+                                </div>                                
+                            </div>
+                             <div class="col-md-12 form-group">   
+                                <div class="col-md-offset-6">
+                                  <button class="btn btn-danger" id="btnSave">Save</button> 
+                                  <img id="imgloadsave" src="assets/js/plugins/datatableeditor/images/ajax-loader.gif" />
+                                </div>
+                            </div>
+                            
+                            <button id="btnNotifyFinish" class="js-notify btn btn-sm btn-success" data-js-notify="{type: 'success', align: 'center', icon: 'fa fa-check', message: 'Update completed . Thank you !'}"></button>
+                        </div>
+                    </div>
+                    <div class="block" id="detail_history">
+                        <div class="block-header">
+                            <h3 class="block-title">History Update</h3>
+                        </div>
+                        <div class="block-content">
+                            <div class="col-md-12">
+                                <div class="col-md-2 "style="margin-top: 5px;">
+                                        <label for="txt_h_pro_name">Product Name</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control" id="txt_h_pro_name" readonly="true">
+                                    </div> 
+                            </div>
+                            <div class="col-md-12"><hr /></div>
+                            <!-- DataTables init on table by adding .js-dataTable-full class, functionality initialized in js/pages/base_tables_datatables.js     -->
+                            <table id="tb_list_history_update" class="table table-bordered table-striped table-hover js-dataTable-full display responsive nowrap" cellspacing="0" width="100%"> <!--table table-bordered table-striped js-dataTable-full -->
+                                <thead>
+                                     <tr style=" background-color: #BCBCBC;color: white;">                                      
+                                        <th class="hidden-xs" >Product ID</th> 
+                                        <th class="hidden-xs" >Product type</th> 
+                                        <th class="hidden-xs">Old Stock</th>
+                                        <th class="hidden-xs">New Stock</th>
+                                        <th class="hidden-xs">ReaSon</th>
+                                        <th class="hidden-xs">Change Time</th>
+                                        <th class="hidden-xs">Name Manager</th>
+                                        <th class="hidden-xs">Type Change</th>
+                                     </tr>
+                                </thead>
+                            </table>
+                        </div>
+                        <div class="block-header">
+                            <h3 class="block-title">History Stock Incomming</h3>
+                        </div>
+                        <div class="block-content">
+                            <!-- DataTables init on table by adding .js-dataTable-full class, functionality initialized in js/pages/base_tables_datatables.js     -->
+                            <table id="tb_list_history_inoming" class="table table-bordered table-striped table-hover js-dataTable-full display responsive nowrap" cellspacing="0" width="100%"> <!--table table-bordered table-striped js-dataTable-full -->
+                                <thead>
+                                     <tr style=" background-color: #BCBCBC;color: white;">                                      
+                                        <th class="hidden-xs" >Product ID</th> 
+                                        <th class="hidden-xs" >Product type</th> 
+                                        <th class="hidden-xs">Time Update</th>
+                                        <th class="hidden-xs">Stock Incoming</th>
+                                        <th class="hidden-xs">Old Stock</th>
+                                        <th class="hidden-xs">Total Stock</th>
+                                        <th class="hidden-xs">Expiration date</th>
+                                        <th class="hidden-xs">Lot Number</th>
+                                     </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>  
+             </div>
+          </div>           
+      </div>
+   </div>
+</div>
+
+

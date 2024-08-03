@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<!--[if IE 9]>         
+<html class="ie9 no-focus" lang="en">
+   <![endif]-->
+   <!--[if gt IE 9]><!--> 
+   <html class="no-focus" lang="en">
+      <!--<![endif]-->
+      <head>
+         <meta charset="utf-8">
+         <title>Sky007.vn SKYOMS</title>
+         <meta name="description" content="Sky007 packaging">
+         <meta name="author" content="Tran Thien Bao Anh">
+         <meta name="robots" content="noindex, nofollow">
+         <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0">
+         <!-- Icons -->
+         <!-- The following icons can be replaced with your own, they are used by desktop and mobile browsers -->
+         
+        <link rel="icon" type="image/png" href="assets/img/favicons/juloomob_logo_16.png" sizes="16x16">
+     
+
+      
+        
+         <!-- END Icons -->
+         <!-- Stylesheets -->
+         <!-- Web fonts -->
+         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400italic,600,700%7COpen+Sans:300,400,400italic,600,700">
+         <!-- Bootstrap and OneUI CSS framework -->
+         <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+         <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
+         <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.5.2/css/buttons.dataTables.min.css">
+         
+         <link rel="stylesheet" id="css-main" href="assets/css/oneui.css">
+         <!-- You can include a specific file from css/themes/ folder to alter the default color theme of the template. eg: -->
+         <!-- <link rel="stylesheet" id="css-theme" href="assets/css/themes/flat.min.css"> -->
+         <!-- END Stylesheets -->
+      </head>
+      <body>
+         <!-- Page Container -->
+         
+            <!-- Main Container -->
+            <main id="main-container" >
+               
+               <div class="">                   
+                   <div class="block block-themed">
+                        <div class="block-header bg-primary">
+                            <ul class="block-options">
+                                <li>
+                                    <button type="button" data-toggle="block-option" data-action="refresh_toggle" data-action-mode="demo"><i class="si si-refresh"></i></button>
+                                </li>
+                                <li>
+                                    <button type="button" data-toggle="block-option" data-action="content_toggle"></button>
+                                </li>
+                            </ul>
+                            <h3 class="block-title">Report shipping</h3>
+                            
+                        </div>
+                         <div class="block-content">
+                            <div class="form-horizontal">
+                                <div class="form-group">
+                                   <div class="col-md-3 col-md-offset-3">
+                                        <input  type="file" id="input" accept="application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"></input>
+                                        <label>Download this <a href="http://skyoms.juloomob.net/assets/img/shop_delivery.xlsx" download="">template shipping Excel file</a></label>
+                                    </div>                                                    
+                                    <div class="col-md-2">
+                                        <button class="btn btn-info" id="btnUpdate">Get Data</button>
+                                    </div>
+                                     <div class="row">                                   
+                                   
+                                        <div class="col-xs-12">
+                                        <div id="divpackaging">
+                                          <div class="block">                         
+                                          <div class="block-content">
+                                             <!-- DataTables init on table by adding .js-dataTable-full class, functionality initialized in js/pages/base_tables_datatables.js     -->
+                                             <table id="tb_list_shipping" class="table table-bordered table-striped table-hover  responsive" cellspacing="0" width="100%">
+                                                <!--table table-bordered table-striped js-dataTable-full -->
+                                                <thead>
+                                                   <tr >                                    
+                                                      <th class="hidden-xs">Order ID</th>                                        
+                                                      <th class="hidden-xs">Shop Delivery Id</th>   
+                                                      <th class="hidden-xs">Shop Order Id</th>                                                                                                  
+                                                   </tr>
+                                                </thead>
+                                             </table>
+                                          </div>                          
+                                         
+                                       </div>  
+                                        </div>
+                                   
+                                     </div>
+                                    
+                                </div>
+                            </div>
+                         </div>
+                   </div>                               
+               </div>            
+               </div>
+            </main>
+            <!-- END Main Container -->
+        
+         <!-- END Page Container -->
+         <!-- OneUI Core JS: jQuery, Bootstrap, slimScroll, scrollLock, Appear, CountTo, Placeholder, Cookie and App.js -->
+         <script src="assets/js/core/jquery.min.js"></script>
+         <script src="assets/js/core/bootstrap.min.js"></script>
+         <script src="assets/js/core/jquery.slimscroll.min.js"></script>
+         <script src="assets/js/core/jquery.scrollLock.min.js"></script>
+         <script src="assets/js/core/jquery.appear.min.js"></script>
+         <script src="assets/js/plugins/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+         <script src="assets/js/core/jquery.countTo.min.js"></script>
+         <script src="assets/js/core/jquery.placeholder.min.js"></script>
+         <script src="assets/js/plugins/datatables/jquery.dataTables.js"></script>
+         <script src="https://cdn.datatables.net/buttons/1.1.0/js/buttons.colVis.min.js"></script>
+         <script src="https://cdn.datatables.net/buttons/1.2.4/js/dataTables.buttons.min.js"></script>        
+         <script src="https://cdn.datatables.net/select/1.2.1/js/dataTables.select.min.js"></script>
+         <script src="//cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+         <script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script> 
+         <script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
+         <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
+         <script src="https://cdn.datatables.net/buttons/1.1.0/js/buttons.html5.min.js"></script>
+       
+     
+         
+          <script src="https://igniteui.com/js/modernizr.min.js"></script>      
+        <script src="https://code.jquery.com/ui/1.10.3/jquery-ui.min.js"></script>
+        <script src="https://cdn-na.infragistics.com/igniteui/latest/js/infragistics.core.js"></script>
+        <script src="https://cdn-na.infragistics.com/igniteui/latest/js/infragistics.lob.js"></script>
+        <script src="https://cdn-na.infragistics.com/igniteui/latest/js/modules/infragistics.ext_core.js"></script>
+        <script src="https://cdn-na.infragistics.com/igniteui/latest/js/modules/infragistics.ext_collections.js"></script>
+        <script src="https://cdn-na.infragistics.com/igniteui/latest/js/modules/infragistics.ext_text.js"></script>
+        <script src="https://cdn-na.infragistics.com/igniteui/latest/js/modules/infragistics.ext_io.js"></script>
+        <script src="https://cdn-na.infragistics.com/igniteui/latest/js/modules/infragistics.ext_ui.js"></script>
+        <script src="https://cdn-na.infragistics.com/igniteui/latest/js/modules/infragistics.documents.core_core.js"></script>
+        <script src="https://cdn-na.infragistics.com/igniteui/latest/js/modules/infragistics.ext_collectionsextended.js"></script>
+        <script src="https://cdn-na.infragistics.com/igniteui/latest/js/modules/infragistics.excel_core.js"></script>
+        <script src="https://cdn-na.infragistics.com/igniteui/latest/js/modules/infragistics.ext_threading.js"></script>
+        <script src="https://cdn-na.infragistics.com/igniteui/latest/js/modules/infragistics.ext_web.js"></script>
+        <script src="https://cdn-na.infragistics.com/igniteui/latest/js/modules/infragistics.xml.js"></script>
+        <script src="https://cdn-na.infragistics.com/igniteui/latest/js/modules/infragistics.documents.core_openxml.js"></script>
+        <script src="https://cdn-na.infragistics.com/igniteui/latest/js/modules/infragistics.excel_serialization_openxml.js"></script>
+        
+        
+         <!-- Page JS Code -->
+         <script src="assets/js/delivery.js"></script>
+         
+      </body>
+   </html>

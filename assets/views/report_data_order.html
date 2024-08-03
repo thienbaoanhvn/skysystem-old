@@ -1,0 +1,107 @@
+<!-- Page Header -->
+<div class="content bg-image overflow-hidden" style="background-image: url('assets/img/photos/photo3@2x.jpg');">
+    <div class="push-50-t push-15">
+        <h1 class="h2 text-white animated zoomIn">Data Order Report</h1>
+        <h2 class="h5 text-white-op animated zoomIn">Welcome {{managemnet_name}}</h2>
+    </div>
+</div>
+<!-- END Page Header -->
+<div class="content"  data-ng-init="loadData()">
+<div class="row">
+   <div class="col-md-12">
+      <!-- Main Dashboard Chart -->
+      <div class="block">
+         <br />
+         <div class="block-header"  >           
+                  <div class="col-md-12">                                    
+                     <div class="col-md-10"> 
+                           <div class="col-md-5 ">
+                              <span style="padding-top: 5px;" class="col-md-4">From Date</span>
+                              <p class="input-group">
+                                 <input type="text" class="form-control" uib-datepicker-popup ng-model="txtfromdate" is-open="popup1.opened" ng-required="true" close-text="Close" />
+                                 <span class="input-group-btn">
+                                 <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+                                 </span>
+                              </p>
+                           </div>
+                           <div class="col-md-5">
+                              <span style="padding-top: 5px;" class="col-md-4">To Date</span>
+                              <p class="input-group">
+                                 <input type="text" class="form-control" uib-datepicker-popup ng-model="txttodate" is-open="popup2.opened" ng-required="true" close-text="Close" />
+                                 <span class="input-group-btn">
+                                 <button type="button" class="btn btn-default" ng-click="open2()"><i class="glyphicon glyphicon-calendar"></i></button>
+                                 </span>
+                              </p>
+                           </div>
+                           <div class="col-md-2">
+                              <select class="form-control" id="cboShopSale">
+                                 <option value="0">All</option>
+                                 <option value="1">Sky007</option>
+                                 <option value="2">Wholesaler</option>
+                                 <option value="3">Shopee Bbia</option>
+                                 <option value="4">Shopee Eglips</option>
+                                 <option value="5">Mixsoon</option>       
+                                 <option value="17">Bbiavn</option>                             
+                                 <option value="6">Eglips</option> 
+                                 <option value="7">Eglips Wholesaler</option> 
+                                 <option value="8">Lazada</option> 
+                                 <option value="9">Lazada Eglips</option>                                  
+                                 <option value="11">Watson</option>
+                                 <option value="12">Wholesaler Actsone</option> 
+                                 <option value="13">Wholesaler Janin</option> 
+                                 <option value="14">Sendo</option>  
+                                 <option value="15">Beautybox</option>  
+                                 <option value="16">Tiki</option>                                                              
+                                 <option value="19">Tiki Eglips</option>                          
+                              </select>
+                           </div>
+                       
+                     </div>
+                     <div class="col-md-2">
+                        <button class="btn btn-success" ng-click="data_fillter()">Filter Report</button>
+                     </div>     
+               </div>
+         </div>
+      </div>
+      <!-- END Main Dashboard Chart -->
+   </div>   
+   <div class="col-md-12">
+      <div class="block">
+         <div class="block-header">
+            <div>
+               <h3 class="block-title">Order history for {{expressions_shop_sale}}</h3>
+            </div>
+         </div>
+         <div class="block-content">
+         <table id="tb_order_report" class="table table-bordered table-striped table-hover js-dataTable-full display responsive " cellspacing="0" width="100%">
+             <!--table table-bordered table-striped js-dataTable-full -->
+             <thead>
+                <tr style="background-color: #BCBCBC;color: white;">
+                   <th class="hidden-xs">Order Date</th>
+                   <th class="hidden-xs">Categories</th>
+                   <th class="hidden-xs">Order ID</th>  
+                   <th class="hidden-xs">Full Name</th>                                    
+                   <th class="hidden-xs">Order Status</th>
+                    <th class="hidden-xs">Payment</th>
+                   <th class="hidden-xs">Name Product</th>                   
+                   <th class="hidden-xs">Item Price</th>
+                   <th class="hidden-xs">Item Price(VAT)</th>
+                   <th class="hidden-xs">Price One Item</th>
+                   <th class="hidden-xs">Delivery Company</th>
+                   <!--<th class="hidden-xs">Shipping Fee</th> -->
+                   <th class="hidden-xs">Receive Money Satus</th>                   
+                   <th class="hidden-xs">Manager Create Order</th>                   
+                   <th class="hidden-xs">Customer Type</th>
+                </tr>
+             </thead>
+          </table>            
+          <div id="img_load" class=" text-center" hidden="true">
+            <img src="assets/js/plugins/datatableeditor/images/ajax-loader.gif" />
+           </div> 
+         </div>
+      </div>
+   </div>
+   
+</div>
+</div>
+<!-- END Page Content -->

@@ -1,0 +1,285 @@
+<!-- Sidebar Scroll Container -->
+<div id="sidebar-scroll">
+    <!-- Sidebar Content -->
+    <!-- Adding .sidebar-mini-hide to an element will hide it when the sidebar is in mini mode -->
+    <div class="sidebar-content">
+        <!-- Side Header -->
+        <div class="side-header side-content bg-white-op">
+            <button class="btn btn-link text-gray pull-right hidden-md hidden-lg" type="button" data-ng-click="oneui.settings.sidebarOpenXs = false" data-js-blur>
+                <i class="fa fa-times"></i>
+            </button>
+            
+            <a class="h5 text-white" data-ui-sref="dashboard" data-js-blur>                
+                <img src="assets/img/favicons/logo.png"/> <span class="h4 font-w600 sidebar-mini-hide"></span>                          
+            </a>
+        </div>
+        <!-- END Side Header -->
+
+        <!-- Side Content -->
+        <div class="side-content">
+            <!-- Main navigation functionality (data-js-main-nav attribute is initialized in js/directives.js) -->
+            <ul class="nav-main" data-js-main-nav>               
+                <li>
+                    <a data-ui-sref="dashboard" data-ui-sref-active="active">
+                        <i class="si si-speedometer"></i><span class="sidebar-mini-hide">Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-main-heading"><span class="sidebar-mini-hide">Report</span></li>
+                <li data-ng-class="{open: (path.indexOf('/chartreport/') > -1)}">
+                    <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-bar-chart"></i><span class="sidebar-mini-hide">Chart Report</span></a>
+                    <ul>
+                        <li>
+                            <a data-ui-sref="ctCustomer" data-ui-sref-active="active">Customer</a>
+                        </li>
+                        <li>
+                            <a data-ui-sref="ctCategory" data-ui-sref-active="active">Category</a>
+                        </li>
+                        <li>
+                            <a data-ui-sref="ctLocation" data-ui-sref-active="active">Location</a>
+                        </li>
+                        <li>
+                            <a data-ui-sref="ctItems" data-ui-sref-active="active">Items</a>
+                        </li>
+                        <li>
+                            <a data-ui-sref="ctHeatmap" data-ui-sref-active="active">Heat Map</a>
+                        </li>
+                        <li>
+                            <a data-ui-sref="ctTimeBased" data-ui-sref-active="active">Time Based</a>
+                        </li>  
+                         <li>
+                            <a data-ui-sref="ctMonthlySale" data-ui-sref-active="active">Monthly Sale</a>
+                        </li> 
+                         <li>
+                            <a data-ui-sref="ctOrder" data-ui-sref-active="active">Order</a>
+                        </li>  
+                        <li>
+                            <a data-ui-sref="ctMembershipOrder" data-ui-sref-active="active">Membership Order</a>
+                        </li>    
+                        <li>
+                            <a data-ui-sref="ctMonthlyMembershipOrder" data-ui-sref-active="active">Monthly Membership</a>
+                        </li>  
+                    </ul>
+                </li>
+                <li data-ng-class="{open: (path.indexOf('/datareport/') > -1)}">
+                    <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-layers"></i><span class="sidebar-mini-hide">Data Report</span></a>
+                    <ul>
+                        <li>
+                            <a data-ui-sref="drShipping" data-ui-sref-active="active">Shipping</a>
+                        </li>
+                        <li>
+                            <a data-ui-sref="drOrder" data-ui-sref-active="active">Order</a>
+                        </li>
+                        <li>
+                            <a data-ui-sref="drOrderVNPAY" data-ui-sref-active="active">Order VNPAY</a>
+                        </li>
+                        <li>
+                            <a data-ui-sref="drLocation" data-ui-sref-active="active">Location</a>
+                        </li>
+                        <li>
+                            <a data-ui-sref="drLocationCompare" data-ui-sref-active="active">Location Compare</a>
+                        </li>
+                        <li>
+                            <a data-ui-sref="drDirectOrder" data-ui-sref-active="active">Direct Order</a>
+                        </li>
+                        <li>
+                            <a data-ui-sref="drShopItems" data-ui-sref-active="active">Shop Items</a>
+                        </li> 
+                        <li>
+                            <a data-ui-sref="drItems" data-ui-sref-active="active">Items</a>
+                        </li> 
+                        <li>
+                            <a data-ui-sref="drHeatmap" data-ui-sref-active="active">Heatmap</a>
+                        </li> 
+                         <li>
+                            <a data-ui-sref="drWatsons" data-ui-sref-active="active">Watsons</a>
+                        </li> 
+                        <li>
+                            <a data-ui-sref="drPreparingOrder" data-ui-sref-active="active">Preparing Order</a>
+                        </li>   
+                        <!--<li>
+                            <a data-ui-sref="drTax" data-ui-sref-active="active">Tax</a>
+                        </li>  !-->                   
+                        <li>
+                            <a data-ui-sref="drCancelled" data-ui-sref-active="active">Cancelled</a>
+                        </li>
+                        <li>
+                            <a data-ui-sref="drMarketing" data-ui-sref-active="active">Marketing</a>
+                        </li>  
+                        <li>
+                            <a data-ui-sref="drMembershipOrder" data-ui-sref-active="active">Membership Order</a>
+                        </li> 
+                        <li>
+                            <a data-ui-sref="drCoupon" data-ui-sref-active="active">Coupon Result</a>
+                        </li>                        
+                    </ul>
+                </li>               
+                
+                <li class="nav-main-heading"><span class="sidebar-mini-hide">Customers Management</span></li>
+                <li>
+                    <a data-ui-sref="customers" data-ui-sref-active="active">
+                        <i class="si si-user"></i><span class="sidebar-mini-hide">Customer</span>
+                    </a>
+                </li> 
+                <li>
+                    <a data-ui-sref="historyorder" data-ui-sref-active="active">
+                        <i class="si si-note"></i><span class="sidebar-mini-hide">History Order</span>
+                    </a>
+                </li> 
+                <li class="hide">
+                    <a data-ui-sref="analysys" data-ui-sref-active="active">
+                        <i class="si si-share"></i><span class="sidebar-mini-hide">Customer Analysys</span>
+                    </a>
+                </li>  
+                <li class="nav-main-heading"><span class="sidebar-mini-hide">Order Management</span></li>
+                <!-- <li>
+                    <a data-ui-sref="oupdate" data-ui-sref-active="active">
+                        <i class="si si-book-open"></i><span class="sidebar-mini-hide">Update Order</span>
+                    </a>
+                </li> -->
+                <li class="hide">
+                    <a data-ui-sref="otracking" data-ui-sref-active="active">
+                        <i class="si si-check"></i><span class="sidebar-mini-hide">Tracking Order</span>
+                    </a>
+                </li>
+                <li>
+                    <a data-ui-sref="oshipping" data-ui-sref-active="active">
+                        <i class="si si-plane"></i><span class="sidebar-mini-hide">Shipping Order</span>
+                    </a>
+                </li>
+                <li>
+                    <a data-ui-sref="ogetdatavat" data-ui-sref-active="active">
+                        <i class="si si-plane"></i><span class="sidebar-mini-hide">Get Data VAT</span>
+                    </a>
+                </li>
+                <li>
+                    <a data-ui-sref="oCBS" data-ui-sref-active="active">
+                        <i class="si si-plane"></i><span class="sidebar-mini-hide">Cancel Before Send</span>
+                    </a>
+                </li>
+                <li class="nav-main-heading"><span class="sidebar-mini-hide">Stock Management</span></li>
+                <li>
+                    <a data-ui-sref="supdate" data-ui-sref-active="active">
+                        <i class="fa fa-list-alt"></i><span class="sidebar-mini-hide">Update Stock HCM</span>
+                    </a>
+                </li>
+                <li>
+                    <a data-ui-sref="sshare" data-ui-sref-active="active">
+                        <i class="si si-share"></i><span class="sidebar-mini-hide">Share Stock HCM</span>
+                    </a>
+                </li>  
+                <li>
+                    <a data-ui-sref="ssharems" data-ui-sref-active="active">
+                        <i class="si si-share"></i><span class="sidebar-mini-hide">Share Stock Mixsoon</span>
+                    </a>
+                </li>   
+                 <li>
+                    <a data-ui-sref="ssharehince" data-ui-sref-active="active">
+                        <i class="si si-share"></i><span class="sidebar-mini-hide">Share Stock Hince</span>
+                    </a>
+                </li>             
+                <li>
+                    <a data-ui-sref="supdatehn" data-ui-sref-active="active">
+                        <i class="fa fa-list-alt"></i><span class="sidebar-mini-hide">Update Stock HaNoi</span>
+                    </a>
+                </li>
+                <li>
+                    <a data-ui-sref="ssharehn" data-ui-sref-active="active">
+                        <i class="si si-share"></i><span class="sidebar-mini-hide">Share Stock HaNoi</span>
+                    </a>
+                </li>
+                 <li>
+                    <a data-ui-sref="ssborrow" data-ui-sref-active="active">
+                        <i class="fa fa-paw"></i><span class="sidebar-mini-hide">Warehouse Borrow</span>
+                    </a>
+                </li>
+              
+               
+                <!-- <li>
+                    <a data-ui-sref="ssborrow1" data-ui-sref-active="active">
+                        <i class="fa fa-paw"></i><span class="sidebar-mini-hide">Warehouse Borrow</span>
+                    </a>
+                </li> -->
+                <li>
+                    <a data-ui-sref="scheck" data-ui-sref-active="active">
+                        <i class="fa fa-check-circle"></i><span class="sidebar-mini-hide">Stock Check</span>
+                    </a>
+                </li>
+                <li>
+                    <a data-ui-sref="shistory" data-ui-sref-active="active">
+                        <i class="fa fa-history"></i><span class="sidebar-mini-hide">History Stock</span>
+                    </a>
+                </li>
+                <!--li>
+                    <a data-ui-sref="sshopmall" data-ui-sref-active="active">
+                        <i class="fa fa-balance-scale"></i><span class="sidebar-mini-hide">Shop Mall</span>
+                    </a>
+                </li-->
+                <li class="nav-main-heading"><span class="sidebar-mini-hide">Schedule</span></li>
+                 <li>
+                    <a data-ui-sref="scalendar" data-ui-sref-active="active">
+                        <i class="si si-calendar"></i><span class="sidebar-mini-hide">Calendar</span>
+                    </a>
+                </li>
+                <li class="nav-main-heading"><span class="sidebar-mini-hide">Setting</span></li>
+                <li>
+                    <a data-ui-sref="ssettingcombo" data-ui-sref-active="active">
+                        <i class="si si-settings"></i><span class="sidebar-mini-hide">Setting Combo</span>
+                    </a>
+                </li>
+                <!-- <li>
+                    <a data-ui-sref="ssettingtiki" data-ui-sref-active="active">
+                        <i class="si si-settings"></i><span class="sidebar-mini-hide">Setting Event Tiki</span>
+                    </a>
+                </li>
+                <li>
+                    <a data-ui-sref="ssettingflashsale" data-ui-sref-active="active">
+                        <i class="si si-settings"></i><span class="sidebar-mini-hide">Setting Flash S(sky007)</span>
+                    </a>
+                </li>
+                <li>
+                    <a data-ui-sref="seventsaleof" data-ui-sref-active="active">
+                        <i class="si si-settings"></i><span class="sidebar-mini-hide">Setting Event(sky007)</span>
+                    </a>
+                </li>
+                 <li>
+                    <a data-ui-sref="seventsaleofeglips" data-ui-sref-active="active">
+                        <i class="si si-settings"></i><span class="sidebar-mini-hide">Setting Event (eglips)</span>
+                    </a>
+                </li>
+                 <li>
+                    <a data-ui-sref="ssettingflashsaleeglipsvn" data-ui-sref-active="active">
+                        <i class="si si-settings"></i><span class="sidebar-mini-hide">Setting Flash S(Eglipsvn)</span>
+                    </a>
+                </li>
+                 <li>
+                    <a data-ui-sref="seventsaleofmixsoon" data-ui-sref-active="active">
+                        <i class="si si-settings"></i><span class="sidebar-mini-hide">Setting Event (mixsoon)</span>
+                    </a>
+                </li>
+                 <li>
+                    <a data-ui-sref="supdatemembership" data-ui-sref-active="active">
+                        <i class="si si-settings"></i><span class="sidebar-mini-hide">Update Membership</span>
+                    </a>
+                </li> -->
+                <li>
+                    <a data-ui-sref="ssettingaccount" data-ui-sref-active="active">
+                        <i class="si si-settings"></i><span class="sidebar-mini-hide">Setting Account</span>
+                    </a>
+                </li>
+                <li>
+                    <a data-ui-sref="ssettingmembership" data-ui-sref-active="active">
+                        <i class="si si-settings"></i><span class="sidebar-mini-hide">Setting Membership</span>
+                    </a>
+                </li>
+                 <!-- <li>
+                    <a data-ui-sref="ssettingnewproduct" data-ui-sref-active="active">
+                        <i class="si si-settings"></i><span class="sidebar-mini-hide">Setting New Product</span>
+                    </a>
+                </li> -->
+            </ul>
+        </div>
+        <!-- END Side Content -->
+    </div>
+    <!-- Sidebar Content -->
+</div>
+<!-- END Sidebar Scroll Container -->

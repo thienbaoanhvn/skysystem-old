@@ -1,0 +1,174 @@
+<!-- Page Header -->
+<div class="content bg-image overflow-hidden" style="background-image: url('assets/img/photos/photo3@2x.jpg');">
+    <div class="push-50-t push-15">
+        <h1 class="h2 text-white animated zoomIn">Schedule Calendar</h1>
+        <h2 class="h5 text-white-op animated zoomIn">Welcome {{managemnet_name}}</h2>
+    </div>
+</div>
+<!-- END Page Header -->
+
+<!-- Page Content -->
+<div class="content bg-white">
+    <!-- Calendar and Events functionality is initialized in js/controllers.js -> CompCalendarCtrl Controller, for more info and examples you can check out http://fullcalendar.io/ -->
+    <div class="row items-push">
+        <div class="col-md-4 col-md-push-8 col-lg-2 col-lg-push-10">
+            <!-- Add Event Form -->
+            <!-- <form class="js-form-add-event push-30" action="index.html" method="post">
+                <div class="input-group">
+                    <input class="js-add-event form-control" type="text" placeholder="Add event..">
+                    <div class="input-group-btn">
+                        <button class="btn btn-default" type="submit"><i class="fa fa-plus"></i></button>
+                    </div>
+                </div>
+            </form> -->
+            
+            
+             <button data-toggle="modal" data-target="#modal_add" class="btn btn-primary push-30"  ><i class="fa fa-plus"></i> Add New</button>
+            <!-- END Add Event Form -->
+
+            <!-- Event List -->
+            <ul class="js-events list list-events">
+                <!--<li style="background-color: #fac5a5;">Work</li>
+                <li style="background-color: #b5d0eb;">Relax</li>
+                <li style="background-color: #faeab9;">Gym</li>
+                <li style="background-color: #fac5a5;">Secret Project</li>
+                <li style="background-color: #c8e2b3;">Cinema</li>
+                <li style="background-color: #b6d1ec;">Biking</li>
+                <li style="background-color: #c8e2b3;">Trip</li>
+                <li style="background-color: #faeab9;">Swimming</li> -->
+            </ul>           
+            
+            <!-- END Event List -->
+        </div>
+        <div class="col-md-8 col-md-pull-4 col-lg-10 col-lg-pull-2">
+            <!-- Calendar Container -->
+            <div class="js-calendar"></div>
+        </div>
+    </div>
+    <!-- END Calendar -->
+</div>
+<!-- END Page Content -->
+
+
+
+<div class="modal fade" id="modal_modify" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog ">
+        <div class="modal-content">
+            <div class="block block-themed block-transparent remove-margin-b">
+                <div class="block-header ">
+                    <ul class="block-options">
+                        <li>
+                            <button data-dismiss="modal" type="button"><i class="si si-close"></i></button>
+                        </li>
+                    </ul>
+                    <h3 class="text-center">Update</h3>
+                </div>
+                <div class="block-header">
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            <div class="form-material">
+                                <input class="form-control" type="text" id="txtTitle" placeholder="Choose a nice title..">
+                                <label for="txtTitle">Title</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <div  data-js-datetimepicker="{format:' YYYY-MM-DD HH:mm:ss',showTodayButton: true, showClear: true, showClose: true, sideBySide: true }" class="form-material input-group date">
+                                <input class="form-control" type="text" id="txtStart"  placeholder="Choose a date..">
+                                <label for="txtStart">Start Time</label>
+                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="form-group">
+                        <div class="col-md-12">
+                            <div  data-js-datetimepicker="{format:' YYYY-MM-DD HH:mm:ss',showTodayButton: true, showClear: true, showClose: true, sideBySide: true}" class="form-material input-group date">
+                                <input class="form-control" type="text" id="txtEnd"  placeholder="Choose a date..">
+                                <label for="txtEnd">End Time</label>
+                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                   <div class="form-group">
+                            <div class="col-sm-12">
+                                <div class="form-material">
+                                    <select class="form-control" id="cboColor"  style="width: 100%;" data-placeholder="Choose one.." >
+                                      <!-- Required for data-placeholder attribute to work with Select2 plugin -->
+                                        <option style="color: #e3242b;" value="#e3242b">Offline Event</option>
+                                        <option style="color: #e2d4c6;" value="#e2d4c6">Studio(HCM)</option>
+                                        <option style="color: #68dcd0;" value="#68dcd0">Studio(Ha Noi)</option>
+                                        <option style="color: #fde64b;" value="#fde64b">Online Event</option>
+                                        <option style="color: #f9a602;" value="#f9a602">Marketing</option>
+                                        <option style="color: #3c42ba;" value="#3c42ba">CS</option>
+                                        <option style="color: #62c5da;" value="#62c5da">Makeup</option>
+                                        <option style="color: #757b87;" value="#757b87">Partner</option>
+                                        <option style="color: #3cb043;" value="#3cb043">Other</option>
+                                       <!-- <option style="color: #aef35a;" value="#aef35a">Lime</option>     -->                                 
+                                    </select>
+                                    <label for="cboColor">Color</label>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-sm btn-default" type="button" data-dismiss="modal">Close</button>
+                <button class="btn btn-sm btn-primary" id="btnSave" eventid="" ><i class="fa fa-check"></i> Save</button>
+                <button class="btn btn-sm btn-success" id="btnDelete" eventid=""> Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modal_add" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog ">
+        <div class="modal-content">
+            <div class="block block-themed block-transparent remove-margin-b">
+                <div class="block-header ">
+                    <ul class="block-options">
+                        <li>
+                            <button data-dismiss="modal" type="button"><i class="si si-close"></i></button>
+                        </li>
+                    </ul>
+                    <h3 class="text-center">Add New</h3>
+                </div>
+                <div class="block-header">
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            <div class="form-material">
+                                <input class="form-control" type="text" id="txtTitleNew" placeholder="Choose a nice title..">
+                                <label for="txtTitleNew">Title</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                   <div class="form-group">
+                            <div class="col-sm-12">
+                                <div class="form-material">
+                                    <select class="form-control" id="cboColorNew"  style="width: 100%;" data-placeholder="Choose one.." >
+                                        <!-- Required for data-placeholder attribute to work with Select2 plugin -->
+                                        <option style="color: #e3242b;" value="#e3242b">Offline Event</option>
+                                        <option style="color: #e2d4c6;" value="#e2d4c6">Studio(HCM)</option>
+                                        <option style="color: #68dcd0;" value="#68dcd0">Studio(Ha Noi)</option>
+                                        <option style="color: #fde64b;" value="#fde64b">Online Event</option>
+                                        <option style="color: #f9a602;" value="#f9a602">Marketing</option>
+                                        <option style="color: #3c42ba;" value="#3c42ba">CS</option>
+                                        <option style="color: #62c5da;" value="#62c5da">Makeup</option>
+                                        <option style="color: #757b87;" value="#757b87">Partner</option>
+                                        <option style="color: #3cb043;" value="#3cb043">Other</option>                                    
+                                    </select>
+                                    <label for="cboColorNew">Color</label>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-sm btn-default" type="button" data-dismiss="modal">Close</button>
+                <button class="btn btn-sm btn-primary" id="btnAdd"  ><i class="fa fa-check"></i> Add</button>                
+            </div>
+        </div>
+    </div>
+</div>
+           

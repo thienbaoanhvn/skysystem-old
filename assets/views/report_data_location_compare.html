@@ -1,0 +1,190 @@
+<!-- Page Header -->
+<div class="content bg-image overflow-hidden" style="background-image: url('assets/img/photos/photo3@2x.jpg');">
+    <div class="push-50-t push-15">
+        <h1 class="h2 text-white animated zoomIn">Data Location Report</h1>
+        <h2 class="h5 text-white-op animated zoomIn">Welcome {{managemnet_name}}</h2>
+    </div>
+</div>
+<!-- END Page Header -->
+<div class="content"  data-ng-init="loadData()">
+<div class="row">
+   <div class="col-md-12">
+      <!-- Main Dashboard Chart -->
+      <div class="block">
+         <br />
+         <div class="block-header"  >           
+                  <div class="col-md-12">                                    
+                     <div class="col-md-12"> 
+                           <div class="col-md-6 ">
+                              <span style="padding-top: 5px;" class="col-md-4">From Date</span>
+                              <p class="input-group">
+                                 <input type="text" class="form-control" uib-datepicker-popup ng-model="txtfromdate" is-open="popup1.opened" ng-required="true" close-text="Close" />
+                                 <span class="input-group-btn">
+                                 <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+                                 </span>
+                              </p>
+                           </div>
+                           <div class="col-md-6">
+                              <span style="padding-top: 5px;" class="col-md-4">To Date</span>
+                              <p class="input-group">
+                                 <input type="text" class="form-control" uib-datepicker-popup ng-model="txttodate" is-open="popup2.opened" ng-required="true" close-text="Close" />
+                                 <span class="input-group-btn">
+                                 <button type="button" class="btn btn-default" ng-click="open2()"><i class="glyphicon glyphicon-calendar"></i></button>
+                                 </span>
+                              </p>
+                           </div>
+                                                                           
+                     </div>
+                        
+               </div>
+         </div>
+      </div>
+      <!-- END Main Dashboard Chart -->
+   </div>   
+   <div class="col-md-12">
+        <select multiple="multiple" size="10" id="duallistbox_location" class="location_report">
+                <option value="TP HCM">TP HCM</option> 
+                <option value="Hà Nội">Hà Nội</option>
+                <option value="Hải Phòng">Hải Phòng</option>
+                <option value="Đà Nẵng">Đà Nẵng</option>
+                <option value="Đồng Nai">Đồng Nai</option>
+                <option value="Cần Thơ">Cần Thơ</option>
+                <option value="An Giang">An Giang</option>
+                <option value="Bà Rịa - Vũng Tàu">Bà Rịa - Vũng Tàu</option>
+                <option value="Bắc Giang">Bắc Giang</option>
+                <option value="Bắc Kạn">Bắc Kạn</option>
+                <option value="Bạc Liêu">Bạc Liêu</option>
+                <option value="Bắc Ninh">Bắc Ninh</option>
+                <option value="Bến Tre">Bến Tre</option>
+                <option value="Bình Định">Bình Định</option>
+                <option value="Bình Dương">Bình Dương</option>
+                <option value="Bình Phước">Bình Phước</option>
+                <option value="Bình Thuận">Bình Thuận</option>
+                <option value="Cà Mau">Cà Mau</option>
+                <option value="Cao Bằng">Cao Bằng</option>
+                <option value="Đắk Lắk">Đắk Lắk</option>
+                <option value="Đắk Nông">Đắk Nông</option>
+                <option value="Điện Biên">Điện Biên</option>                                                
+                <option value="Đồng Tháp">Đồng Tháp</option>
+                <option value="Gia Lai">Gia Lai</option>
+                <option value="Hà Giang">Hà Giang</option>
+                <option value="Hà Nam">Hà Nam</option>
+                <option value="Hà Tĩnh">Hà Tĩnh</option>
+                <option value="Hải Dương">Hải Dương</option>
+                <option value="Hậu Giang">Hậu Giang</option>
+                <option value="Hòa Bình">Hòa Bình</option>
+                <option value="Hưng Yên">Hưng Yên</option>
+                <option value="Kiên Giang">Kiên Giang</option>
+                <option value="Khánh Hòa">Khánh Hòa</option>
+                <option value="Kon Tum">Kon Tum</option>
+                <option value="Lai Châu">Lai Châu</option>
+                <option value="Lâm Đồng">Lâm Đồng</option>
+                <option value="Lạng Sơn">Lạng Sơn</option>
+                <option value="Lào Cai">Lào Cai</option>
+                <option value="Long An">Long An</option>
+                <option value="Nam Định">Nam Định</option>
+                <option value="Nghệ An">Nghệ An</option>
+                <option value="Ninh Bình">Ninh Bình</option>
+                <option value="Ninh Thuận">Ninh Thuận</option>
+                <option value="Phú Thọ">Phú Thọ</option>
+                <option value="Phú Yên">Phú Yên</option>
+                <option value="Quảng Bình">Quảng Bình</option>
+                <option value="Quảng Nam">Quảng Nam</option>
+                <option value="Quảng Ngãi">Quảng Ngãi</option>
+                <option value="Quảng Ninh">Quảng Ninh</option>
+                <option value="Quảng Trị">Quảng Trị</option>
+                <option value="Sóc Trăng">Sóc Trăng</option>
+                <option value="Sơn La">Sơn La</option>
+                <option value="Tây Ninh">Tây Ninh</option>
+                <option value="Thái Bình">Thái Bình</option>
+                <option value="Thái Nguyên">Thái Nguyên</option>
+                <option value="Thanh Hóa">Thanh Hóa</option>
+                <option value="Thừa Thiên Huế">Thừa Thiên Huế</option>
+                <option value="Tiền Giang">Tiền Giang</option>
+                <option value="Trà Vinh">Trà Vinh</option>
+                <option value="Tuyên Quang">Tuyên Quang</option>
+                <option value="Vĩnh Long">Vĩnh Long</option>
+                <option value="Vĩnh Phúc">Vĩnh Phúc</option>
+                <option value="Yên Bái">Yên Bái</option>                                                
+                <option value="Another">Another</option>
+        </select>
+        <script>
+          var location_report = $('.location_report').bootstrapDualListbox({
+            nonSelectedListLabel: 'Non-selected',
+            selectedListLabel: 'Selected',
+            preserveSelectionOnMove: 'moved',
+            moveOnSelect: false
+          });
+        </script>
+      </div>
+   <div class="col-md-12 ">
+   <div class="block">
+         <div class="block-header">
+       <div class="col-md-offset-4 col-md-2">
+          <select class="form-control" id="cboShopSale">
+             <option value="0">All</option>
+             <option value="1">Sky007</option>                               
+             <option value="2">Shopee</option>
+             <option value="3">Lazada</option>                               
+             <option value="4">Eglips</option>  
+          </select>
+       </div>
+       <div class="col-md-2">
+            <button class="btn btn-success" id="btnGetReport" ng-click="data_fillter()">Get Report</button>
+       </div> 
+       </div>
+       </div>
+   </div>
+   <div class="col-md-12">
+      <div class="block">
+         <div class="block-header">
+            <div>
+               <h3 class="block-title">Report Monthly Location for {{expressions_shop_sale}}</h3>
+            </div>
+         </div>
+         <div class="block-content">
+         <table id="tb_loation_report" class="table table-bordered table-striped table-hover js-dataTable-full display responsive " cellspacing="0" width="100%">
+             <!--table table-bordered table-striped js-dataTable-full -->
+             <thead>
+                <tr id="tb_row" style="background-color: #BCBCBC;color: white;">
+                   <th class="hidden-xs">City</th>
+                   <th class="hidden-xs">Qty Order</th>
+                   <th class="hidden-xs">Date</th>                    
+                </tr>
+             </thead>
+          </table>            
+          <div id="img_load" class=" text-center" hidden="true">
+            <img src="assets/js/plugins/datatableeditor/images/ajax-loader.gif" />
+           </div> 
+         </div>
+      </div>
+   </div>
+    <div class="col-md-12">
+      <div class="block">
+         <div class="block-header">
+            <div>
+               <h3 class="block-title">Report Rate Monthly Location for {{expressions_shop_sale}} (%)</h3>
+            </div>
+         </div>
+         <div class="block-content">
+         <table id="tb_loation_rate_report" class="table table-bordered table-striped table-hover js-dataTable-full display responsive " cellspacing="0" width="100%">
+             <!--table table-bordered table-striped js-dataTable-full -->
+             <thead>
+                <tr id="tb_row_rate" style="background-color: #BCBCBC;color: white;">
+                   <th class="hidden-xs">City</th>
+                   <th class="hidden-xs">Qty Order</th>
+                   <th class="hidden-xs">Date</th>                    
+                </tr>
+             </thead>
+          </table>            
+          <div id="img_load_rate" class=" text-center" hidden="true">
+            <img src="assets/js/plugins/datatableeditor/images/ajax-loader.gif" />
+           </div> 
+         </div>
+      </div>
+   </div>
+   
+   
+</div>
+</div>
+<!-- END Page Content -->

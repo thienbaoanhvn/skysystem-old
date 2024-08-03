@@ -1,0 +1,138 @@
+.bootstrap-duallistbox-container .buttons {
+    width: 100%;
+    margin-bottom: -1px;
+}
+.btn-group, .btn-group-vertical {
+    position: relative;
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    vertical-align: middle;
+}
+
+.btn-group-vertical>.btn, .btn-group>.btn {
+    position: relative;
+    -webkit-box-flex: 0;
+    -ms-flex: 0 1 auto;
+    flex: 0 1 auto;
+}
+
+.btn-outline-secondary:hover {
+    color: #fff;
+    background-color: #6c757d;
+    border-color: #6c757d;
+}
+.btn-outline-secondary {
+    color: #6c757d;
+    background-color: transparent;
+    background-image: none;
+    border-color: #6c757d;
+}    
+ if (data.length > 0) {
+                var st = new Date(startdate);
+                var sm = st.getMonth();
+                var et = new Date(enddate);
+                var em = et.getMonth();
+                var sy = st.getFullYear();
+                var ey = et.getFullYear();
+
+                var monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+                var arr_date = [];
+                var arr_date_char = [];
+
+                var arr_sky007 = [];
+                var arr_wholesaler = [];
+                var arr_shoppe = [];
+                var arr_shoppe_eglips = [];
+                var arr_lotte = [];               
+                var arr_eglips = [];
+                var arr_eglips_wholesaler = [];
+                var arr_lazada = [];
+                var arr_lazada_eglips = [];               
+                var arr_sendo = [];
+                var arr_beautybox = [];
+                var arr_watson = [];
+                var arr_tiki = [];
+                var arr_shopee_c2c = [];
+                var arr_lazada_c2c = [];
+                var arr_shop_total = [];
+                var arr_wholesaler_total=[];
+                    
+                if (sy == ey) {
+                    for (var i = sm; i <= em; i++) {
+                        arr_date.push(i);
+                        arr_date_char.push(monthNames[i]);
+                    }
+                    for (var i = 0; i < arr_date.length; i++) {
+                        var date_element = arr_date[i];
+                        var index_shop = "";
+                        var tprice_sky007 = 0;
+                        var tprice_wholesaler = 0;
+                        var tprice_shoppe = 0;
+                        var tprice_lotte = 0;
+                        var tprice_shoppe_eglips = 0;
+                        var tprice_eglips = 0;
+                        var tprice_eglips_wholesaler = 0;
+                        var tprice_lazada = 0;
+                        var tprice_lazada_eglips = 0;                        
+                        var tprice_sendo = 0;
+                        var tprice_beautybox = 0;
+                        var tprice_watson = 0;
+                        var tprice_tiki = 0;
+                        var tprice_shopee_c2c = 0;
+                        var tprice_lazada_c2c = 0;
+                        var tprice_shop_total = 0;
+                        var tprice_wholesaler_total=0;
+
+                        for (var j = 0; j < data.length; j++) {
+                            var time = parseInt(data[j]['time']);
+                            time = (time - 1);
+                            if (date_element == time) {
+                                index_shop = j;
+                            }
+                        }
+                        tprice_sky007 = parseInt(data[index_shop]['total_sky007']);
+                        arr_sky007.push(tprice_sky007);
+                        tprice_wholesaler = parseInt(data[index_shop]['total_wholesaler']);
+                        arr_wholesaler.push(tprice_wholesaler);
+                        tprice_shoppe = parseInt(data[index_shop]['total_shoppe']);
+                        arr_shoppe.push(tprice_shoppe);
+                        tprice_shoppe_eglips = parseInt(data[index_shop]['total_shoppe_eglips']);
+                        arr_shoppe_eglips.push(tprice_shoppe_eglips);
+                        tprice_lotte = parseInt(data[index_shop]['total_lotte']);
+                        arr_lotte.push(tprice_lotte);                       
+                        tprice_eglips = parseInt(data[index_shop]['total_eglips']);
+                        arr_eglips.push(tprice_eglips);
+                        tprice_eglips_wholesaler = parseInt(data[index_shop]['total_eglips_wholesaler']);
+                        arr_eglips_wholesaler.push(tprice_eglips_wholesaler);
+                        tprice_lazada = parseInt(data[index_shop]['total_lazada']);
+                        arr_lazada.push(tprice_lazada);
+                        tprice_lazada_eglips = parseInt(data[index_shop]['total_lazada_eglips']);
+                        arr_lazada_eglips.push(tprice_lazada_eglips);                        
+                        tprice_sendo = parseInt(data[index_shop]['total_sendo']);
+                        arr_sendo.push(tprice_sendo);
+                        tprice_beautybox = parseInt(data[index_shop]['total_beautybox']);
+                        arr_beautybox.push(tprice_beautybox);
+                        tprice_watson = parseInt(data[index_shop]['total_watson']);
+                        arr_watson.push(tprice_watson);
+                        tprice_tiki = parseInt(data[index_shop]['total_tiki']);
+                        arr_tiki.push(tprice_tiki);
+                        tprice_shopee_c2c = parseInt(data[index_shop]['total_shopee_c2c']);
+                        arr_shopee_c2c.push(tprice_shopee_c2c);
+                        tprice_lazada_c2c = parseInt(data[index_shop]['total_lazada_c2c']);
+                        arr_lazada_c2c.push(tprice_lazada_c2c);
+                        tprice_shop_total = tprice_sky007 + tprice_shoppe + tprice_lotte + tprice_shoppe_eglips + tprice_eglips  + tprice_lazada + tprice_lazada_eglips +tprice_beautybox +tprice_sendo +tprice_tiki+tprice_watson+tprice_shopee_c2c+tprice_lazada_c2c ;
+                        arr_shop_total.push(tprice_shop_total);
+                        tprice_wholesaler_total=tprice_wholesaler + tprice_eglips_wholesaler;
+                        arr_wholesaler_total.push(tprice_wholesaler_total)
+                    }
+
+                } else if (sy < ey) {
+                    for (var i = sm; i <= 11; i++) {
+                        arr_date.push((i + 1) + "_" + sy);
+                        arr_date_char.push(monthNames[i] + "(" + sy + ")");
+                    }
+                    for (var i = 0; i <= em; i++) {
+                        arr_date.push((i + 1) + "_" + ey);
+                        arr_date_char.push(monthNames[i] + "(" + ey + ")");
+                    }

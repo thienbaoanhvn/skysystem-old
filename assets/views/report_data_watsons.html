@@ -1,0 +1,96 @@
+<!-- Page Header -->
+<div class="content bg-image overflow-hidden" style="background-image: url('assets/img/photos/photo3@2x.jpg');">
+    <div class="push-50-t push-15">
+        <h1 class="h2 text-white animated zoomIn">Data Items Report</h1>
+        <h2 class="h5 text-white-op animated zoomIn">Welcome {{managemnet_name}}</h2>
+    </div>
+</div>
+<!-- END Page Header -->
+
+<div class="content"  data-ng-init="loadData()">
+<div class="row">
+   <div class="col-md-12">
+      <!-- Main Dashboard Chart -->
+      <div class="block">
+         <br />
+         <div class="block-header"  >           
+                  <div class="col-md-12">                            
+                           <div class="col-md-3 ">
+                              <span style="padding-top: 5px;" class="col-md-4">From Date</span>
+                              <p class="input-group">
+                                 <input type="text" class="form-control" uib-datepicker-popup ng-model="txtfromdate" is-open="popup1.opened" ng-required="true" close-text="Close" />
+                                 <span class="input-group-btn">
+                                 <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+                                 </span>
+                              </p>
+                           </div>
+                           <div class="col-md-3">
+                              <span style="padding-top: 5px;" class="col-md-4">To Date</span>
+                              <p class="input-group">
+                                 <input type="text" class="form-control" uib-datepicker-popup ng-model="txttodate" is-open="popup2.opened" ng-required="true" close-text="Close" />
+                                 <span class="input-group-btn">
+                                 <button type="button" class="btn btn-default" ng-click="open2()"><i class="glyphicon glyphicon-calendar"></i></button>
+                                 </span>
+                              </p>
+                           </div>  
+                        <div class="col-md-2">
+                            <button type="button" class="btn btn-sm btn-primary push" ng-click="data_fillter()">Search</button>
+                        </div>
+               </div>
+                <div class="col-md-2 col-md-offset-5">
+                        <label class="form-check-label">
+                          <input id="chkALL" type="checkbox" class="form-check-input" checked="true">
+                         Get data from begining .
+                        </label>
+               </div>
+         </div>
+      </div>
+      <!-- END Main Dashboard Chart -->
+   </div>   
+   <div class="col-md-12">
+      <div class="block">
+         <div class="block-header">
+            <div>
+               <h3 class="block-title">Data Report Watsons</h3>
+            </div>
+         </div>
+         <div class="block-content">
+         <div class="col-md-12 col-md-offset-4">
+            <div class="col-md-2">             
+                 <select id="cboStatus" class="form-control">
+                    <option value="1">Process Return</option>
+                    <option value="2">Done</option>        
+                 </select>             
+           </div>
+           <div class="col-md-2">
+                <button type="button" class="btn btn-sm btn-primary push" ng-click="update_status()">Update Process</button>
+           </div>
+         </div>
+        <table id="tb_watsons_stock_borrow" class="table table-bordered table-striped table-hover js-dataTable-full display" cellspacing="0" width="100%">
+                    <!--table table-bordered table-striped js-dataTable-full -->
+                    <thead>
+                       <tr>                    
+                          <th class="hidden-xs"></th>
+                          <th class="hidden-xs">Item ID</th>   
+                          <th class="hidden-xs">Item Name</th>                               
+                          <th class="hidden-xs">SKU</th>                                             
+                          <th class="hidden-xs">Stock Remain</th>
+                          <th class="hidden-xs">Stock Total</th>                                            
+                          <th class="hidden-xs">Qty Sale</th>                          
+                          <th class="hidden-xs">Qty Return</th> 
+                          <th class="hidden-xs">PO_ID</th>  
+                          <th class="hidden-xs">Status</th>                              
+                       </tr>
+                    </thead>
+                 </table>          
+           <div id="img_load" class=" text-center" hidden="true">
+            <img src="assets/js/plugins/datatableeditor/images/ajax-loader.gif" />
+           </div>
+         </div>
+      </div>
+   </div>
+   
+</div>
+</div>
+<!-- END Page Content -->
+

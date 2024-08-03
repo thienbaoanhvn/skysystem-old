@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<!--[if IE 9]>         <html class="ie9 no-focus" data-ng-app="app" lang="en"> <![endif]-->
+<!--[if gt IE 9]><!--> <html class="no-focus" data-ng-app="app" lang="en"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+
+        <title>Sky007 System</title>
+
+        <meta name="description" content="Sk007 Admin">
+        <meta name="author" content="Anh Tran">
+        <meta name="robots" content="noindex, nofollow">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <!-- Icons -->
+        <!-- The following icons can be replaced with your own, they are used by desktop and mobile browsers -->
+        <link rel="shortcut icon" href="assets/img/favicons/favicon.png">
+       
+        <!-- END Icons -->
+
+        <!-- Stylesheets -->
+        <!-- Web fonts -->
+        <!-- link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400italic,600,700%7COpen+Sans:300,400,400italic,600,700"-->
+
+        <!-- Bootstrap and OneUI CSS framework -->
+        <link rel="stylesheet" id="css-bootstrap" href="assets/css/bootstrap.min.css">
+        
+        <!-- build:remove -->
+        <link rel="stylesheet" id="css-main" href="assets/css/oneui.css">
+        
+       
+       
+        <link rel="stylesheet" id="css-main" href="assets/js/plugins/listbox/bootstrap-duallistbox.css">
+       
+        <link rel="stylesheet" id="css-main" href="assets/css/extend.css">
+        <!-- /build -->
+
+        <!-- build:template
+        <link rel="stylesheet" id="css-main" href="assets/css/oneui.min.css">
+        /build -->
+        <!-- END Stylesheets -->
+    </head>
+    <body data-ng-controller="AppCtrl">
+        <!-- Page loader -->
+        <div id="page-loader"></div>
+
+        <!-- View loader (data-js-view-loader attribute is initialized in js/directives.js) -->
+        <div data-js-view-loader></div>
+
+        <!-- Page Container -->
+        <!-- You can update template settings or enable local storage feature in js/app.js -> 'AppCtrl' controller () -->
+        <div id="page-container" data-ng-class="{
+            'sidebar-l': oneui.settings.sidebarLeft,
+            'sidebar-r': ! oneui.settings.sidebarLeft,
+            'sidebar-o': oneui.settings.sidebarOpen,
+            'sidebar-o-xs': oneui.settings.sidebarOpenXs,
+            'sidebar-mini': oneui.settings.sidebarMini,
+            'side-overlay-o': oneui.settings.sideOverlayOpen,
+            'side-overlay-hover': oneui.settings.sideOverlayHover,
+            'side-scroll': oneui.settings.sideScroll,
+            'header-navbar-fixed': oneui.settings.headerFixed
+        }">
+          
+            <!-- Sidebar -->
+            <nav data-ng-include="'assets/views/partials/base_sidebar.html'" data-ng-controller="SidebarCtrl" id="sidebar"></nav>
+
+            <!-- Header -->
+            <header data-ng-include="'assets/views/partials/base_header.html'" data-ng-controller="HeaderCtrl" id="header-navbar" class="content-mini content-mini-full"></header>
+
+            <!-- Main Container -->
+            <main id="main-container" data-autoscroll="true" data-ui-view></main>
+
+            <!-- Footer -->
+            <footer data-ng-include="'assets/views/partials/base_footer.html'" id="page-footer" class="content-mini content-mini-full font-s12 bg-gray-lighter clearfix"></footer>
+        </div>
+        <!-- END Page Container -->
+
+        <!-- JS Code -->
+        <!-- build:js assets/js/oneui.min.js -->
+        <!-- OneUI Core JS: jQuery & Bootstrap Related -->
+        <script src="assets/js/core/jquery.min.js"></script>
+        <script src="assets/js/core/bootstrap.min.js"></script>
+        
+        <script src="assets/js/core/jquery.slimscroll.min.js"></script>
+        <script src="assets/js/core/jquery.scrollLock.min.js"></script>
+        <script src="assets/js/core/jquery.appear.min.js"></script>
+        <script src="assets/js/core/jquery.countTo.min.js"></script>
+        <script src="assets/js/core/jquery.placeholder.min.js"></script>
+        <script src="assets/js/core/jquerysession.js"></script>
+        
+        
+     
+      
+        <script src="https://code.highcharts.com/stock/highstock.js"></script>       
+        <script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
+        <script src="https://code.highcharts.com/modules/drilldown.js"></script>
+        <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+        
+        <!--script src="https://code.highcharts.com/highcharts.js"></script>
+        <script src="https://code.highcharts.com/modules/series-label.js"></script>
+        <script src="https://code.highcharts.com/modules/exporting.js"></script>
+        <script src="https://code.highcharts.com/modules/export-data.js"></script>
+        <script src="https://code.highcharts.com/modules/accessibility.js"></script-->
+        
+        <!-- <script src="assets/js/plugins/datatableeditor/js/dataTables.editor.min.js"></script> -->
+        <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+        <!-- <script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script> -->
+        <script src="https://cdn.datatables.net/responsive/2.1.1/js/dataTables.responsive.min.js"></script>
+        
+        
+        
+        <script src="assets/js/plugins/datatable_editor/js/dataTables.editor.min.js"></script>
+        <script src="https://cdn.datatables.net/buttons/1.1.0/js/buttons.colVis.min.js"></script>
+        <script src="https://cdn.datatables.net/buttons/1.2.4/js/dataTables.buttons.min.js"></script>        
+        <script src="https://cdn.datatables.net/select/1.2.1/js/dataTables.select.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+       <!-- <script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script> 
+        <script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script> -->
+        <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
+        <script src="https://cdn.datatables.net/buttons/1.1.0/js/buttons.html5.min.js"></script>
+        <script src="assets/js/plugins/bootstrap-datetimepicker/moment.min.js"></script>
+        <script src="assets/js/plugins/bootstrap-datetimepicker/bootstrap-datetimepicker.min.js"></script>  
+        
+        <script src="https://igniteui.com/js/modernizr.min.js"></script>      
+        <script src="https://code.jquery.com/ui/1.10.3/jquery-ui.min.js"></script>
+        <script src="https://cdn-na.infragistics.com/igniteui/latest/js/infragistics.core.js"></script>
+        <script src="https://cdn-na.infragistics.com/igniteui/latest/js/infragistics.lob.js"></script>
+        <script src="https://cdn-na.infragistics.com/igniteui/latest/js/modules/infragistics.ext_core.js"></script>
+        <script src="https://cdn-na.infragistics.com/igniteui/latest/js/modules/infragistics.ext_collections.js"></script>
+        <script src="https://cdn-na.infragistics.com/igniteui/latest/js/modules/infragistics.ext_text.js"></script>
+        <script src="https://cdn-na.infragistics.com/igniteui/latest/js/modules/infragistics.ext_io.js"></script>
+        <script src="https://cdn-na.infragistics.com/igniteui/latest/js/modules/infragistics.ext_ui.js"></script>
+        <script src="https://cdn-na.infragistics.com/igniteui/latest/js/modules/infragistics.documents.core_core.js"></script>
+        <script src="https://cdn-na.infragistics.com/igniteui/latest/js/modules/infragistics.ext_collectionsextended.js"></script>
+        <script src="https://cdn-na.infragistics.com/igniteui/latest/js/modules/infragistics.excel_core.js"></script>
+        <script src="https://cdn-na.infragistics.com/igniteui/latest/js/modules/infragistics.ext_threading.js"></script>
+        <script src="https://cdn-na.infragistics.com/igniteui/latest/js/modules/infragistics.ext_web.js"></script>
+        <script src="https://cdn-na.infragistics.com/igniteui/latest/js/modules/infragistics.xml.js"></script>
+        <script src="https://cdn-na.infragistics.com/igniteui/latest/js/modules/infragistics.documents.core_openxml.js"></script>
+        <script src="https://cdn-na.infragistics.com/igniteui/latest/js/modules/infragistics.excel_serialization_openxml.js"></script>
+        
+
+        <!-- OneUI Core JS: AngularJS Related -->
+        <script src="assets/js/core/angular.min.js"></script>
+        <script src="assets/js/core/angular-ui-router.min.js"></script>
+        <script src="assets/js/core/angular-ui-bootstrap-tpls.min.js"></script>
+        <script src="assets/js/core/ocLazyLoad.min.js"></script>
+        <script src="assets/js/core/ngStorage.min.js"></script>
+
+        <!-- OneUI Core JS: App Related -->
+        <script src="assets/js/angularjsmvc/app.js"></script>
+        <script src="assets/js/angularjsmvc/directives.js"></script>
+        <script src="assets/js/angularjsmvc/controllers.js"></script>
+        <!-- /build -->        
+         <script src="assets/js/plugins/listbox/jquery.bootstrap-duallistbox.js"></script>
+         <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+               
+    </body>
+</html>

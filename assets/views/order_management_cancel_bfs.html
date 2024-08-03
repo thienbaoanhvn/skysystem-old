@@ -1,0 +1,42 @@
+<!-- Page Header -->
+<div class="content bg-image overflow-hidden" style="background-image: url('assets/img/photos/photo3@2x.jpg');">
+    <div class="push-50-t push-15">
+        <h1 class="h2 text-white animated zoomIn">Event Marketing </h1>
+        <h2 class="h5 text-white-op animated zoomIn">Welcome {{managemnet_name}}</h2>
+    </div>
+</div>
+<!-- END Page Header -->
+<!-- Page Content -->
+<div class="content" data-ng-init="loadData()">
+   <div class="row">
+      <div class="col-md-12">
+         <!-- Main Dashboard Chart -->
+         <div class="block">
+            <div class="block-header">
+                 <div class="col-md-12 " style="margin-bottom: 50px;">
+                    <span class="block-title">List Item Setting</span>
+                 </div>
+                 <div class="col-md-12">
+                 <div class="col-md-2">
+                     <a href="delivery.html" target="_blank">
+                        <button class="btn btn-info" type="button" id="btnFinalCheck" style="display: inline-block;"><i class="fa fa-newspaper-o"></i> Get Order ID</button>
+                    
+                    </a>
+               </div>
+                 </div>
+                 <div class="col-md-12 push-20-t">                 
+                    <label for="txtListOrder">List Order Cancel Before Sent</label>
+                    <textarea class="form-control input-lg" id="txtListOrder" rows="4" placeholder="format Order ID like a,b,c .."></textarea>                                                                                       
+                 </div>
+                 <div class="col-md-12 text-center push-10-t">
+                    <button class="btn btn-primary" id="btnCBS">Cancel BS</button>
+                 </div>
+                 <div id="img_load" class=" text-center" >
+                           <img src="assets/js/plugins/datatableeditor/images/ajax-loader.gif">
+                        </div>
+            </div>
+         </div>         
+      
+      </div>
+   </div>
+</div>

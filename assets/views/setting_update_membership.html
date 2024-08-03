@@ -1,0 +1,47 @@
+<!-- Page Header -->
+<div class="content bg-image overflow-hidden" style="background-image: url('assets/img/photos/photo3@2x.jpg');">
+    <div class="push-50-t push-15">
+        <h1 class="h2 text-white animated zoomIn">Shipping Order</h1>
+        <h2 class="h5 text-white-op animated zoomIn">Welcome {{managemnet_name}}</h2>
+    </div>
+</div>
+<!-- END Page Header -->
+
+<div class="content" >
+   <div class="row">
+      <div class="col-md-12">
+         <!-- Main Dashboard Chart -->
+         <div class="block">
+         <br />
+            <div class="block-header push-10">                                            
+                    <div class="col-md-3">
+                        <button class="btn btn-primary" id="btnBronze">Convert Bronze to General</button>
+                    </div> 
+                    <div class="col-md-3">
+                        <button class="btn btn-success" id="btnSilver">Convert Silver to General</button>
+                    </div> 
+                    <div class="col-md-3">
+                        <button class="btn btn-warning" id="btnGold">Convert Gold to General</button>
+                    </div> 
+                    <div class="col-md-3">
+                        <button class="btn btn-danger" id="btnVip">Convert VIP to General</button>
+                    </div>                  
+                              
+            </div>
+            <div class="block-header push-10">
+                <div class="col-md-12"> 
+                     <div class="col-md-2">
+                        <input  type="file" id="input" accept="application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"></input>
+                        <label>Download this <a href="http://skyadmin.juloomob.net/assets/img/template_update_membership.xlsx" download="">template  Excel file</a></label>
+                    </div>                                    
+                    <div class="col-md-2">
+                        <button class="btn btn-info" id="btnUpdate">Update Membership</button>
+                    </div>                  
+               </div>               
+            </div>
+         </div>
+      </div>      
+      
+   <button id="btnNotifyFinish" class="js-notify btn btn-sm btn-success" data-js-notify="{type: 'success', align: 'center', icon: 'fa fa-check', message: 'Update Succeeded !'}"></button>
+   </div>
+</div>

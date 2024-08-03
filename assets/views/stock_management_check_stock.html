@@ -1,0 +1,83 @@
+<!-- Page Header -->
+<div class="content bg-image overflow-hidden" style="background-image: url('assets/img/photos/photo3@2x.jpg');">
+    <div class="push-50-t push-15">
+        <h1 class="h2 text-white animated zoomIn">Stock Check</h1>
+        <h2 class="h5 text-white-op animated zoomIn">Welcome {{managemnet_name}}</h2>
+    </div>
+</div>
+<!-- END Page Header -->
+
+
+<div class="content"  data-ng-init="loadData()">
+   <div class="row">
+      <div class="col-md-12">
+         <!-- Main Dashboard Chart -->
+         <div class="block">
+         <br />
+            <div class="block-header">
+                <div class="col-md-12">
+                  <div class="col-md-10">  
+                  <div class="col-md-4">
+                        <div class="col-md-5 push-5-t">
+                            <span>Warehouse</span>
+                        </div>
+                        <div class="col-md-7">
+                            <select id="cboWarehouse" class="text-left form-control">                            
+                                <option value="0">TPHCM</option>
+                                <option value="1">Ha Noi</option>                                
+                                
+                            </select>
+                        </div>                        
+                     </div>              
+                     <div class="col-md-4">
+                        <div class="col-md-5 push-5-t">
+                            <span>Brand Name</span>
+                        </div>
+                        <div class="col-md-7">
+                            <select id="cboBrandName" class="text-left form-control">
+                                <option value="-1">ALL</option>
+                                <option value="0">BBia</option>
+                                <option value="1">Eglips</option>                                
+                                
+                            </select>
+                        </div>                        
+                     </div>     
+                     <div class="col-md-2">
+                        <label class="css-input css-checkbox css-checkbox-success">
+                            <input type="checkbox" id="chkCombine" checked><span></span> Combine order in inventory .
+                        </label>
+                     </div>                
+                                  
+                  </div>
+                  <div class="col-md-2">
+                     <button class="btn btn-success" ng-click="data_fillter()">Filter Report</button>
+                  </div>
+               </div>
+               
+            </div>
+         </div>
+      </div>
+      <div class="col-md-12">
+      <div class="block">
+         <div class="block-header">
+            <div>
+               <h3 class="block-title">List Product</h3>
+            </div>
+         </div>
+       
+         <div class="block-content">
+                <table id="tb_list_item" class="table table-bordered table-striped table-hover js-dataTable-full display responsive " cellspacing="0" width="100%">
+                 <!--table table-bordered table-striped js-dataTable-full -->
+                 
+              </table>    
+                 <div id="img_load" class=" text-center" hidden="true">
+                <img src="assets/js/plugins/datatableeditor/images/ajax-loader.gif" />
+               </div> 
+          </div>
+      </div>
+   </div>
+   
+   </div>
+</div>
+
+

@@ -1,0 +1,69 @@
+<!-- Page Header -->
+<div class="content bg-image overflow-hidden" style="background-image: url('assets/img/photos/photo3@2x.jpg');">
+    <div class="push-50-t push-15">
+        <h1 class="h2 text-white animated zoomIn">Chart Customer Report</h1>
+        <h2 class="h5 text-white-op animated zoomIn">Welcome {{managemnet_name}}</h2>
+    </div>
+</div>
+<!-- END Page Header -->
+<!-- Page Content -->
+<div class="content"  data-ng-init="loadData()">
+<div class="row">
+   <div class="col-md-12">
+      <!-- Main Dashboard Chart -->
+      <div class="block">
+         <br />
+         <div class="block-header"  >
+            <div class="col-md-4 ">
+               <span style="padding-top: 5px;" class="col-md-4">From Date</span>
+               <p class="input-group">
+                  <input type="text" class="form-control" uib-datepicker-popup ng-model="txtfromdate" is-open="popup1.opened" ng-required="true" close-text="Close"/>
+                  <span class="input-group-btn">
+                  <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+                  </span>
+               </p>
+            </div>
+            <div class="col-md-4">
+               <span style="padding-top: 5px;" class="col-md-4">To Date</span>
+               <p class="input-group">
+                  <input type="text" class="form-control" uib-datepicker-popup ng-model="txttodate" is-open="popup2.opened" ng-required="true" close-text="Close" />
+                  <span class="input-group-btn">
+                  <button type="button" class="btn btn-default" ng-click="open2()"><i class="glyphicon glyphicon-calendar"></i></button>
+                  </span>
+               </p>
+            </div>
+            <div class="col-md-2">                                       
+               <button class="btn btn-primary" ng-click="loadData()">Search</button>
+            </div>
+         </div>
+      </div>
+      <!-- END Main Dashboard Chart -->
+   </div>
+   <div class="col-md-12">
+      <div class="block">
+         <div class="block-header">
+            <div>
+               <h3 class="block-title">Total Customer created </h3>
+            </div>
+         </div>
+         <div class="block-content">
+            <div id="total_customer" style="height: 400px; min-width: 310px"></div>
+         </div>
+      </div>
+   </div>
+   <div class="col-md-12">
+      <div class="block">
+         <div class="block-header">
+            <div>
+               <h3 class="block-title">total by Time customer created </h3>
+            </div>
+         </div>
+         <div class="block-content">
+            <div id="customer_by_time" style="height: 400px; min-width: 310px"></div>
+         </div>
+      </div>
+   </div>
+   
+</div>
+</div>
+<!-- END Page Content -->

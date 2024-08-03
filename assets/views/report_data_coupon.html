@@ -1,0 +1,104 @@
+<!-- Page Header -->
+<div class="content bg-image overflow-hidden" style="background-image: url('assets/img/photos/photo3@2x.jpg');">
+    <div class="push-50-t push-15">
+        <h1 class="h2 text-white animated zoomIn">Data Coupon Report</h1>
+        <h2 class="h5 text-white-op animated zoomIn">Welcome {{managemnet_name}}</h2>
+    </div>
+</div>
+<!-- END Page Header -->
+<div class="content"  data-ng-init="loadData()">
+<div class="row">
+   <div class="col-md-12">
+      <div class="block">
+         <div class="block-header">
+            <div>
+               <h3 class="block-title">List Coupon</h3>
+            </div>
+         </div>
+         <div class="block-content">
+         <table id="tb_coupon_report" class="table table-bordered table-striped table-hover js-dataTable-full display responsive " cellspacing="0" width="100%">
+             <!--table table-bordered table-striped js-dataTable-full -->
+             <thead>
+                <tr style="background-color: #BCBCBC;color: white;">
+                   <th class="hidden-xs">Coupon ID</th>
+                   <th class="hidden-xs">Create Date</th>
+                   <th class="hidden-xs">Expiry Date</th>
+                   <th class="hidden-xs">Status</th>
+                   <th class="hidden-xs"></th>                  
+                </tr>
+             </thead>
+          </table>  
+         </div>                 
+      </div>
+   </div>
+   
+</div>
+<div class="content content-boxed">
+                    <!-- Header Tiles -->
+                    <div class="row">
+                        <div class="col-sm-6 col-md-3">
+                            <div class="block block-link-hover3 text-center" >
+                                <div class="block-content block-content-full">
+                                    <div class="h1 font-w700 text-success" id="div_total_order">0</div>
+                                </div>
+                                <div class="block-content block-content-full block-content-mini bg-gray-lighter text-success font-w600">Total Order</div>
+                            </div>
+                        </div>
+                         <div class="col-sm-6 col-md-3">
+                            <div class="block block-link-hover3 text-center" >
+                                <div class="block-content block-content-full">
+                                    <div class="h1 font-w700 text-success" id="div_total_items">0</div>
+                                </div>
+                                <div class="block-content block-content-full block-content-mini bg-gray-lighter text-success font-w600">Total Items</div>
+                            </div>
+                        </div>
+                         <div class="col-sm-6 col-md-3">
+                            <div class="block block-link-hover3 text-center" >
+                                <div class="block-content block-content-full">
+                                    <div class="h1 font-w700 text-success" id="div_order_completed">0</div>
+                                </div>
+                                <div class="block-content block-content-full block-content-mini bg-gray-lighter text-success font-w600">Order Completed</div>
+                            </div>
+                        </div>
+                         <div class="col-sm-6 col-md-3">
+                            <div class="block block-link-hover3 text-center" >
+                                <div class="block-content block-content-full">
+                                    <div class="h1 font-w700 text-success" id="div_order_cancel">0</div>
+                                </div>
+                                <div class="block-content block-content-full block-content-mini bg-gray-lighter text-success font-w600">Order Cancel</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END Header Tiles -->
+                    <section class="content content-full content-boxed">
+                      
+                    </section>
+                    <!-- All Products -->
+                    <div class="block">
+                        <div class="block-header bg-gray-lighter">                            
+                            <h3 class="block-title">All Order</h3>
+                        </div>
+                        <div class="block-content">
+                           <table id="tb_order_report" class="table table-bordered table-striped table-hover js-dataTable-full display responsive " cellspacing="0" width="100%">
+                             <!--table table-bordered table-striped js-dataTable-full -->
+                             <thead>
+                                <tr style="background-color: #BCBCBC;color: white;">
+                                   <th class="hidden-xs">Order ID</th>
+                                   <th class="hidden-xs">Name</th>
+                                   <th class="hidden-xs">Quantity</th>  
+                                   <th class="hidden-xs">Total Price</th>                                    
+                                   <th class="hidden-xs">Sales Time</th>
+                                   <th class="hidden-xs">Status</th> 
+                                </tr>
+                             </thead>
+                          </table>            
+                          <div id="img_load" class=" text-center" hidden="true">
+                            <img src="assets/js/plugins/datatableeditor/images/ajax-loader.gif" />
+                          </div> 
+                           
+                        </div>
+                    </div>
+                    <!-- END All Products -->
+                </div>
+</div>
+<!-- END Page Content -->

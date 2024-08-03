@@ -1,0 +1,124 @@
+<!-- Page Header -->
+<div class="content bg-image overflow-hidden" style="background-image: url('assets/img/photos/photo3@2x.jpg');">
+    <div class="push-50-t push-15">
+        <h1 class="h2 text-white animated zoomIn">Setting new product </h1>
+        <h2 class="h5 text-white-op animated zoomIn">Welcome {{managemnet_name}}</h2>
+    </div>
+</div>
+<!-- END Page Header -->
+<!-- Page Content -->
+<div class="content" data-ng-init="loadData()">
+   <div class="row">
+      <div class="col-md-12">
+         <!-- Main Dashboard Chart -->
+         <div class="block">
+            <div class="block-header">
+                 <div class="col-md-12 " style="margin-bottom: 50px;">
+                    <span class="block-title">List Item Setting</span>
+                 </div>
+                 <div class="col-md-12">
+                    <table id="tb_list_product" class="table table-bordered table-striped table-hover js-dataTable-full display responsive nowrap" cellspacing="0" width="100%">
+                         <!--table table-bordered table-striped js-dataTable-full -->
+                         <thead>
+                            <tr style="background-color: #BCBCBC;color: white;">                              
+                               <th class="hidden-xs">Product ID</th>
+                               <th class="hidden-xs">Name</th>
+                               <th class="hidden-xs">sku</th>
+                               <th class="hidden-xs">Main Name</th>
+                               <th class="hidden-xs">Sub Name</th>
+                               <th class="hidden-xs">Link</th>
+                               <th class="hidden-xs">Edit</th>
+                            </tr>
+                         </thead>
+                    </table>
+                 </div>
+            </div>
+         </div>
+         
+          <div class="block">
+            <div class="block-header">
+                 <div class="col-md-12 " style="margin-bottom: 50px;">
+                    <span class="block-title">Detail</span>
+                 </div>
+                 <div class="col-md-12">
+                   <div class="col-md-12 form-group">
+                                
+                                <div class="col-md-8">
+                                    <div class="col-md-3 "style="margin-top: 5px;">
+                                        <label for="txtItemName">Item Name</label>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <input type="text" class="form-control" id="txtItemName" readonly="true">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 form-group">
+                                <div class="col-md-6">
+                                    <div class="col-md-4" style="margin-top: 5px;">
+                                        <label for="txtItemID">Item ID</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <input type="text" class="form-control" id="txtItemID" readonly="true">
+                                    </div>
+                                 </div>                                
+                                 <div class="col-md-6">
+                                    <div class="col-md-4" style="margin-top: 5px;">
+                                        <label for="cboStatus">sku</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                         <input type="text" class="form-control" id="txtsku" readonly="true">
+                                    </div>
+                                 </div>
+                            </div>
+                            <div class="col-md-12 form-group">
+                                 <div class="col-md-6">
+                                    <div class="col-md-4" style="margin-top: 5px;">
+                                        <label for="txtMainName">Main Name</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <input type="text" class="form-control" id="txtMainName" >
+                                    </div>
+                                 </div> 
+                                 <div class="col-md-6">
+                                    <div class="col-md-4" style="margin-top: 5px;">
+                                        <label for="txtSubName">Sub Name</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <input type="text" class="form-control" id="txtSubName" >
+                                    </div>
+                                 </div>                                 
+                            </div>
+                            <div class="col-md-12 form-group">
+                                <div class="col-md-12 ">                                    
+                                      
+                                     <div class="col-md-12 text-center">
+                                     <label for="txtMainName">IMG Product</label>
+                                        <div class="push">
+                                            <img id="imgProduct" class="" src="assets/img/avatars/no-img.png" alt="">
+                                        </div>
+                                        <div class="text-center">
+                                            <!-- Populating custom file input label with the selected filename (data-toggle="custom-file-input" is initialized in Helpers.coreBootstrapCustomFileInput()) -->
+                                          
+                                            <input style="display: initial;" type="file"   data-toggle="custom-file-input" id="inputProduct"  onChange="return save_thums();">
+                                            
+                                            
+                                            <label class="custom-file-label" for="inputProduct">Choose a IMG Product</label>
+                                            <span class="text-warning" id="txt_thums_note"></span>
+                                        </div>
+                                     </div>
+                                        
+                                        
+                                  
+                                </div>
+                             </div>    
+                           
+                            <div>
+                                  <button class="col-md-offset-6 btn btn-info" id="btnChange">Update</button>
+                                  <img class="col-md-offset-6" id="imgloadchange" src="assets/js/plugins/datatableeditor/images/ajax-loader.gif" />
+                            </div>
+                 </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>

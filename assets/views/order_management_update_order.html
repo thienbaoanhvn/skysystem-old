@@ -1,0 +1,729 @@
+﻿<!-- Page Header -->
+<div class="content bg-image overflow-hidden" style="background-image: url('assets/img/photos/photo3@2x.jpg');">
+   <div class="push-50-t push-15">
+      <h1 class="h2 text-white animated zoomIn">Update Order</h1>
+      <h2 class="h5 text-white-op animated zoomIn">Welcome {{managemnet_name}}</h2>
+   </div>
+</div>
+<!-- END Page Header -->
+<!-- END Page Header -->
+<div class="content"  data-ng-init="loadData()">
+   <div class="row">
+      <div class="col-md-12">
+         <!-- Main Dashboard Chart -->
+         <div class="block">
+            <br />
+            <div class="block-header"  >
+               <div class="col-md-12">
+                  <div class="col-md-10">
+                    <div class="col-md-2">
+                        <select class="form-control" id="cboWarehouse">
+                           <option value="0" >TP.HCM</option>
+                           <option value="1">Ha Noi</option>                           
+                        </select>
+                    </div>
+                     <div class="col-md-4 ">
+                        <span style="padding-top: 5px;" class="col-md-4">From Date</span>
+                        <p class="input-group">
+                           <input type="text" class="form-control" uib-datepicker-popup ng-model="txtfromdate" is-open="popup1.opened" ng-required="true" close-text="Close" />
+                           <span class="input-group-btn">
+                           <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+                           </span>
+                        </p>
+                     </div>
+                     <div class="col-md-4">
+                        <span style="padding-top: 5px;" class="col-md-4">To Date</span>
+                        <p class="input-group">
+                           <input type="text" class="form-control" uib-datepicker-popup ng-model="txttodate" is-open="popup2.opened" ng-required="true" close-text="Close" />
+                           <span class="input-group-btn">
+                           <button type="button" class="btn btn-default" ng-click="open2()"><i class="glyphicon glyphicon-calendar"></i></button>
+                           </span>
+                        </p>
+                     </div>  
+                     <div class="col-md-2">
+                        <select class="form-control" id="cboShopSale">
+                           <option value="0" >All</option>
+                           <option value="1">Sky007</option>
+                           <option value="2">Wholesaler</option>
+                           <option value="3">Shopee Bbia</option>                           
+                           <option value="4">Lotte</option>                         
+                           <option value="5">Eglips</option>
+                           <option value="19">Eglips Wholesaler</option>
+                           <option value="6">Lazada</option>   
+                           <option value="7">Shopee Eglips</option>
+                           <option value="8">Lazada Eglips</option>   
+                           <option value="9">Robin</option>  
+                           <option value="10">Watson</option>
+                           <option value="11">Wholesaler Actsone</option>
+                           <option value="12">Wholesaler Jnain</option>
+                           <option value="13">Sendo</option>   
+                           <option value="20">Sociolla</option> 
+                           <option value="21">Bbiavn</option>                      
+                        </select>
+                     </div>
+                  </div>
+                  <div class="col-md-2">
+                     <button class="btn btn-success" ng-click="data_fillter()">Filter Report</button>
+                  </div>
+               </div>
+               <div class="col-md-12">   
+                <div class="col-md-3 col-md-offset-3">
+                    <input  type="file" id="input" accept="application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"></input>
+                    <label>Download this <a href="https://skyadmin.juloomob.net/assets/img/template_cancell.xlsx" download="">template  Excel file cancell</a></label>
+                </div>
+                                
+                <div class="col-md-2">
+                    <button class="btn btn-info" id="btnUpdateCancell">Update Cancel</button>
+                </div>
+                <div class="col-md-1">
+                     <a href="delivery.html" target="_blank">
+                        <button class="btn btn-info" type="button" id="btnFinalCheck" style="display: inline-block;"><i class="fa fa-newspaper-o"></i> Get Order ID</button>
+                    
+                    </a>
+               </div>
+               <div class="col-md-12">
+                  <div class="block">
+                     <div class="block-header">
+                        <div>
+                           <h3 class="block-title">List Order</h3>
+                        </div>
+                     </div>
+                     <div class="block-content">
+                        <table id="tb_list_order" class="table table-bordered table-striped table-hover js-dataTable-full display responsive " cellspacing="0" width="100%">
+                           <!--table table-bordered table-striped js-dataTable-full -->
+                           <thead>
+                              <tr style="background-color: #BCBCBC;color: white;">
+                                 <th class="hidden-xs">Order ID</th>
+                                 <th class="hidden-xs">Name</th>
+                                 <th class="hidden-xs">Address</th>
+                                 <th class="hidden-xs">Shop Type</th>
+                                 <th class="hidden-xs">Shop Delivery id</th>
+                                 <th class="hidden-xs">Shop Order ID</th>
+                                 <th class="hidden-xs">Phone Number</th>
+                                 <th class="hidden-xs">Order Time</th>
+                                 <th class="hidden-xs">Status</th>
+                                 <th class="hidden-xs">Total Price</th>
+                                 <th class="hidden-xs">Update</th>
+                                 <th class="hidden-xs">Cancel</th>
+                                 <th class="hidden-xs">Delete</th>
+                              </tr>
+                           </thead>
+                        </table>
+                        <div id="img_load" class=" text-center" hidden="true">
+                           <img src="assets/js/plugins/datatableeditor/images/ajax-loader.gif" />
+                        </div>
+                        <button id="btnNotifyFinish" class="js-notify btn btn-sm btn-success" data-js-notify="{type: 'success', align: 'center', icon: 'fa fa-check', message: 'Update completed . Thank you !'}"></button>
+                        <button id="btnNotifyFinishCancel" class="js-notify btn btn-sm btn-success" data-js-notify="{type: 'success', align: 'center', icon: 'fa fa-check', message: 'Update Cancell completed . Thank you !'}"></button>
+                     </div>
+                  </div>
+               </div>
+               <!-- END Page Content -->
+               <div class="row" id="div_update">
+                                                        <div class="col-xs-12">
+                                                            <div class="block block-themed">
+                                                                <div class="block-header bg-primary">
+                                                                    <ul class="block-options">
+                                                                        <li>
+                                                                            <button type="button" data-toggle="block-option" data-action="refresh_toggle" data-action-mode="demo"><i class="si si-refresh"></i></button>
+                                                                        </li>
+                                                                        <li>
+                                                                            <button type="button" data-toggle="block-option" data-action="content_toggle"></button>
+                                                                        </li>
+                                                                    </ul>
+                                                                    <h3 class="block-title">Customer Information</h3>
+                                                                </div>
+                                                                <div class="block-content">
+                                                                    <div class="form-horizontal">
+                                                                        <div class="form-group">
+                                                                            <div class="col-xs-4">
+                                                                                <div class="form-material floating input-group">
+                                                                                    <input type="text" class="form-control" id="txtOrderID" readonly>
+                                                                                    <label>Order ID</label>
+                                                                                    <span class="input-group-addon" ><i class="fa fa-barcode"></i></span>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-xs-4">
+                                                                                <div class="form-material floating input-group">
+                                                                                    <input type="text" class="form-control" id="txtShopType" readonly>
+                                                                                    <label >Shop Type</label>
+                                                                                    <span class="input-group-addon"><i class="fa fa-shopping-bag"></i></span>
+                                                                                </div>
+                                                                            </div>
+
+                                                                        </div>
+                                                                        <div id="div_shipping_info">
+                                                                            <div class="form-group">
+                                                                                <div class="col-xs-4">
+                                                                                    <div class="form-material floating input-group">
+                                                                                        <input type="text" class="form-control" id="txtPhone" readonly>
+                                                                                        <label>Phone Number</label>
+                                                                                        <span class="input-group-addon"><i class="fa fa-phone"></i></span>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="col-xs-4">
+                                                                                    <div class="form-material floating input-group">
+                                                                                        <input type="text" class="form-control" id="txtName" readonly>
+                                                                                        <label >Name</label>
+                                                                                        <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-xs-4">
+                                                                                    <div class="form-material floating input-group">
+                                                                                        <input type="text" class="form-control" id="txtEmail" readonly>
+                                                                                        <label>Email</label>
+                                                                                        <span class="input-group-addon"><i class="fa fa-envelope-o"></i></span>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-group">
+                                                                                <div class="col-xs-12">
+                                                                                    <div class="form-material floating input-group">
+                                                                                        <input type="text" class="form-control" id="txtAddress">
+                                                                                        <label for="txtAddress">Address</label>
+                                                                                        <span class="input-group-addon"><i class="fa fa-home"></i></span>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-group">
+                                                                                <div class="col-xs-4">
+                                                                                    <div class="form-material">
+                                                                                        <select id="cboCity" class="form-control">
+                                                                                            <option value="0">TP HCM</option>
+                                                                                            <option value="1">Hà Nội</option>
+                                                                                            <option value="1">Hải Phòng</option>
+                                                                                            <option value="0">Đà Nẵng</option>
+                                                                                            <option value="0">Cần Thơ</option>
+                                                                                            <option value="0">An Giang</option>
+                                                                                            <option value="0">Bà Rịa - Vũng Tàu</option>
+                                                                                            <option value="1">Bắc Giang</option>
+                                                                                            <option value="1">Bắc Kạn</option>
+                                                                                            <option value="0">Bạc Liêu</option>
+                                                                                            <option value="1">Bắc Ninh</option>
+                                                                                            <option value="0">Bến Tre</option>
+                                                                                            <option value="0">Bình Định</option>
+                                                                                            <option value="0">Bình Dương</option>
+                                                                                            <option value="0">Bình Phước</option>
+                                                                                            <option value="0">Bình Thuận</option>
+                                                                                            <option value="0">Cà Mau</option>
+                                                                                            <option value="1">Cao Bằng</option>
+                                                                                            <option value="0">Đắk Lắk</option>
+                                                                                            <option value="0">Đắk Nông</option>
+                                                                                            <option value="1">Điện Biên</option>
+                                                                                            <option value="0">Đồng Nai</option>
+                                                                                            <option value="0">Đồng Tháp</option>
+                                                                                            <option value="0">Gia Lai</option>
+                                                                                            <option value="1">Hà Giang</option>
+                                                                                            <option value="1">Hà Nam</option>
+                                                                                            <option value="1">Hà Tĩnh</option>
+                                                                                            <option value="1">Hải Dương</option>
+                                                                                            <option value="0">Hậu Giang</option>
+                                                                                            <option value="1">Hòa Bình</option>
+                                                                                            <option value="1">Hưng Yên</option>
+                                                                                            <option value="0">Kiên Giang</option>
+                                                                                            <option value="0">Khánh Hòa</option>
+                                                                                            <option value="0">Kon Tum</option>
+                                                                                            <option value="1">Lai Châu</option>
+                                                                                            <option value="0">Lâm Đồng</option>
+                                                                                            <option value="1">Lạng Sơn</option>
+                                                                                            <option value="1">Lào Cai</option>
+                                                                                            <option value="0">Long An</option>
+                                                                                            <option value="1">Nam Định</option>
+                                                                                            <option value="1">Nghệ An</option>
+                                                                                            <option value="1">Ninh Bình</option>
+                                                                                            <option value="0">Ninh Thuận</option>
+                                                                                            <option value="1">Phú Thọ</option>
+                                                                                            <option value="0">Quảng Bình</option>
+                                                                                            <option value="0">Quảng Nam</option>
+                                                                                            <option value="0">Quảng Ngãi</option>
+                                                                                            <option value="1">Quảng Ninh</option>
+                                                                                            <option value="0">Quảng Trị</option>
+                                                                                            <option value="0">Sóc Trăng</option>
+                                                                                            <option value="1">Sơn La</option>
+                                                                                            <option value="0">Tây Ninh</option>
+                                                                                            <option value="1">Thái Bình</option>
+                                                                                            <option value="1">Thái Nguyên</option>
+                                                                                            <option value="1">Thanh Hóa</option>
+                                                                                            <option value="0">Thừa Thiên Huế</option>
+                                                                                            <option value="0">Tiền Giang</option>
+                                                                                            <option value="0">Trà Vinh</option>
+                                                                                            <option value="1">Tuyên Quang</option>
+                                                                                            <option value="0">Vĩnh Long</option>
+                                                                                            <option value="1">Vĩnh Phúc</option>
+                                                                                            <option value="1">Yên Bái</option>
+                                                                                            <option value="0">Phú Yên</option>
+                                                                                            <option value="0">Another</option>
+                                                                                        </select>
+                                                                                        <label for="cboCity">City</label>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-xs-4">
+                                                                                    <div class="form-material">
+                                                                                        <select class="form-control" id="cboPayMethod">
+                                                                                            <option selected="true" value="0">Cash on Delivery</option>
+                                                                                            <option value="1">Direct payment</option>
+                                                                                            <option value="2">Bank Transfer</option>
+                                                                                            <option value="3">No pay</option>
+                                                                                        </select>
+                                                                                        <label for="cboPayMethod">Pay Method</label>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-xs-3">
+                                                                                    <div class="form-material">
+                                                                                        <select class="form-control" id="cboShippingFee">                                                                                           
+                                                                                            <option value="flat_rate:chuyen-phat-noi-thanh-hcm">Chuyen phat Noi Thanh(HCM)</option>
+                                                                                            <option value="flat_rate:chuyen-phat-noi-thanh-hanoi">Chuyen phat Noi Thanh(Hanoi)</option>
+                                                                                            <option value="flat_rate:chuyen-phat-tinh">Chuyen Phat Tinh</option>
+                                                                                            <option value="free_shipping">Free Shipping</option>
+                                                                                        </select>
+                                                                                        <label for="cboShippingFee">Shipping Fee</label>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-xs-1">
+                                                                                    <div class="form-material floating">
+                                                                                        <input type="text" class="form-control" id="txtShippingFee" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-group">
+                                                                                <div id="divDeliveryID" class="col-xs-4">
+                                                                                    <div class="form-material floating input-group">
+                                                                                        <input type="text" class="form-control" id="txtDeliveryID">
+                                                                                        <label for="txtDeliveryID">Delivery ID</label>
+                                                                                        <span class="input-group-addon"><i class="fa fa-truck"></i></span>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div id="divShopOrderID" class="col-xs-4">
+                                                                                    <div class="form-material floating input-group">
+                                                                                        <input type="text" class="form-control" id="txtShopOrderID">
+                                                                                        <label for="txtShopOrderID">Shop Order ID</label>
+                                                                                        <span class="input-group-addon"><i class="fa fa-barcode"></i></span>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div id="divParentID" class="col-xs-4">
+                                                                                    <div class="form-material floating input-group">
+                                                                                        <input type="text" class="form-control" id="txtParentID">
+                                                                                        <label for="txtParentID">Parent ID</label>
+                                                                                        <span class="input-group-addon"><i class="fa fa-child"></i></span>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-group">
+                                                                                <div id="divDeliveryType" class="col-xs-4">
+
+                                                                                </div>
+                                                                                <div class="col-sm-4">
+                                                                                    <div class="form-group">
+                                                                                        <div class="col-xs-12">
+                                                                                            <label for="txtNote">Customer Noted</label>
+                                                                                            <textarea class="form-control input-lg" id="txtNote" rows="2" placeholder="Enter a few details about customer noted.."></textarea>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-sm-4">
+                                                                                    <div class="form-group">
+                                                                                        <div class="col-xs-12">
+                                                                                            <label for="txtNotePackaging">Note For Admin Packaging</label>
+                                                                                            <textarea class="form-control input-lg" id="txtNotePackaging" rows="2" placeholder="Enter a few details about packing admin.."></textarea>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div id="divListOrder">
+                                                            <div class="col-xs-12">
+                                                                <div class="block block-themed">
+                                                                    <div class="block-header bg-primary">
+                                                                        <ul class="block-options">
+                                                                            <li>
+                                                                                <button type="button" data-toggle="block-option" data-action="refresh_toggle" data-action-mode="demo"><i class="si si-refresh"></i></button>
+                                                                            </li>
+                                                                            <li>
+                                                                                <button type="button" data-toggle="block-option" data-action="content_toggle"></button>
+                                                                            </li>
+                                                                        </ul>
+                                                                        <h3 class="block-title">List Order <span id="txtshopinfor"></span></h3>
+                                                                    </div>
+                                                                    <div class="block-content">
+                                                                        <div class="form-horizontal">
+                                                                            <div class="form-group">
+                                                                                <div class="col-xs-6">
+                                                                                    <table id="tb_list_product" class="table table-bordered table-striped table-hover js-dataTable-full display" cellspacing="0" width="100%">
+                                                                                        <!--table table-bordered table-striped js-dataTable-full -->
+                                                                                        <thead>
+                                                                                            <tr>
+                                                                                               <th class="hidden-xs">Product Name</th>
+                                                                                               <th class="hidden-xs">Price</th>
+                                                                                               <th class="hidden-xs">Stock</th>
+                                                                                               <th class="hidden-xs">SKU</th>
+                                                                                               <th class="hidden-xs">product Type</th>
+                                                                                               <th class="hidden-xs">Add Order</th>
+                                                                                            </tr>
+                                                                                        </thead>
+                                                                                    </table>
+                                                                                    <div id="div_list_item" class="text-center">
+                                                                                        <img src="assets/js/plugins/datatableeditor/images/ajax-loader.gif" />
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-md-6">
+
+                                                                                    <div class="col-md-12 form-group">
+                                                                                        <div class="col-md-6 text-center">
+                                                                                            <span>Name Product</span>
+                                                                                        </div>
+                                                                                        <div class="col-md-3 text-center">
+                                                                                            <span>Price</span>
+                                                                                        </div>
+                                                                                        <div class="col-md-2 text-center">
+                                                                                            <span>Quantity</span>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div id="div_list_order">
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-group">
+                                                                                <button class="col-md-offset-5 btn btn-rounded btn-primary" type="button" id="btnSaveUpdate"><i class="fa fa-floppy-o"></i> Update Order</button>
+
+                                                                                <div id="imgSave">
+                                                                                    <img class="col-md-offset-6" src="assets/js/plugins/datatableeditor/images/ajax-loader.gif" />
+                                                                                </div>
+                                                                                
+                                                                            </div>
+                                                                        </div>
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+
+                                                    </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <div class="modal fade" id="modal-delete" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-fromright modal-sm">
+                <div class="modal-content">
+                    <div class="block block-themed block-transparent remove-margin-b">
+                        <div class="block-header bg-primary-dark">
+                            <ul class="block-options">
+                                <li>
+                                    <button data-dismiss="modal" type="button"><i class="si si-close"></i></button>
+                                </li>
+                            </ul>
+                            <h3 class="block-title">Delete Order ! </h3>
+                        </div>
+                        <div class="block-content">
+                            <p>Reason for delete order ID <span class="text-danger " id="txt_modal_id_order"> </span> ?</p>
+                            <textarea rows="3" class="form-control" id="txtDeleteReason"></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class=" block block-header text-right text-success ">
+                            <label class="css-input css-checkbox css-checkbox-success">
+                                <input id="chkCBS" type="checkbox" name="chk-combine" value="0" checked=""><span></span> Cancel Before Sent
+                            </label>
+                            
+                        </div>
+                        <button class="btn btn-sm btn-default" type="button" data-dismiss="modal">Close</button>
+                        <button class="btn btn-sm btn-danger" id="btnDelete" order_id=""><i class="fa fa-check"></i> Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+   <!-- END Main Dashboard Chart -->
+</div>
+<div class="modal" id="modal-noted" tabindex="-1" role="dialog" aria-hidden="true">
+   <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+         <div class="block block-themed block-transparent remove-margin-b">
+            <div class="block-header bg-primary-dark">
+               <ul class="block-options">
+                  <li>
+                     <button data-dismiss="modal" type="button"><i class="si si-close"></i></button>
+                  </li>
+               </ul>
+               <h3 class="block-title">Reason cancel</h3>
+            </div>
+            <div class="block-content">
+               <div class="block-internal">
+                  <div class="form-horizontal">
+                     <div class="form-group">
+                        <div class="col-md-12">
+                           <p>Reason for cancell order ID <span class="text-danger " id="txt_modal_id_order_cancell"> </span> ?</p>
+                           <textarea id="txtNote_Cancel" cols="2" class="form-control" placeholder="Please note something.."></textarea>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="modal-footer">
+            <button class="btn btn-sm btn-default" type="button" data-dismiss="modal">Close</button>
+            <button class="btn btn-sm btn-primary" type="button" id="btn_save_note_cancel" order_id=""><i class="fa fa-check"></i> Ok</button>
+         </div>
+      </div>
+   </div>
+</div>
+<div class="modal" id="modal-detail-order" tabindex="-1" role="dialog" aria-hidden="true">
+   <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+         <div class="block block-themed block-transparent remove-margin-b">
+            <div class="block-header bg-primary-dark">
+               <ul class="block-options">
+                  <li>
+                     <button data-dismiss="modal" type="button"><i class="si si-close"></i></button>
+                  </li>
+               </ul>
+               <h3 class="block-title">Detail order</h3>
+            </div>
+            <div class="block-content">
+               <div class="text-center" >
+                  <span class="h3 text-primary">Customer Information</span>
+               </div>
+               <div class="col-md-12">
+                  <hr />
+               </div>
+               <div class="col-md-12 form-group">
+                  <div class="col-md-6">
+                     <div class="col-md-4">
+                        <label>Order ID :</label>
+                     </div>
+                     <div class="col-md-8 text-left">
+                        <label class="text-info " id="lbl_order_id">1233</label>
+                     </div>
+                  </div>
+                  <div class="col-md-6">
+                     <div class="col-md-4">
+                        <label>Customer Name :</label>
+                     </div>
+                     <div class="col-md-8 text-left">
+                        <label class="text-info " id="lbl_customer_name">tran van teo</label>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-md-12 form-group">
+                  <div class="col-md-6">
+                     <div class="col-md-4">
+                        <label>Address :</label>
+                     </div>
+                     <div class="col-md-8 text-left">
+                        <label class="text-info " id="lbl_customer_address">tran van teo 123 sdfsdf3 asdas asda dasdas a asd asd</label>
+                     </div>
+                  </div>
+                  <div class="col-md-6">
+                     <div class="col-md-4">
+                        <label>Email :</label>
+                     </div>
+                     <div class="col-md-8 text-left">
+                        <label class="text-info " id="lbl_customer_email">tran van teo</label>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-md-12 form-group">
+                  <div class="col-md-6">
+                     <div class="col-md-4">
+                        <label>City :</label>
+                     </div>
+                     <div class="col-md-8 text-left">
+                        <label class="text-info " id="lbl_customer_city">Tp. Ho chi Minh</label>
+                     </div>
+                  </div>
+                  <div class="col-md-6">
+                     <div class="col-md-4">
+                        <label>Shipping fee :</label>
+                     </div>
+                     <div class="col-md-8 text-left">
+                        <label class="text-info " id="lbl_shipping_fee">20,000</label>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-md-12 form-group">
+                  <div class="col-md-6">
+                     <div class="col-md-4">
+                        <label>Pay Method :</label>
+                     </div>
+                     <div class="col-md-8 text-left">
+                        <label class="text-info " id="lbl_pay_method">No Pay</label>
+                     </div>
+                  </div>
+                  <div class="col-md-6">
+                     <div class="col-md-4">
+                        <label>Customer Type:</label>
+                     </div>
+                     <div class="col-md-8 text-left">
+                        <label class="text-info " id="lbl_customer_type">shopee</label>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-md-12 form-group">
+                  <div class="col-md-6">
+                     <div class="col-md-4">
+                        <label>Parent ID :</label>
+                     </div>
+                     <div class="col-md-8 text-left">
+                        <label class="text-info " id="lbl_parent_id">1234</label>
+                     </div>
+                  </div>
+                  <div class="col-md-6">
+                     <div class="col-md-4">
+                        <label>Delivery ID :</label>
+                     </div>
+                     <div class="col-md-8 text-left">
+                        <label class="text-info " id="lbl_delivery_id">4534sdfsdf</label>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-md-12 form-group">
+                  <div class="col-md-6">
+                     <div class="col-md-4">
+                        <label>Manager Create Order :</label>
+                     </div>
+                     <div class="col-md-8 text-left">
+                        <label class="text-info " id="lbl_manager_c_order">tran thi thanh thuy</label>
+                     </div>
+                  </div>
+                  <div class="col-md-6">
+                     <div class="col-md-4">
+                        <label>Create time :</label>
+                     </div>
+                     <div class="col-md-8 text-left">
+                        <label class="text-info " id="lbl_create_time">2017-12-01</label>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-md-12 form-group">
+                  <div class="col-md-6">
+                     <div class="col-md-4">
+                        <label>Manager Delete Order :</label>
+                     </div>
+                     <div class="col-md-8 text-left">
+                        <label class="text-info " id="lbl_manager_d_order">pham hai chau</label>
+                     </div>
+                  </div>
+                  <div class="col-md-6">
+                     <div class="col-md-4">
+                        <label>Delete time :</label>
+                     </div>
+                     <div class="col-md-8 text-left">
+                        <label class="text-info " id="lbl_manager_d_time">sdf  skdfsl lsd klslkjdf jl</label>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-md-12 form-group">
+                  <div class="col-md-6">
+                     <div class="col-md-4">
+                        <label>Manager cancel Order :</label>
+                     </div>
+                     <div class="col-md-8 text-left">
+                        <label class="text-info " id="lbl_manager_cancel_order">pham hai chau</label>
+                     </div>
+                  </div>
+                  <div class="col-md-6">
+                     <div class="col-md-4">
+                        <label>Cancel time :</label>
+                     </div>
+                     <div class="col-md-8 text-left">
+                        <label class="text-info " id="lbl_manager_cancel_time">sdf  skdfsl lsd klslkjdf jl</label>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-md-12 form-group">
+                  <div class="col-md-6">
+                     <div class="col-md-4">
+                        <label>Customer Note:</label>
+                     </div>
+                     <div class="col-md-8">                                              
+                        <label class="text-info " id="lbl_customer_note">sdf  skdfsl lsd klslkjdf jl</label>    
+                     </div>
+                  </div>
+                  <div class="col-md-6">
+                     <div class="col-md-4">
+                        <label>Reason Cancel:</label>
+                     </div>
+                     <div class="col-md-8">                                              
+                        <label class="text-info " id="lbl_reason_cancel">sdf  skdfsl lsd klslkjdf jl</label>    
+                     </div>
+                  </div>
+               </div>
+               <div class="text-center">                                    
+                  <span class="h3 text-primary">Item Order Information</span>
+               </div>
+               <div class="col-md-12">
+                  <div class="col-md-offset-5 form-group">
+                  </div>
+                  <div class="col-md-12 form-group">
+                     <div class="col-md-6 text-center">
+                        <span>Name Product</span>
+                     </div>
+                     <div class="col-md-3 text-center">
+                        <span>Price</span>
+                     </div>
+                     <div class="col-md-2 text-center">
+                        <span>Quantity</span>
+                     </div>
+                  </div>
+                  <div id="div_list_order">
+                  </div>
+               </div>
+               <div id="div_item_view">
+               </div>
+               <div>                                    
+               </div>
+            </div>
+         </div>
+         <div class="modal-footer">
+            <button class="btn btn-sm btn-default" type="button" data-dismiss="modal">Close</button>                        
+         </div>
+      </div>
+     
+   </div>
+    
+</div>
+
+<!--If I had to live without you near me
+The days would all be empty
+The nights would seem so long
+With you I see forever oh, so clearly
+I might have been in love before
+But it never felt this strong
+
+Our dreams are young and we both know
+They'll take us where we want to go
+Hold me now, touch me now
+I don't want to live without you.
+
+Nothings gonna change my love for you
+You oughta know by now how much I love you
+One thing you can be sure of
+I'll never ask for more than your love
+
+Nothing's gonna change my love for you
+You ought know by now how much I love you
+The world may change my whole life through
+But nothing's gonna change my love for you
+
+If the road ahead is not so easy,
+Our love will lead the way for us
+Like a guiding star
+I'll be there for you if you should need me
+You don't have to change a thing
+I love you just the way you are
+So come with me and share the view
+I'll help you see forever too.
+
+Hold me now, touch me now
+I don't want to live without you.
+
+Nothings gonna change my love for you
+You ought to know by now how much I love you
+The world may change my whole life through
+But nothings gonna change my love for you.
+/-!>

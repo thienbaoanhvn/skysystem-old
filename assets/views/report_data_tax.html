@@ -1,0 +1,111 @@
+<!-- Page Header -->
+<div class="content bg-image overflow-hidden" style="background-image: url('assets/img/photos/photo3@2x.jpg');">
+   <div class="push-50-t push-15">
+      <h1 class="h2 text-white animated zoomIn">Tax</h1>
+      <h2 class="h5 text-white-op animated zoomIn">Welcome {{managemnet_name}}</h2>
+   </div>
+</div>
+<!-- END Page Header -->
+<!-- Stats -->
+
+<!-- END Stats -->
+<!-- Page Content -->
+<div class="content"  data-ng-init="loadData();">
+<div class="row">
+   
+  <div class="col-md-12">
+      <!-- Main Dashboard Chart -->
+      <div class="block">
+         <br />
+         <div class="block-header"  >  
+                   <div class="col-md-12 form-group">
+                       <div class="col-md-6">
+                            <div class="col-md-4">
+                                <span for="cboBrand">Brand Name</span>
+                            </div>
+                            <div class="col-md-8">
+                              <select class="form-control" id="cboBrand">
+                                 <option value="0" >All</option>
+                                 <option value="1">Bbia</option>
+                                 <option value="2">Eglips</option>   
+                                 <option value="3">Another</option>                                                              
+                              </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="col-md-4">
+                                <span for="cboShopSale">Shop Sale</span>
+                            </div>
+                            <div class="col-md-8">
+                              <select class="form-control" id="cboShopSale">
+                                 <option value="0">All</option>
+                                 <option value="1">Sky007</option>
+                                 <option value="2">Wholesaler</option>
+                                 <option value="3">Shopee</option>
+                                 <option value="4">Lotte</option>
+                                 <option value="5">Sendo</option> 
+                                 <option value="6">Eglips</option>  
+                                 <option value="7">Lazada</option>                              
+                              </select>
+                            </div>
+                        </div> 
+                   </div>         
+                  <div class="col-md-12">                      
+                   <div class="col-md-6 ">
+                      <span style="padding-top: 5px;" class="col-md-4">From Date</span>
+                      <p class="input-group">
+                         <input type="text" class="form-control" uib-datepicker-popup ng-model="txtfromdate" is-open="popup1.opened" ng-required="true" close-text="Close" />
+                         <span class="input-group-btn">
+                         <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+                         </span>
+                      </p>
+                   </div>
+                   <div class="col-md-6">
+                      <span style="padding-top: 5px;" class="col-md-4">To Date</span>
+                      <p class="input-group">
+                         <input type="text" class="form-control" uib-datepicker-popup ng-model="txttodate" is-open="popup2.opened" ng-required="true" close-text="Close" />
+                         <span class="input-group-btn">
+                         <button type="button" class="btn btn-default" ng-click="open2()"><i class="glyphicon glyphicon-calendar"></i></button>
+                         </span>
+                      </p>
+                   </div>                   
+               </div>
+               <div class="col-md-offset-6">
+                    <button class="btn btn-success" ng-click="data_fillter()">Filter Report</button>
+               </div> 
+         </div>
+      </div>
+      <!-- END Main Dashboard Chart -->
+   </div>   
+   <div class="col-md-12">
+      <div class="block">
+         <div class="block-header">
+            <div>
+               <h3 class="block-title">Tax history for {{expressions_shop_sale}}</h3>
+            </div>
+         </div>
+         <div class="block-content">
+         <table id="tb_tax" class="table table-bordered table-striped table-hover js-dataTable-full display responsive " cellspacing="0" width="100%">
+             <!--table table-bordered table-striped js-dataTable-full -->
+             <thead>
+                <tr style="background-color: #BCBCBC;color: white;">
+                   <th class="hidden-xs">Order Date</th>
+                   <th class="hidden-xs">Categories</th>
+                   <th class="hidden-xs">Order ID</th>                                                       
+                   <th class="hidden-xs">Order Status</th>
+                   <th class="hidden-xs">Item Name</th> 
+                   <th class="hidden-xs">Price</th>
+                   <th class="hidden-xs">Tax(10%)</th>                  
+                </tr>
+             </thead>
+          </table>            
+          <div id="img_load" class=" text-center" hidden="true">
+            <img src="assets/js/plugins/datatableeditor/images/ajax-loader.gif" />
+           </div> 
+         </div>
+      </div>
+   </div>
+  
+</div>
+</div>
+<!-- END Page Content -->

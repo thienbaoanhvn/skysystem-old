@@ -1,0 +1,339 @@
+<!-- Page Header -->
+<div class="content bg-image overflow-hidden" style="background-image: url('assets/img/photos/photo3@2x.jpg');">
+    <div class="push-50-t push-15">
+        <h1 class="h2 text-white animated zoomIn">Data Shop Items Report</h1>
+        <h2 class="h5 text-white-op animated zoomIn">Welcome {{managemnet_name}}</h2>
+    </div>
+</div>
+<!-- END Page Header -->
+
+<div class="content"  data-ng-init="loadData()">
+<div class="row">
+   <div class="col-md-12">
+      <!-- Main Dashboard Chart -->
+      <div class="block">
+         <br />
+         <div class="block-header"  >           
+                  <div class="col-md-12"> 
+                            <div class="col-md-2">
+                            <span style="padding-top: 5px;" class="col-md-6">Company</span>
+                            <p class="input-group col-md-6" >
+                                <select class="form-control" id="cboCompany">
+                                     <option value="0" selected>ACTSONE</option>
+                                     <option value="1" >JNAIN</option>                                                      
+                                </select>
+                            </p>
+                          </div> 
+                           <div class="col-md-3 ">
+                              <span style="padding-top: 5px;" class="col-md-4">From Date</span>
+                              <p class="input-group">
+                                 <input type="text" class="form-control" uib-datepicker-popup ng-model="txtfromdate" is-open="popup1.opened" ng-required="true" close-text="Close" />
+                                 <span class="input-group-btn">
+                                 <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+                                 </span>
+                              </p>
+                           </div>
+                           <div class="col-md-3">
+                              <span style="padding-top: 5px;" class="col-md-4">To Date</span>
+                              <p class="input-group">
+                                 <input type="text" class="form-control" uib-datepicker-popup ng-model="txttodate" is-open="popup2.opened" ng-required="true" close-text="Close" />
+                                 <span class="input-group-btn">
+                                 <button type="button" class="btn btn-default" ng-click="open2()"><i class="glyphicon glyphicon-calendar"></i></button>
+                                 </span>
+                              </p>
+                           </div>   
+                           <!--div class="col-md-2 form-group">
+                            <select class="form-control" id="cboProductType">
+                                 <option value="0" >Hand Carried Product</option>
+                                 <option value="1">Regular Product</option>   
+                                 <option selected value="2">Combined Product</option>                      
+                            </select>
+                          </div-->
+                          <div class="col-md-2 form-group">
+                            <select class="form-control" id="cbobrain">
+                                 <option selected value="0" >ALL</option>
+                                 <option value="1">Bbia</option>   
+                                 <option value="2">Hince</option> 
+                                 <option value="3">Mixsoon</option>                      
+                            </select>
+                          </div>   
+               </div>
+                <div class="col-md-offset-5 col-md-2">
+                        <button type="button" class="btn btn-sm btn-primary push" data-toggle="modal" data-target="#modal_shop">Shop Report</button>
+                     </div>
+         </div>
+      </div>
+      <!-- END Main Dashboard Chart -->
+   </div>   
+   <div class="col-md-12">
+      <div class="block">
+         <div class="block-header">
+            <div>
+               <h3 class="block-title">Data Shop Items Report</h3>
+            </div>
+         </div>
+         <div class="block-content">
+         <table id="tb_item_report" class="table table-bordered table-striped table-hover js-dataTable-full display responsive " cellspacing="0" width="100%">
+             <!--table table-bordered table-striped js-dataTable-full -->
+             
+          </table>            
+           <div id="img_load" class=" text-center" hidden="true">
+            <img src="assets/js/plugins/datatableeditor/images/ajax-loader.gif" />
+           </div>
+         </div>
+      </div>
+   </div>
+   
+</div>
+</div>
+<!-- END Page Content -->
+
+
+
+
+<div class="modal fade" id="modal_shop" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog ">
+        <div class="modal-content">
+            <div class="block block-themed block-transparent remove-margin-b">
+                <div class="block-header ">
+                    <ul class="block-options">
+                        <li>
+                            <button data-dismiss="modal" type="button"><i class="si si-close"></i></button>
+                        </li>
+                    </ul>
+                    <h3 id="txtlbl" class="text-center">Shop Report</h3>
+                </div>
+                <div class="block-header">
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                          
+                                <div id="div_actsone" class="col-xs-12">
+                                    <p class="col-xs-12 text-primary">Actsone<p>
+                                    <div class="col-xs-4">
+                                        <label class="css-input css-checkbox css-checkbox-sm css-checkbox-primary">
+                                            <input  id="chkSky007" type="checkbox" ><span></span> Sky007
+                                        </label>
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <label class="css-input css-checkbox css-checkbox-sm css-checkbox-primary">
+                                            <input  id="chkSky007MT" type="checkbox" ><span></span> Sky007 MT
+                                        </label>
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <label class="css-input css-checkbox css-checkbox-sm css-checkbox-primary">
+                                            <input  id="chkWholesaler"type="checkbox" ><span></span> Wholesaler
+                                        </label>
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <label class="css-input css-checkbox css-checkbox-sm css-checkbox-primary">
+                                            <input checked="checked"  id="chkShopeeBbia" type="checkbox" ><span></span> Shopee Bbia
+                                        </label>
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <label class="css-input css-checkbox css-checkbox-sm css-checkbox-primary">
+                                            <input  id="chkShopeeBbiaMT" type="checkbox" ><span></span> Shopee Bbia MT
+                                        </label>
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <label class="css-input css-checkbox css-checkbox-sm css-checkbox-primary">
+                                            <input  id="chkLazadaBbia" type="checkbox" ><span></span> Lazada Bbia
+                                        </label>
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <label class="css-input css-checkbox css-checkbox-sm css-checkbox-primary">
+                                            <input  id="chkLazadaBbiaMT" type="checkbox" ><span></span> Lazada Bbia MT
+                                        </label>
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <label class="css-input css-checkbox css-checkbox-sm css-checkbox-primary">
+                                            <input  id="chkWholesalerJnain" type="checkbox" ><span></span> Wholesaler Jnain
+                                        </label>
+                                    </div>
+                                     <div class="col-xs-4">
+                                        <label class="css-input css-checkbox css-checkbox-sm css-checkbox-primary">
+                                            <input  id="chkBeautybox" type="checkbox" ><span></span> Beautybox
+                                        </label>
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <label class="css-input css-checkbox css-checkbox-sm css-checkbox-primary">
+                                            <input  id="chkBeautyboxMT" type="checkbox" ><span></span> Beautybox MT
+                                        </label>
+                                    </div>
+                                     <div class="col-xs-4">
+                                        <label class="css-input css-checkbox css-checkbox-sm css-checkbox-primary">
+                                            <input  id="chkTikiBbia" type="checkbox" ><span></span> Tiki Bbia
+                                        </label>
+                                    </div>
+                                     <div class="col-xs-4">
+                                        <label class="css-input css-checkbox css-checkbox-sm css-checkbox-primary">
+                                            <input  id="chkTikiBbiaMT" type="checkbox" ><span></span> Tiki Bbia MT
+                                        </label>
+                                    </div>
+                                     <div class="col-xs-4">
+                                        <label class="css-input css-checkbox css-checkbox-sm css-checkbox-primary">
+                                            <input  id="chkSociolla" type="checkbox" ><span></span> Sociolla
+                                        </label>
+                                    </div>
+                                     <div class="col-xs-4">
+                                        <label class="css-input css-checkbox css-checkbox-sm css-checkbox-primary">
+                                            <input  id="chkSociollaMT" type="checkbox" ><span></span> Sociolla MT
+                                        </label>
+                                    </div>
+                                     <div class="col-xs-4">
+                                        <label class="css-input css-checkbox css-checkbox-sm css-checkbox-primary">
+                                            <input  id="chkBbiavn" type="checkbox" ><span></span> Bbiavn
+                                        </label>
+                                    </div>
+                                     <div class="col-xs-4">
+                                        <label class="css-input css-checkbox css-checkbox-sm css-checkbox-primary">
+                                            <input  id="chkBbiavnMT" type="checkbox" ><span></span> Bbiavn MT
+                                        </label>
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <label class="css-input css-checkbox css-checkbox-sm css-checkbox-primary">
+                                            <input  id="chkMixsoon" type="checkbox" ><span></span> Mixsoon website
+                                        </label>
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <label class="css-input css-checkbox css-checkbox-sm css-checkbox-primary">
+                                            <input  id="chkMixsoonMT" type="checkbox" ><span></span> Mixsoon website MT
+                                        </label>
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <label class="css-input css-checkbox css-checkbox-sm css-checkbox-primary">
+                                            <input  id="chkGuardian" type="checkbox" ><span></span> Guardian
+                                        </label>
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <label class="css-input css-checkbox css-checkbox-sm css-checkbox-primary">
+                                            <input  id="chkGuardianMT" type="checkbox" ><span></span> Guardian MT
+                                        </label>
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <label class="css-input css-checkbox css-checkbox-sm css-checkbox-primary">
+                                            <input  id="chkMixsoonShopee" type="checkbox" ><span></span> Mixsoon Shopee
+                                        </label>
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <label class="css-input css-checkbox css-checkbox-sm css-checkbox-primary">
+                                            <input  id="chkMixsoonShopeeMT" type="checkbox" ><span></span> Mixsoon Shopee MT
+                                        </label>
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <label class="css-input css-checkbox css-checkbox-sm css-checkbox-primary">
+                                            <input  id="chkMixsoonLazada" type="checkbox" ><span></span> Mixsoon Lazada
+                                        </label>
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <label class="css-input css-checkbox css-checkbox-sm css-checkbox-primary">
+                                            <input  id="chkMixsoonLazadaMT" type="checkbox" ><span></span> Mixsoon Lazada MT
+                                        </label>
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <label class="css-input css-checkbox css-checkbox-sm css-checkbox-primary">
+                                            <input  id="chkTiktokSky007" type="checkbox" ><span></span> Tiktok Sky007
+                                        </label>
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <label class="css-input css-checkbox css-checkbox-sm css-checkbox-primary">
+                                            <input  id="chTiktokSky007MT" type="checkbox" ><span></span> Tiktok Sky007 MT
+                                        </label>
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <label class="css-input css-checkbox css-checkbox-sm css-checkbox-primary">
+                                            <input  id="chkWatsonBbia" type="checkbox" ><span></span> Watson Bbia
+                                        </label>
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <label class="css-input css-checkbox css-checkbox-sm css-checkbox-primary">
+                                            <input  id="chkWatsonBbiaMT" type="checkbox" ><span></span> Watson Bbia MT
+                                        </label>
+                                    </div>
+                                </div>  
+                                
+                                <div id="div_jnain" class="col-xs-12">
+                                    <p class="col-xs-12 text-primary">Jnain<p>
+                                    <div class="col-xs-4">
+                                        <label class="css-input css-checkbox css-checkbox-sm css-checkbox-primary">
+                                            <input  id="chkHince" type="checkbox" ><span></span> Hince
+                                        </label>
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <label class="css-input css-checkbox css-checkbox-sm css-checkbox-primary">
+                                            <input  id="chkHinceMT" type="checkbox" ><span></span> Hince MT
+                                        </label>
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <label class="css-input css-checkbox css-checkbox-sm css-checkbox-primary">
+                                            <input  id="chkWholesalerEglips"type="checkbox" ><span></span> Wholesaler
+                                        </label>
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <label class="css-input css-checkbox css-checkbox-sm css-checkbox-primary">
+                                            <input checked="checked" id="chkShopeeHince" type="checkbox" ><span></span> Shopee Hince
+                                        </label>
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <label class="css-input css-checkbox css-checkbox-sm css-checkbox-primary">
+                                            <input  id="chkShopeeHinceMT" type="checkbox" ><span></span> Shopee Hince MT
+                                        </label>
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <label class="css-input css-checkbox css-checkbox-sm css-checkbox-primary">
+                                            <input  id="chkLazadaHince" type="checkbox" ><span></span> Lazada Hince
+                                        </label>
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <label class="css-input css-checkbox css-checkbox-sm css-checkbox-primary">
+                                            <input  id="chkLazadaHinceMT" type="checkbox" ><span></span> Lazada Hince MT
+                                        </label>
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <label class="css-input css-checkbox css-checkbox-sm css-checkbox-primary">
+                                            <input  id="chkWatsons" type="checkbox" ><span></span> Watsons
+                                        </label>
+                                    </div>
+                                     <div class="col-xs-4">
+                                        <label class="css-input css-checkbox css-checkbox-sm css-checkbox-primary">
+                                            <input  id="chkWatsonsMT" type="checkbox" ><span></span> Watsons MT
+                                        </label>
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <label class="css-input css-checkbox css-checkbox-sm css-checkbox-primary">
+                                            <input  id="chkWholesalerActsone" type="checkbox" ><span></span> Wholesaler Actsone
+                                        </label>
+                                    </div>
+                                    <!--div class="col-xs-4">
+                                        <label class="css-input css-checkbox css-checkbox-sm css-checkbox-primary">
+                                            <input  id="chkTikiHince" type="checkbox" ><span></span> Tiki Hince
+                                        </label>
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <label class="css-input css-checkbox css-checkbox-sm css-checkbox-primary">
+                                            <input  id="chkTikiHinceMT" type="checkbox" ><span></span> Tiki Hince MT
+                                        </label>
+                                    </div -->
+                                    <div class="col-xs-4">
+                                        <label class="css-input css-checkbox css-checkbox-sm css-checkbox-primary">
+                                            <input  id="chkTiktokHince" type="checkbox" ><span></span> Tiktok Hince
+                                        </label>
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <label class="css-input css-checkbox css-checkbox-sm css-checkbox-primary">
+                                            <input  id="chkTiktokHinceMT" type="checkbox" ><span></span> Tiktok Hince MT
+                                        </label>
+                                    </div>
+                                </div>                                
+                              
+                        </div>
+                    </div>               
+                  
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-sm btn-default" type="button" data-dismiss="modal">Close</button>
+                <button class="btn btn-sm btn-primary" ng-click="data_fillter()" data-dismiss="modal"><i class="fa fa-check"></i>Filter Report</button>    
+            </div>
+        </div>
+    </div>
+</div>
