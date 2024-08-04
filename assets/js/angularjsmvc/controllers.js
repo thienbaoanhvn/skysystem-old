@@ -20287,22 +20287,36 @@ App.controller('SsettingmembershipCtrl', ['$scope', '$localStorage', '$window', 
       //  limit_permisstion_menu("chkSsettingtiki");      
         
         $scope.loadData = function() {            
-            get_list_product();
+            // 0 :sky007vn ; 1:bbia ; 2:hince 
+            get_list_product(0);
         //    loaddata_event();
                  
         }
-        function get_list_product() {
-            //alert(123);
-            var shoptype=0 ; // 0 :sky007vn ; 1:bbia ; 2:hince 
+        function get_list_product(shoptype) {              
             $.ajax({
                 url: "assets/js/connect/gateway.php?controller=ct_skysys.ct_setting_event_get_list_product",
                 type: "POST",
                 data: {
                     "shoptype": shoptype
                 },
-                success: function(d) {
-                    // console.log(d);return;
+                success: function(d) {      
                     var data = $.parseJSON(d);
+
+                    var categories = data.categories;
+                    var $categoriesSelect = $('#categories');
+        
+                    // Clear existing options except the first one
+                    $categoriesSelect.find('option:not(:first)').remove();
+        
+                    // Populate the select element with categories
+                    $.each(categories, function(index, category) {
+                        var option = $('<option></option>')
+                            .attr('value', category.term_id)
+                            .text(category.name);
+                        $categoriesSelect.append(option);
+                    });
+
+                    var products = data.products
                     var table = $('#tb_list_item_sky007').DataTable();
                     table.destroy();
 
@@ -20311,7 +20325,7 @@ App.controller('SsettingmembershipCtrl', ['$scope', '$localStorage', '$window', 
                             [2, "desc"]
                         ],
                         pageLength: 5,
-                        data: data,
+                        data: products,
                         lengthMenu: [
                             [5, 10, 20, 30, 50, -1],
                             [5, 10, 20, 30, 50, "ALL"]
@@ -20341,7 +20355,7 @@ App.controller('SsettingmembershipCtrl', ['$scope', '$localStorage', '$window', 
                                     var price = full["sale_price"];
                                     var stock = full["stock"];
                                     var sku = full["sku"];
-                                    var html = '<button class="btn btn-info" ng-click="add_event_sky007_html(\'' + id + '\',\'' + name + '\',\'' + sku + '\')">Add</button>';
+                                    var html = '<button class="btn btn-info" ng-click="add_event_html(\'' + id + '\',\'' + name + '\',\'' + sku + '\',\'' + shoptype + '\')">Add</button>';
                                     return html;
                                 }
                             }
@@ -20357,13 +20371,20 @@ App.controller('SsettingmembershipCtrl', ['$scope', '$localStorage', '$window', 
             });
         }
         
-        $scope.add_event_sky007_html = function(id,  name, sku) {          
-            var shop_type=0;// 0 :sky007vn ; 1:bbia ; 2:hince 
+        $scope.add_event_html = function(id,  name, sku,shoptype) {          
+           // var shop_type=0;// 0 :sky007vn ; 1:bbia ; 2:hince 
+           var categories_id = $('#categories').val();
+           var categories_name = $('#categories option:selected').text();
+           if(categories_id==0){
+                alert("Please choose categories.");               
+           }else{           
             var obj = {
-                "item_id": id,               
+                "shoptype": shoptype,
+                "product_id": id,               
                 "product_name": name,
-                "sku": sku,
-                "shop_type":shop_type
+                "sku": sku,             
+                "category_id":categories_id,
+                "category_name":categories_name    
             };
             $.ajax({
                 url: "assets/js/connect/gateway.php?controller=ct_skysys.ct_setting_membership_insert",
@@ -20393,7 +20414,9 @@ App.controller('SsettingmembershipCtrl', ['$scope', '$localStorage', '$window', 
                 }
 
             });
+            }
             // console.log(id+'_'+name+'_'+stock);
+        
 
         }
 

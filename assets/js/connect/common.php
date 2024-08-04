@@ -30,7 +30,8 @@
     }
     function common_connect_bbia(){ 
         // $con=mysqli_connect('61.100.180.32','root','dorcmdnjsepqm1#','sky007');
-         $con=mysqli_connect('61.100.180.32','root','dorcmdnjs123#AB#','bbia')or die("not connect!");
+       //  $con=mysqli_connect('61.100.180.32','root','dorcmdnjs123#AB#','bbia')or die("not connect!");
+       $con=mysqli_connect('171.244.188.27','actsonevn','actsone123!','bbiavn');
     // Check connection
         if (mysqli_connect_errno()) {
             echo "Failed to connect to MySQL: " . mysqli_connect_error();
@@ -40,8 +41,8 @@
         return $con;
     }
     function common_connect_sky007(){         
-         $con=mysqli_connect('45.32.113.241','root','dorcmdnjs123#AB#AB#','sky007v3')or die("not connect!");
-       //   $con=mysqli_connect('61.100.180.32','root','dorcmdnjs123#AB#','sky007v3');
+      //   $con=mysqli_connect('45.32.113.241','root','dorcmdnjs123#AB#AB#','sky007v3')or die("not connect!");
+          $con=mysqli_connect('171.244.188.27','actsonevn','actsone123!','sky007v2');
     // Check connection
         if (mysqli_connect_errno()) {
             echo "Failed to connect to MySQL: " . mysqli_connect_error();
@@ -63,7 +64,8 @@
         return $con;
     }
     function common_connect_mixsoon(){         
-         $con=mysqli_connect('45.32.113.241','root','dorcmdnjs123#AB#AB#','wordpress')or die("not connect!");
+        $con=mysqli_connect('171.244.188.27','actsonevn','actsone123!','mixsoonvn');
+      //   $con=mysqli_connect('45.32.113.241','root','dorcmdnjs123#AB#AB#','wordpress')or die("not connect!");
        //   $con=mysqli_connect('61.100.180.32','root','dorcmdnjs123#AB#','sky007v3');
     // Check connection
         if (mysqli_connect_errno()) {
@@ -73,8 +75,9 @@
     	mysqli_set_charset($con,"utf8");
         return $con;
     }
-    function common_connect_hince(){         
-         $con=mysqli_connect('45.32.113.241','root','dorcmdnjs123#AB#AB#','hince')or die("not connect!");
+    function common_connect_hince(){      
+        $con=mysqli_connect('171.244.188.27','actsonevn','actsone123!','hincevn');   
+        // $con=mysqli_connect('45.32.113.241','root','dorcmdnjs123#AB#AB#','hince')or die("not connect!");
        //   $con=mysqli_connect('61.100.180.32','root','dorcmdnjs123#AB#','sky007v3');
     // Check connection
         if (mysqli_connect_errno()) {

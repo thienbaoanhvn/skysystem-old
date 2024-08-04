@@ -8693,44 +8693,74 @@ class sever_skysys
          
         //==================== End setting flash sale ===================
         public function sv_setting_event_get_list_product($shop_type){           
-            $db_sky007=common_connect_sky007();  
-            $db_hince=common_connect_hince();
-            $db_bbia=common_connect_bbia();
-            $result="";
-            if($shop_type==0){
-               $result=mysqli_query($db_sky007,"SELECT p.id,p.post_title AS `product_name` ,
-                                                           MAX( CASE WHEN pm.meta_key = '_sku' AND p.ID = pm.post_id THEN pm.meta_value END ) AS sku
-                                                        FROM `aowp_posts` p  
-                                                        	LEFT JOIN `aowp_postmeta` pm ON p.id=pm.post_id
-                                                        WHERE  p.post_type IN ('product','product_variation')  AND p.post_status!='draft'  AND p.post_status!='trash' 
-                                                        GROUP BY p.id"); 
-            }else if($shop_type==1){
-               $result=mysqli_query($db_bbia,"SELECT p.id,p.post_title AS `product_name` ,
-                                                   MAX( CASE WHEN pm.meta_key = '_sku' AND p.ID = pm.post_id THEN pm.meta_value END ) AS sku
-                                                FROM `wp_posts` p  
-                                                	LEFT JOIN `wp_postmeta` pm ON p.id=pm.post_id
-                                                WHERE  p.post_type IN ('product','product_variation')  AND p.post_status!='draft'  AND p.post_status!='trash' AND p.post_title !='' AND p.post_parent =0
-                                                GROUP BY p.id"); 
-            }else if($shop_type==2){
-               $result=mysqli_query($db_hince,"SELECT p.id,p.post_title AS `product_name` ,
-                           MAX( CASE WHEN pm.meta_key = '_sku' AND p.ID = pm.post_id THEN pm.meta_value END ) AS sku   
-                        FROM `wp_hince_posts` p  
-                        	LEFT JOIN `wp_hince_postmeta` pm ON p.id=pm.post_id
-                        WHERE  p.post_type IN ('product','product_variation')  AND p.post_status!='draft'  AND p.post_status!='trash' AND p.post_parent =0
-                        GROUP BY p.id"); 
-            }
+            $db_sky007 = common_connect_sky007();  
+            $db_hince = common_connect_hince();
+            $db_bbia = common_connect_bbia();
             
-                                                        
-            $rows=array();          
-            while($row=mysqli_fetch_array($result)){ 
-                    array_push($rows,$row);               
+            $db = null;
+            $prefix = "";
+            
+            switch ($shop_type) {
+                case 0:
+                    $db = $db_sky007;
+                    $prefix = "aowp_";
+                    break;
+                case 1:
+                    $db = $db_bbia;
+                    $prefix = "wp_";
+                    break;
+                case 2:
+                    $db = $db_hince;
+                    $prefix = "wp_hince_";
+                    break;
+                default:
+                    echo json_encode(array('error' => 'Invalid shop type'));
+                    return;
+            }
+            $sv= new sever_skysys();            
+            
+            $result = $sv->get_product_list($db, $prefix);
+            $list_category = $sv->get_category_list($db, $prefix);
+            
+            $products = array();          
+            while ($row = mysqli_fetch_array($result)) { 
+                array_push($products, $row);               
+            }
+        
+            $categories = array();          
+            while ($category = mysqli_fetch_array($list_category)) { 
+                array_push($categories, $category);               
             } 
-            echo json_encode($rows);
-             
+        
+            echo json_encode(array(
+                'products' => $products,
+                'categories' => $categories
+            ));
+        
             common_close_connect($db_sky007);
             common_close_connect($db_bbia);
             common_close_connect($db_hince);
         }
+        
+        function get_product_list($db, $prefix) {
+            return mysqli_query($db, "SELECT p.id, p.post_title AS product_name, 
+                                      MAX(CASE WHEN pm.meta_key = '_sku' AND p.ID = pm.post_id THEN pm.meta_value END) AS sku
+                                      FROM `{$prefix}posts` p  
+                                      LEFT JOIN `{$prefix}postmeta` pm ON p.id = pm.post_id
+                                      WHERE p.post_type IN ('product','product_variation') 
+                                      AND p.post_status != 'draft' 
+                                      AND p.post_status != 'trash'
+                                      AND (p.post_title != '' OR p.post_parent = 0)
+                                      GROUP BY p.id");
+        }
+        
+        function get_category_list($db, $prefix) {
+            return mysqli_query($db, "SELECT t.term_id, t.name, t.slug, tt.description
+                                      FROM `{$prefix}terms` t
+                                      JOIN `{$prefix}term_taxonomy` tt ON t.term_id = tt.term_id
+                                      WHERE tt.taxonomy = 'product_cat'");
+        }
+        
         public function sv_setting_event_sale_of_insert_event($obj){
             $item_id=$obj["item_id"];
             $name=$obj["product_name"];
@@ -8888,8 +8918,32 @@ class sever_skysys
             
         }
 //============ End Setting ============================================================================================== 
+//============ Setting membership event==================================================================================
+function sv_setting_membership_insert($obj){
+    $db="";
+    $shop_type=$obj["shoptype"];
+    // 0 :sky007vn ; 1:bbia ; 2:hince
+    if($shop_type==0){
+        $db=common_connect_sky007();
+    }else if($shop_type==1){
+        $db=common_connect_bbia();
+    }else if($shop_type==2){
+        $db=common_connect_hince();
+    }
+    $product_id=$obj["product_id"];   
+    $product_name=$obj["product_name"];
+    $sku=$obj["sku"];
+    $category_id=$obj["category_id"];   
+    $category_name=$obj["category_name"];   
+
+    $query="INSERT INTO `product_schedule_membership`(`product_id`,`product_name`,`sku`,`category_id`,`category_name`) VALUE('$product_id','$product_name','$sku','$category_id','$category_name')";
+    mysqli_query($db,$query);  
+    common_close_connect($db); 
 }
 
+//============ End Setting membership event===============================================================================
+
+}
                
 ?>
 

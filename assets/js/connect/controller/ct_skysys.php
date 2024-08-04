@@ -1093,6 +1093,11 @@ function ct_setting_update_product(){
 }
         //==================== END Membership =========================
         //==================== SETTING EVENT MEMBERSHIP ===============================
-
+function ct_setting_membership_insert(){
+    $obj=$_POST["obj"];    
+    $obj_sv_sky007       = new sever_skysys();
+    $obj_sv_sky007->sv_setting_membership_insert($obj); 
+}
+ //====================END SETTING EVENT MEMBERSHIP ===============================
 //============ End Setting ============================================================================================
 ?>
